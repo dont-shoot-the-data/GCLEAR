@@ -2,6 +2,8 @@
 
 **Gig-Worker Comprehensive Lethal Evidence Analysis Report**
 
+### 🔗 https://dont-shoot-the-data.github.io/GCLEAR/
+
 Case-level analysis of every documented homicide of an app-based rideshare or delivery driver in
 the United States, 2016 through 2025. 151 victims. Every case independently verified against local
 news reporting, police statements, prosecutors' offices, and court records.
@@ -35,3 +37,12 @@ records how many app drivers work in a given place or year. Every total is a flo
 compilation and should be read as floors. A systematic search for additional cases is underway.
 
 Corrections are welcome and will be published.
+
+---
+
+**Live site:** https://dont-shoot-the-data.github.io/GCLEAR/
+**Companion study:** https://dont-shoot-the-data.github.io/TCLEAR/
+
+Cover image: dashcam still from the vehicle of Christina Spicuzza, an Uber driver killed in
+Monroeville, Pennsylvania on February 10, 2022. Her killer was convicted of first-degree murder and
+sentenced to life. Her case appears in the 2022 dataset.
