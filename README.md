@@ -1,6 +1,6 @@
 # G-CLEAR
 
-**Gig-Worker Comprehensive Lethal Evidence Analysis Report**
+**Gig Worker — Comprehensive Lethal Evidence Analysis Report**
 
 ### 🔗 https://dont-shoot-the-data.github.io/GCLEAR/
 
