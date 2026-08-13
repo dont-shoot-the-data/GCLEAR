@@ -1413,10 +1413,10 @@ const reg=c=>{CHARTS.push(c);return c;};
 const YRS=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
 
 const DISPRO={
- suspects:{n:73,noun:'charged individuals',races:['Black','White','Hispanic','Asian/Pac. Isl.'],
-   pct:[78.1,9.6,9.6,0.0],cnt:[57,7,7,0],pop:[13.6,59.3,19.1,8.0],note:'<strong>Central finding:</strong> among the 73 charged individuals whose race is publicly documented, 57 are Black, 5.74 times the Black share of the U.S. population. White charged individuals sit at roughly one sixth of their population share, and no Asian or Pacific Islander individual has been charged in any case in the decade. <strong>The caveat governing this entire chart:</strong> 75 of 148 charged individuals, 50.7%, have no publicly documented race at all, concentrated among juveniles with sealed records and suspects still at large. This describes the documented half and nothing more.'},
- victims:{n:132,noun:'victims',races:['Black','White','Hispanic','Asian/Pac. Isl.'],
-   pct:[44.7,22.7,14.4,11.4],cnt:[59,30,19,15],pop:[13.6,59.3,19.1,8.0],note:'<strong>Central finding:</strong> the victim pool is disproportionate in the same direction but far less steeply. Black victims are overrepresented at 3.29 times population share, and Asian and Pacific Islander victims are the only group overrepresented among the dead while absent entirely from the charged side. White victims sit at 0.38 times their population share. Read against the suspect view, this is the shape of an immigrant, largely non-White workforce being killed disproportionately by young men who rarely come from the same neighbourhoods.'}};
+ suspects:{n:73,noun:'charged individuals',races:['Black','White','Hispanic','Asian/Pac. Isl.','Middle Eastern'],
+   pct:[78.1,9.6,9.6,0.0,2.7],cnt:[57,7,7,0,2],pop:[13.6,59.3,19.1,8.0,1.06],note:'<strong>Central finding:</strong> among the 73 charged individuals whose race is publicly documented, 57 are Black, 5.74 times the Black share of the U.S. population. White charged individuals sit at roughly one sixth of their population share, Middle Eastern individuals at 2.58 times theirs on two cases, and no Asian or Pacific Islander individual has been charged in any case in the decade. <strong>On the Middle Eastern benchmark:</strong> the U.S. Census classifies people of Middle Eastern and North African origin as White, so no official separate population share exists; the 1.06% used here is the 3.5 million MENA write-in responses recorded by the 2020 Census, the first to collect them. The White population figure therefore includes MENA and is very slightly overstated. <strong>The caveat governing this entire chart:</strong> 75 of 148 charged individuals, 50.7%, have no publicly documented race at all, concentrated among juveniles with sealed records and suspects still at large. This describes the documented half and nothing more.'},
+ victims:{n:132,noun:'victims',races:['Black','White','Hispanic','Asian/Pac. Isl.','Middle Eastern'],
+   pct:[44.7,22.7,14.4,11.4,6.8],cnt:[59,30,19,15,9],pop:[13.6,59.3,19.1,8.0,1.06],note:'<strong>Central finding:</strong> <strong>Middle Eastern drivers are the most overrepresented group among the dead, at 6.43 times their population share</strong>, on 9 victims against a 1.06% MENA population. Black victims follow at 3.29 times, and Asian and Pacific Islander victims at 1.42 times while being entirely absent from the charged side. White victims sit at 0.38 times their share. Read against the suspect view, this is the shape of an immigrant, largely non-White workforce being killed disproportionately by young men who rarely come from the same neighbourhoods.'}};
 let DV='suspects', DUNITS='pct';
 
 const PCT=v=>v+'%';
@@ -1430,13 +1430,14 @@ const shortTick=function(val){
 const chDispro=reg(new Chart(document.getElementById('chDispro'),{type:'bar',data:{labels:DISPRO.suspects.races,
  datasets:[{label:'Share of charged individuals (%)',data:DISPRO.suspects.pct.slice(),backgroundColor:DISPRO.suspects.races.map(r=>RACE[r]),borderRadius:4,barPercentage:.85,categoryPercentage:.7},
            {label:'U.S. population share (%)',data:DISPRO.suspects.pop.slice(),backgroundColor:'rgba(193,18,31,0.15)',borderColor:RED,borderWidth:2,borderDash:[4,3],borderRadius:4,barPercentage:.85,categoryPercentage:.7}]},
- options:{layout:{padding:{top:26}},plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y+(DUNITS==='pct'?'%':'')}}},
- scales:{y:{beginAtZero:true,ticks:{stepSize:20,callback:v=>DUNITS==='pct'?v+'%':v}}},maintainAspectRatio:false}}));
+ options:{layout:{padding:{top:26}},plugins:{legend:{position:'bottom'},tooltip:{callbacks:{title:c=>DISPRO[DV].races[c[0].dataIndex],label:c=>c.dataset.label+': '+c.parsed.y+(DUNITS==='pct'?'%':'')}}},
+ scales:{x:{ticks:{font:{size:NARROW?10:12}}},y:{beginAtZero:true,ticks:{stepSize:20,callback:v=>DUNITS==='pct'?v+'%':v}}},maintainAspectRatio:false}}));
 
 function renderDispro(){ try{
   chDispro.$fmt=(DUNITS==='pct')?PCT:(v=>v);
   const d=DISPRO[DV], useP=(DUNITS==='pct');
-  chDispro.data.labels=d.races.slice();
+  var SHORT={'Asian/Pac. Isl.':'Asian/PI','Middle Eastern':'Mid. East'};
+  chDispro.data.labels=d.races.map(function(r){return NARROW&&SHORT[r]?SHORT[r]:r;});
   chDispro.data.datasets[0].label=(DV==='suspects'?'Share of charged individuals':'Share of victims')+(useP?' (%)':' (count)');
   chDispro.data.datasets[0].data=(useP?d.pct:d.cnt).slice();
   chDispro.data.datasets[0].backgroundColor=d.races.map(r=>swapCol(RACE[r],DARK));
