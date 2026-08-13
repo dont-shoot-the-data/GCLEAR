@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- WORKING TITLE: rename "G-CLEAR" here and in index.html if a different project name is chosen -->
+<title>2020 Homicides of App-Based Gig Drivers — Combined Analysis</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#f5f3ef;color:#222;line-height:1.5;padding:20px;max-width:1400px;margin:0 auto}
+@media print{body{background:#fff;padding:0;font-size:9pt}table{font-size:8pt}.chart-card{break-inside:avoid}}
+.header{background:#1a1a2e;border-radius:10px;padding:28px;color:#f0f0f0;margin-bottom:20px}
+.header h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;margin-bottom:8px}
+.header p{font-size:13px;color:#aaa;line-height:1.6}
+.header .year-badge{display:inline-block;background:#e8a838;color:#1a1a2e;font-weight:700;font-size:14px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.stat-box{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:14px 18px;flex:1;min-width:130px}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;line-height:1}
+.stat-box .label{font-size:12px;color:#444;font-weight:600;margin-top:4px}
+.stat-box .sub{font-size:10px;color:#888;margin-top:2px}
+.chart-card{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:16px}
+.chart-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:2px}
+.chart-sub{font-size:11px;color:#666;margin-bottom:12px}
+.chart-wrap{position:relative;width:100%;height:300px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#1a1a2e;margin:24px 0 6px}
+.section-sub{font-size:12px;color:#666;margin-bottom:12px}
+.legend-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-size:11px;color:#555}
+.legend-item{display:flex;align-items:center;gap:5px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:20px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #ddd}
+thead th{background:#1a1a2e;color:#f0f0f0;padding:8px 6px;text-align:left;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;white-space:nowrap}
+tbody td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}
+tbody tr:nth-child(even){background:#faf8f5}
+tbody tr:hover{background:#f0ede6}
+.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.badge-suspected{background:#e8a838;color:#1a1a2e}
+.badge-none{background:#e0e0e0;color:#555}
+.badge-unknown{background:#f0f0f0;color:#888;border:1px solid #ddd}
+.badge-solved{background:#2d6a4f;color:#fff}
+.badge-unsolved{background:#c1121f;color:#fff}
+.badge-closed{background:#555;color:#fff}
+.badge-police{background:#3d5a80;color:#fff}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.note-box{background:#faf8f5;border:1px solid #e8e4dc;border-radius:8px;padding:12px 16px;font-size:11px;color:#555;line-height:1.6;margin:12px 0}
+.note-box strong{color:#1a1a2e}
+.factcheck{background:#fff;border:2px solid #e8a838;border-radius:10px;padding:20px;margin-bottom:16px}
+.factcheck h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:10px}
+.factcheck .claim{font-size:12px;color:#444;line-height:1.7;margin-bottom:12px}
+.factcheck .claim strong{color:#1a1a2e}
+.fc-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-right:6px}
+.fc-false{background:#c1121f;color:#fff}
+.fc-partial{background:#e8a838;color:#1a1a2e}
+.fc-true{background:#2d6a4f;color:#fff}
+.divider{border:none;border-top:3px solid #1a1a2e;margin:40px 0 20px}
+.footer{background:#1a1a2e;border-radius:10px;padding:16px 20px;color:#aaa;font-size:10px;line-height:1.6;margin-top:24px}
+.footer strong{color:#e8a838}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="year-badge">2020</div>
+  <h1>Homicides of App-Based Gig Drivers (Uber, Lyft, DoorDash, Delivery)</h1>
+  <p>Combined analysis and case-by-case dataset. Data from local news, police statements, prosecutors' offices, and court records, verified through August 2026.<br>
+  Victim list anchored to <a href="https://www.powerswitchaction.org/resources/murdered-behind-the-wheel/" target="_blank" style="color:#e8a838;text-decoration:underline">Gig Workers Rising's Murdered Behind the Wheel</a> report and database, the institutional list covering 2017 through April 2023, independently verified and expanded; every fact below cites local news, police statements, prosecutors, or court records.<br>
+  This dataset covers 5 victims, all homicides. No police-involved killing of a driver was documented in 2020. Four of the five killings fell within a single seven-day window, December 11 to 17, at the height of the pandemic-era surge in gun violence.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="num" style="color:#c1121f">5</div><div class="label">Total Victims</div><div class="sub">3 rideshare + 2 delivery</div></div>
+  <div class="stat-box"><div class="num" style="color:#2d6a4f">3</div><div class="label">Cases Solved/Charged</div><div class="sub">60.0%; one conviction, two prosecutions awaiting outcomes</div></div>
+  <div class="stat-box"><div class="num" style="color:#e8a838">2</div><div class="label">Unsolved</div><div class="sub">40.0%; both were delivery drivers killed in December</div></div>
+  <div class="stat-box"><div class="num" style="color:#1a1a2e">80%</div><div class="label">Killed by Firearm</div><div class="sub">4 of 5; one fatal stabbing</div></div>
+</div>
+
+<!-- CHART 1: CHARGED SUSPECTS by Documented Race -->
+<div class="chart-card"><div class="chart-title">Chart 1: Charged Suspects by Documented Race (N = 7)</div><div class="chart-sub">All 7 individuals charged for murder across the 3 solved/charged cases. Race counted only where publicly documented; no 2020 charged individual has a documented coding.</div><div class="chart-wrap"><canvas id="chartSUSPECTS"></canvas></div><div class="note-box"><strong>Note:</strong> 0 of 7 murder-charged individuals carry a publicly documented race coding: Bernard E. Smith (Farrens case), the four federal defendants in the Mseer case (Kelly, Bagsby, Roy, and Taplin), and Wade and Bebic (Ceesay case). 2020 predates the compiled-list identifications that supply provisional codings on later year pages, and no booking photo, court imagery, or law enforcement description has yet been verified for any of the seven, so all are carried as Not publicly documented and queued for race lookups. One of the seven, Bebic, is female. Unknowns are coded unknown, never inferred.</div></div>
+
+<!-- CHART 2: VICTIMS by Race -->
+<div class="chart-card"><div class="chart-title">Chart 2: Victims by Race/Ethnicity (N = 5)</div><div class="chart-sub">All 5 victims documented in 2020</div><div class="chart-wrap"><canvas id="chartVICTIMS"></canvas></div><div class="note-box"><strong>Note:</strong> The two coded victims rest on explicit textual statements in reporting: Mseer, a 23-year-old refugee from Iraq (Middle Eastern), and Ceesay, a 28-year-old Gambian immigrant (Black). Both were immigrants killed within 48 hours of each other. The other three victims (Farrens, Thomas, Smith) have no public textual statement of race, and no compiled-list coding exists for 2020, so they are carried as Not publicly documented pending the photo verification pass. Nothing is inferred, in either direction.</div></div>
+
+<!-- CHART 3: SPECIFIC Pairings (no documented pairings exist for 2020) -->
+<div class="chart-card"><div class="chart-title">Chart 3: Suspect &rarr; Victim Race Pairings (Documented Only, N = 0)</div><div class="chart-sub">Each pairing requires a charged suspect with a publicly documented race coding. 2020 has none.</div><div class="note-box"><strong>Note:</strong> On later year pages this chart plots every documented suspect-to-victim pairing, green for intraracial and red for interracial. No 2020 case qualifies: all seven murder-charged individuals lack a publicly documented race under this dataset's standard, so no pairing can be drawn. The chart is left empty rather than guessed. If the pending race lookups produce documented codings, this chart will be populated in a revision.</div></div>
+
+<!-- CHART 4: Solved vs Unsolved by Race -->
+<div class="chart-card"><div class="chart-title">Chart 4: Solved/Charged vs. Unsolved by Victim Race (N = 5)</div><div class="chart-sub">Case resolution by victim race, as of August 2026</div><div class="chart-wrap"><canvas id="chartSOLVED"></canvas></div><div class="note-box"><strong>Note:</strong> With three of five victims carrying no documented race coding, 2020 cannot support the race-resolution comparisons drawn on later year pages. What the record does show: the year's only conviction came in the case of its Black victim (Ceesay), the case of its Middle Eastern victim (Mseer) is federally charged, and the three victims with no documented coding split one charged (Farrens) and two unsolved (Thomas, Smith).</div></div>
+
+<!-- CHART 5: Platform -->
+<div class="chart-card"><div class="chart-title">Chart 5: Victims by Platform (N = 5)</div><div class="chart-sub">Platform the victim was working for at the time of the killing</div><div class="chart-wrap"><canvas id="chartPLATFORM"></canvas></div><div class="note-box"><strong>Note:</strong> Uber 2, Lyft 1, Uber Eats 1, Postmates 1. Rideshare platforms account for 3 victims and delivery platforms for 2. In 2 of the 3 resolved cases the fatal ride was summoned through the platform's own app: Farrens was called to the scene through the Lyft app, and Ceesay was hailed through a brand-new Uber account opened under a fake name at 9:03 PM, minutes before he was killed. His family's wrongful-death suit over that account produced a 2024 federal appeals ruling that Uber owed its Washington drivers a duty of care.</div></div>
+
+<!-- CHART 6: Case Status -->
+<div class="chart-card"><div class="chart-title">Chart 6: Case Status (N = 5)</div><div class="chart-sub">All 5 cases, as of August 2026</div><div class="chart-wrap"><canvas id="chartSTATUS"></canvas></div><div class="note-box"><strong>Note:</strong> Convicted/Sentenced 1 (Ceesay case: Wade pleaded guilty to second-degree murder and was sentenced in June 2023 to 18 years 4 months; Bebic pleaded guilty to first-degree manslaughter, 9 years 6 months). Charged/awaiting outcome 2 (Farrens case: Smith charged with second-degree murder, no public outcome found; Mseer case: four Hoover Criminal Gang members federally indicted in March 2024 for murder in aid of racketeering, no public verdict found). Unsolved 2 (Thomas, Smith), both December delivery-driver killings; the Smith case carries a $15,000 FBI reward and was still featured as unsolved in mid-2025 cold-case coverage.</div></div>
+
+<!-- CHART 7: Relationship of Killer to Victim -->
+<div class="chart-card"><div class="chart-title">Chart 7: Relationship of Killer to Victim (N = 5)</div><div class="chart-sub">Documented relationship between the killer and the driver. Unsolved cases always code Unknown by rule.</div><div class="chart-wrap"><canvas id="chartREL"></canvas></div><div class="note-box"><strong>Finding:</strong> In 2 of the 3 resolved cases (66.7%), the killer was a passenger on the fatal trip, and in both the ride itself was placed through the app: an app summons brought Farrens to his killer's block, and a fake-name account created minutes earlier brought Ceesay to his. The third resolved case was a stranger ambush: gang members mistook Mseer for a rival because of his slow approach and his car. <strong>Hard rule:</strong> the two unsolved cases (Thomas, Smith) code Unknown, whatever the suspected mechanism. The coding scheme also includes Ex-partner, Customer (delivery), Known dispute, and Not documented; 2020 has no documented case of any.</div></div>
+
+<hr class="divider">
+
+<div class="section-title">Complete Research Dataset &mdash; 2020</div>
+<div class="section-sub">Chronological order. Sources are local news, police statements, prosecutors' offices, and court records. 5 victims total, all homicides.</div>
+
+<div class="legend-row"><div class="legend-item"><span class="badge badge-solved">Convicted/Sentenced</span> Final verdict entered against at least one defendant</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-suspected">Charged</span> Suspect(s) charged or arrested for murder; no public final outcome found</div></div>
+<div class="legend-row" style="margin-bottom:16px"><div class="legend-item"><span class="badge badge-unsolved">Unsolved</span> No suspect charged or publicly identified</div></div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>Victim Name</th><th>Race</th><th>Age</th><th>City, State</th><th>Date</th><th>Platform</th><th>Cause of Death</th><th>Brief Summary</th><th>Suspect(s)</th><th>Relationship</th><th>Suspect Race</th><th>Suspect Gender</th><th>Suspect Age</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Franklin L. Farrens</td><td>Not publicly documented</td><td>79</td><td>Chesterfield County, VA</td><td>Jan 28</td><td>Lyft</td><td>Gunshot</td><td>Summoned through the Lyft app and shot from behind at the wheel around 6:30 AM, 25 miles from his Chester home; his car rolled down Providence Creek Road into parked cars. His 18-year-old passenger, who lived on the block where the car came to rest, was charged with second-degree murder; police announced no motive. <em>[Killed Jan 28; circulating lists carry Jan 30, the arrest-announcement date. No public case outcome found as of Aug 2026.]</em></td><td>Bernard E. Smith</td><td>Passenger</td><td>Not documented</td><td>Male</td><td>18</td><td><span class="badge badge-suspected">Charged</span></td><td><a href="https://www.wric.com/news/crime/teen-charged-with-murder-in-shooting-death-of-78-year-old-chesterfield-man/" target="_blank">WRIC</a></td></tr>
+
+<tr><td>2</td><td>Dhulfiqar Kareem Mseer</td><td>Middle Eastern</td><td>23</td><td>Portland, OR</td><td>Dec 11</td><td>Uber</td><td>Gunshot</td><td>Iraqi refugee and newlywed saving to bring his wife to America, shot in a hail of roughly 70 rounds from multiple guns as he arrived to pick up a fare shortly before midnight; investigators concluded gang members mistook him for a rival because of his slow approach and his white Honda Accord. Four Hoover Criminal Gang members were federally indicted in March 2024 for murder in aid of racketeering. <em>[Shot Dec 11 per the FBI and the indictment; lists carry Dec 12. He died in the hospital days later. No public verdict found as of Aug 2026.]</em></td><td>Taezhon Kelly; Anthony Bagsby; Delane Roy; Cocoa Taplin</td><td>Stranger (mistaken-identity ambush)</td><td>Not documented</td><td>Male</td><td>23; 32; 25; 28</td><td><span class="badge badge-suspected">Charged</span></td><td><a href="https://www.justice.gov/usao-or/pr/four-hoover-criminal-gang-members-indicted-murder-aid-racketeering" target="_blank">DOJ</a></td></tr>
+
+<tr><td>3</td><td>Cherno "Che" Ceesay</td><td>Black</td><td>28</td><td>Issaquah, WA</td><td>Dec 13</td><td>Uber</td><td>Stabbing</td><td>Gambian immigrant and gifted soccer player, stabbed from behind in the head and neck about 100 feet into a ride hailed through a brand-new fake-name Uber account; he crashed into a tree and died at the scene of a botched carjacking. Wade pleaded guilty to second-degree murder (18 years 4 months, June 2023) and Bebic to first-degree manslaughter (9 years 6 months). <em>[His family's wrongful-death suit produced a 2024 federal appeals ruling that Uber owed its drivers a duty of care.]</em></td><td>Devin Wade; Olivia Bebic</td><td>Passenger</td><td>Not documented</td><td>Male; Female</td><td>21; 21</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.king5.com/article/news/crime/suspect-issaquah-uber-driver-murder-sentenced/281-0fe87304-5bdd-4c22-ad71-28ba29816e14" target="_blank">KING 5</a></td></tr>
+
+<tr><td>4</td><td>Roderick Thomas</td><td>Not publicly documented</td><td>54</td><td>Los Angeles, CA</td><td>Dec 15</td><td>Postmates</td><td>Gunshot</td><td>Refinery worker and father of two who delivered for Postmates in the offseason, shot once in the neck while driving back down the hill moments after dropping a Cypress Park order; he drove himself toward help, called 911, and died after surgery on Dec 17. No arrests in available reporting. <em>[Shot Dec 15; died Dec 17, the date most circulating lists carry. Age also reported as 56.]</em></td><td>Unidentified</td><td>Unknown</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://abc7.com/postmates-shooting-driver-lapd/10066273/" target="_blank">ABC7</a></td></tr>
+
+<tr><td>5</td><td>Kelley Marie Smith</td><td>Not publicly documented</td><td>53</td><td>Portland, OR</td><td>Dec 17</td><td>Uber Eats</td><td>Gunshot</td><td>Killed on the last Uber Eats delivery of the day with her husband of 24 years riding along after a pandemic layoff; as they passed Dawson Park around 7 PM, multiple shooters exchanged dozens of rounds and the FBI concluded she was an unintended victim caught in the middle. Still unsolved in mid-2025 cold-case coverage, with a $15,000 FBI reward outstanding. <em>[Included motive-blind: struck by gunfire aimed at others while working.]</em></td><td>Unidentified (multiple shooters)</td><td>Unknown</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.fbi.gov/wanted/seeking-info/kelley-marie-smith" target="_blank">FBI</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- CORRECTIONS TO CIRCULATING LISTS: bottom placement per directive, after data, before methodology -->
+<div class="factcheck">
+  <h2>Corrections to Circulating Lists</h2>
+  <div class="claim">Versions of this victim list circulate publicly, in Gig Workers Rising's database and in viral social media compilations. Every case on this page was verified independently against news reports, police statements, prosecutors' offices, and court records. This section corrects the errors in those circulating versions, and the compilations themselves are not a source for any fact in this dataset.</div>
+  <div class="claim"><span class="fc-tag fc-false">Errors Corrected</span><strong>A sixth name circulates under 2020 that does not belong there:</strong><br>
+  The institutional database carries Michael Wallace, an Uber driver who died after a fight with a passenger in Louisville, under 2020. The database's own cited sources date his death to August 9, 2018. He appears in this project's 2018 dataset, not here, and the 2020 total is five, not six.</div>
+  <div class="claim"><span class="fc-tag fc-false">Errors Corrected</span><strong>Date errors in the circulating lists:</strong><br>
+  Lists date the Farrens killing January 30; he was killed the morning of January 28, and January 30 is the date the arrest was announced. Lists date the Mseer shooting December 12; the FBI and the federal indictment place it shortly before midnight on December 11, and he died in the hospital days later. Lists date the Thomas killing December 17; that is the date he died, and he was shot on December 15.</div>
+  <div class="claim"><span class="fc-tag fc-false">Errors Corrected</span><strong>Location error:</strong><br>
+  Lists place the Farrens killing in "Chester County, VA." No such county exists in Virginia. Chester is the unincorporated Chesterfield County community where the victim lived; the killing occurred 25 miles away on Providence Creek Road, also in Chesterfield County.</div>
+  <div class="claim"><span class="fc-tag fc-partial">Partially Supported</span><strong>Compilations assign suspect races that the public record does not document.</strong><br>
+  This dataset codes suspect race only where publicly documented via booking photo, court imagery, or law enforcement description. None of the seven murder-charged individuals in 2020 carries such a coding: not Bernard E. Smith, not the four federal defendants in the Mseer case, and not Wade or Bebic. Any compilation that assigns a race to any of these seven is asserting a fact not in the public record. Race lookups for all seven are queued for a future revision.</div>
+  <div class="claim"><span class="fc-tag fc-true">Status Updates</span><strong>Compilation case statuses are frozen at compile time.</strong><br>
+  Since the circulating lists were compiled: Wade pleaded guilty to second-degree murder (March 2023) and was sentenced to 18 years 4 months (June 2023), and Bebic was sentenced to 9 years 6 months for first-degree manslaughter (June 2023); a divided federal appeals panel ruled in the family's wrongful-death case that Uber owed its Washington drivers a duty of care (2024); and four Hoover Criminal Gang members were federally indicted for the Mseer killing (March 2024), converting a case every circulating list still carries as unsolved into a charged one, with federal death-penalty-eligible counts.</div>
+</div>
+
+<div class="footer">
+<strong>Methodology:</strong> Victim list anchored to Gig Workers Rising's Murdered Behind the Wheel report and public database, the institutional list covering 2017 through April 2023, independently verified and expanded; every fact on this page cites local news, police statements, prosecutors' offices, or court records. Claims examined in the corrections section above come from that database and from viral social media compilations; the compilations are not cited as a source for any fact. Inclusion criteria: homicide of a driver working for an app-based rideshare or delivery platform (Amazon Flex included) at the time of the killing, or killed in direct connection with that work. Killings while working but not because of the job are included motive-blind with circumstances stated, matching the institutional list's murdered-while-working standard; the Mseer case (mistaken for a gang rival while arriving for a pickup) and the Smith case (caught in gunfire aimed at others mid-delivery) are included on that basis. Non-criminal traffic accidents are excluded. No police-involved killing of a driver was documented in 2020. Bias-motive coding is omitted for this dataset. Suspect race is recorded only where publicly documented via booking photo, court imagery, or law enforcement description; unknowns are coded as unknown, never inferred, and neither surnames nor complexion descriptions are treated as documentation. Relationship between killer and victim is coded documented-only: Passenger (rode on or summoned the fatal trip), Customer (delivery recipient), Stranger with the mechanism noted, Known dispute, or Ex-partner where applicable; where a suspect is charged but the relationship is unreported it is coded Not documented, and unsolved cases always code Unknown regardless of any suspected mechanism. 2020 predates the compiled-list identifications that supply provisional dagger codings on later year pages, so no provisional codings appear here: the two coded victim entries rest on explicit textual statements in reporting (an Iraqi refugee; a Gambian immigrant), and the remaining three victims and all seven charged individuals are carried as not documented pending public documentation. "Solved/Charged" counts any case with at least one murder-charged or murder-arrested suspect. All dates, ages, sentences, and statuses verified as of <strong>August 2026</strong>.
+<br><br>Homicides of App-Based Gig Drivers, 2020 &middot; From local news and court records &middot; Verified Aug. 2026
+</div>
+
+<script>
+const NAVY='#1a1a2e', GOLD='#e8a838', RED='#c1121f', GREEN='#2d6a4f', GRAY='#9a9a9a', LGRAY='#d5d0c6', PLUM='#6d597a', STEEL='#3d5a80';
+Chart.defaults.font.family="'DM Sans',sans-serif";
+Chart.defaults.font.size=11;
+Chart.defaults.color='#444';
+const lum=h=>{const n=parseInt(h.slice(1),16);return(0.299*(n>>16&255)+0.587*(n>>8&255)+0.114*(n&255))/255};
+const txtOn=h=>lum(h)>0.62?'#1a1a2e':'#fff';
+const valueLabels={id:'valueLabels',afterDatasetsDraw(chart){const{ctx}=chart;ctx.save();ctx.font="700 11px 'DM Sans',sans-serif";
+if(chart.config.type==='doughnut'){const meta=chart.getDatasetMeta(0);meta.data.forEach((arc,i)=>{const v=chart.data.datasets[0].data[i];if(!v)return;const a=(arc.startAngle+arc.endAngle)/2,r=(arc.innerRadius+arc.outerRadius)/2;ctx.fillStyle=txtOn(chart.data.datasets[0].backgroundColor[i]);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,arc.x+Math.cos(a)*r,arc.y+Math.sin(a)*r)});ctx.restore();return}
+const horiz=chart.options.indexAxis==='y',stacked=!!(chart.options.scales&&chart.options.scales.y&&chart.options.scales.y.stacked);
+chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;meta.data.forEach((bar,i)=>{const v=ds.data[i];if(!v)return;
+if(horiz){ctx.fillStyle='#1a1a2e';ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(v,bar.x+6,bar.y)}
+else if(stacked){if(Math.abs(bar.base-bar.y)<14)return;const bg=Array.isArray(ds.backgroundColor)?ds.backgroundColor[i]:ds.backgroundColor;ctx.fillStyle=txtOn(bg);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,bar.x,(bar.y+bar.base)/2)}
+else{ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(v,bar.x,bar.y-4)}})});
+if(stacked&&!horiz){chart.data.labels.forEach((_,i)=>{let tot=0,top=Infinity,x=null;chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;const v=ds.data[i]||0;tot+=v;const bar=meta.data[i];if(bar){if(x===null)x=bar.x;if(v)top=Math.min(top,bar.y)}});if(tot&&x!==null){ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(tot,x,(top===Infinity?chart.scales.y.getPixelForValue(0):top)-4)}})}
+ctx.restore()}};
+Chart.register(valueLabels);
+
+new Chart(document.getElementById('chartSUSPECTS'),{type:'bar',data:{labels:['Not publicly documented'],datasets:[{data:[7],backgroundColor:[LGRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 7 charged individuals'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartVICTIMS'),{type:'bar',data:{labels:['Not publicly documented','Middle Eastern','Black'],datasets:[{data:[3,1,1],backgroundColor:[LGRAY,PLUM,NAVY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 5 victims'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSOLVED'),{type:'bar',data:{labels:['Not documented','Middle Eastern','Black'],datasets:[{label:'Solved/Charged',data:[1,1,1],backgroundColor:GREEN,borderRadius:4},{label:'Unsolved',data:[2,0,0],backgroundColor:RED,borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartPLATFORM'),{type:'doughnut',data:{labels:['Uber','Lyft','Uber Eats','Postmates'],datasets:[{data:[2,1,1,1],backgroundColor:[NAVY,'#d14aa0',GOLD,STEEL],borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{position:'bottom',labels:{generateLabels(c){const it=Chart.overrides.doughnut.plugins.legend.labels.generateLabels(c);it.forEach((l,i)=>l.text+=' ('+c.data.datasets[0].data[l.index??i]+')');return it}}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSTATUS'),{type:'bar',data:{labels:['Convicted/Sentenced','Charged','Unsolved'],datasets:[{data:[1,2,2],backgroundColor:[GREEN,GOLD,RED],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 5 cases'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartREL'),{type:'bar',data:{labels:['Passenger','Stranger','Unknown (unsolved)'],datasets:[{data:[2,1,2],backgroundColor:[NAVY,RED,GRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 5 cases'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+</script>
+</body>
+</html>

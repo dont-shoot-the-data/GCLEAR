@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- WORKING TITLE: rename "G-CLEAR" here and in index.html if a different project name is chosen -->
+<title>2016 Homicides of App-Based Gig Drivers — Combined Analysis</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#f5f3ef;color:#222;line-height:1.5;padding:20px;max-width:1400px;margin:0 auto}
+@media print{body{background:#fff;padding:0;font-size:9pt}table{font-size:8pt}.chart-card{break-inside:avoid}}
+.header{background:#1a1a2e;border-radius:10px;padding:28px;color:#f0f0f0;margin-bottom:20px}
+.header h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;margin-bottom:8px}
+.header p{font-size:13px;color:#aaa;line-height:1.6}
+.header .year-badge{display:inline-block;background:#e8a838;color:#1a1a2e;font-weight:700;font-size:14px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.stat-box{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:14px 18px;flex:1;min-width:130px}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;line-height:1}
+.stat-box .label{font-size:12px;color:#444;font-weight:600;margin-top:4px}
+.stat-box .sub{font-size:10px;color:#888;margin-top:2px}
+.chart-card{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:16px}
+.chart-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:2px}
+.chart-sub{font-size:11px;color:#666;margin-bottom:12px}
+.chart-wrap{position:relative;width:100%;height:300px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#1a1a2e;margin:24px 0 6px}
+.section-sub{font-size:12px;color:#666;margin-bottom:12px}
+.legend-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-size:11px;color:#555}
+.legend-item{display:flex;align-items:center;gap:5px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:20px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #ddd}
+thead th{background:#1a1a2e;color:#f0f0f0;padding:8px 6px;text-align:left;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;white-space:nowrap}
+tbody td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}
+tbody tr:nth-child(even){background:#faf8f5}
+tbody tr:hover{background:#f0ede6}
+.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.badge-suspected{background:#e8a838;color:#1a1a2e}
+.badge-none{background:#e0e0e0;color:#555}
+.badge-unknown{background:#f0f0f0;color:#888;border:1px solid #ddd}
+.badge-solved{background:#2d6a4f;color:#fff}
+.badge-unsolved{background:#c1121f;color:#fff}
+.badge-closed{background:#555;color:#fff}
+.badge-police{background:#3d5a80;color:#fff}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.note-box{background:#faf8f5;border:1px solid #e8e4dc;border-radius:8px;padding:12px 16px;font-size:11px;color:#555;line-height:1.6;margin:12px 0}
+.note-box strong{color:#1a1a2e}
+.factcheck{background:#fff;border:2px solid #e8a838;border-radius:10px;padding:20px;margin-bottom:16px}
+.factcheck h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:10px}
+.factcheck .claim{font-size:12px;color:#444;line-height:1.7;margin-bottom:12px}
+.factcheck .claim strong{color:#1a1a2e}
+.fc-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-right:6px}
+.fc-false{background:#c1121f;color:#fff}
+.fc-partial{background:#e8a838;color:#1a1a2e}
+.fc-true{background:#2d6a4f;color:#fff}
+.divider{border:none;border-top:3px solid #1a1a2e;margin:40px 0 20px}
+.footer{background:#1a1a2e;border-radius:10px;padding:16px 20px;color:#aaa;font-size:10px;line-height:1.6;margin-top:24px}
+.footer strong{color:#e8a838}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="year-badge">2016</div>
+  <h1>Homicides of App-Based Gig Drivers (Uber, Lyft, DoorDash, Delivery)</h1>
+  <p>Combined analysis and case-by-case dataset. Data from local news, police statements, prosecutors' offices, and court records, verified through August 2026.<br>
+  Compiled directly from local news reports, police statements, and court records. <a href="https://www.powerswitchaction.org/resources/murdered-behind-the-wheel/" target="_blank" style="color:#e8a838;text-decoration:underline">Gig Workers Rising's Murdered Behind the Wheel</a> report and database, the institutional anchor for the 2017 through early-2023 pages of this project, begin in 2017 and do not cover this year. No institutional list exists for 2016; this dataset is the record, and its totals should be read as floors.<br>
+  This dataset covers 3 victims, all homicides. No police-involved killing of a driver was documented in 2016.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="num" style="color:#c1121f">3</div><div class="label">Total Victims</div><div class="sub">3 rideshare + 0 delivery</div></div>
+  <div class="stat-box"><div class="num" style="color:#2d6a4f">2</div><div class="label">Cases Solved/Charged</div><div class="sub">66.7% of the year's 3 cases</div></div>
+  <div class="stat-box"><div class="num" style="color:#e8a838">1</div><div class="label">Unsolved</div><div class="sub">33.3%; no arrest in a decade</div></div>
+  <div class="stat-box"><div class="num" style="color:#1a1a2e">100%</div><div class="label">Killed by Firearm</div><div class="sub">3 of 3</div></div>
+</div>
+
+<!-- CHART 1: CHARGED SUSPECTS by Documented Race -->
+<div class="chart-card"><div class="chart-title">Chart 1: Charged Suspects by Documented Race (N = 2)</div><div class="chart-sub">Both individuals charged with murder across the 2 solved/charged cases. Race counted only where publicly documented.</div><div class="chart-wrap"><canvas id="chartSUSPECTS"></canvas></div><div class="note-box"><strong>Note:</strong> Neither of the 2 murder-charged individuals has a publicly documented race: no booking photo, court imagery, or law enforcement description surfaced in available reporting for Dajuan Watson (the Diagne case, convicted 2017) or Edward Lee Tucker (the Zolfaghari case, charged 2025). 2016 predates the compiled circulating lists, so no compiled-list coding exists to test either. Unknowns are coded unknown, never inferred.</div></div>
+
+<!-- CHART 2: VICTIMS by Race -->
+<div class="chart-card"><div class="chart-title">Chart 2: Victims by Race/Ethnicity (N = 3)</div><div class="chart-sub">All 3 victims documented in 2016</div><div class="chart-wrap"><canvas id="chartVICTIMS"></canvas></div><div class="note-box"><strong>Note:</strong> Both race codings on this page rest on explicit textual statements: Modou Diagne was identified throughout coverage as a Senegalese immigrant, and Shahriar Zolfaghari's published obituary states he was born in Tehran, Iran. No photograph-based coding is used and no coding on this page is provisional. Andre Bayyan's race is not publicly documented: his family photograph ran in KTLA's coverage, but no textual statement was found.</div></div>
+
+<!-- CHART 3: SPECIFIC Pairings -->
+<div class="chart-card"><div class="chart-title">Chart 3: Suspect &rarr; Victim Race Pairings (Documented Only, N = 0)</div><div class="chart-sub">Each bar would show one specific pairing of a coded-race charged suspect with his victim. No 2016 case qualifies.</div><div class="note-box"><strong>No documented pairing exists for 2016.</strong> The year's two murder-charged suspects, Watson and Tucker, have no publicly documented race, so no suspect-to-victim pairing can be charted. Pairings are drawn only from documented codings and are never inferred; this chart is populated in years where at least one case pairs a coded-race charged suspect with a coded-race victim.</div></div>
+
+<!-- CHART 4: Solved vs Unsolved by Race -->
+<div class="chart-card"><div class="chart-title">Chart 4: Solved/Charged vs. Unsolved by Victim Race (N = 3)</div><div class="chart-sub">Case resolution by victim race, as of August 2026</div><div class="chart-wrap"><canvas id="chartSOLVED"></canvas></div><div class="note-box"><strong>Note:</strong> The two victims with a documented race both have a charged or convicted killer: Diagne (Black; Watson convicted and sentenced 2017) and Zolfaghari (Middle Eastern; Tucker charged 2025). The year's one unsolved case is the killing of Andre Bayyan, whose race is not publicly documented. With three cases, the year is too small to support any pattern claim.</div></div>
+
+<!-- CHART 5: Platform -->
+<div class="chart-card"><div class="chart-title">Chart 5: Victims by Platform (N = 3)</div><div class="chart-sub">Platform the victim was working for at the time of the killing</div><div class="chart-wrap"><canvas id="chartPLATFORM"></canvas></div><div class="note-box"><strong>Note:</strong> Uber 2 (Diagne, Bayyan), Lyft 1 (Zolfaghari, who drove both platforms and was on duty for Lyft per police). Rideshare platforms account for all 3 victims; no killing of a delivery-app driver was documented in 2016, when most app-based delivery platforms were new or not yet operating at scale. In the Diagne case the killer reached the driver through the platform's own app: Watson summoned the fatal pickup himself.</div></div>
+
+<!-- CHART 6: Case Status -->
+<div class="chart-card"><div class="chart-title">Chart 6: Case Status (N = 3)</div><div class="chart-sub">All 3 cases, as of August 2026</div><div class="chart-wrap"><canvas id="chartSTATUS"></canvas></div><div class="note-box"><strong>Note:</strong> Convicted/Sentenced 1 (the Diagne case: Watson was convicted at trial in February 2017 and sentenced that March to life for murder plus 37.5 to 75 years for armed robbery and a consecutive firearm term; he refused to leave his cell for sentencing). Charged 1 (the Zolfaghari case: Tucker was charged and in custody per July 2025 reporting, roughly nine years after the killing, the longest documented gap between a killing and a charge anywhere in this project; no public verdict was found as of August 2026). Unsolved 1 (the Bayyan case: no arrest found through August 2026, more than a decade on).</div></div>
+
+<!-- CHART 7: Relationship of Killer to Victim -->
+<div class="chart-card"><div class="chart-title">Chart 7: Relationship of Killer to Victim (N = 3)</div><div class="chart-sub">Documented relationship between the killer and the driver. Unsolved cases always code Unknown by rule.</div><div class="chart-wrap"><canvas id="chartREL"></canvas></div><div class="note-box"><strong>Finding:</strong> In the year's one adjudicated case the killer was the passenger who summoned the fatal pickup through the app (Diagne). In the Zolfaghari case the charged suspect's relationship to the victim has not been publicly reported and is coded Not documented; robbery is the believed motive per police. <strong>Hard rule:</strong> the unsolved Bayyan case codes Unknown, whatever the suspected mechanism. The coding scheme also includes Stranger, Customer (delivery), Ex-partner, Acquaintance, and Known dispute; 2016 has no documented case of any.</div></div>
+
+<hr class="divider">
+
+<div class="section-title">Complete Research Dataset &mdash; 2016</div>
+<div class="section-sub">Chronological order. Sources are local news, police statements, prosecutors' offices, and court records. 3 victims total, all homicides.</div>
+
+<div class="legend-row"><div class="legend-item"><span class="badge badge-solved">Convicted/Sentenced</span> Final verdict entered against at least one defendant</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-suspected">Charged</span> Suspect(s) charged or arrested for murder; no public final outcome found</div></div>
+<div class="legend-row" style="margin-bottom:16px"><div class="legend-item"><span class="badge badge-unsolved">Unsolved</span> No suspect charged or publicly identified</div></div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>Victim Name</th><th>Race</th><th>Age</th><th>City, State</th><th>Date</th><th>Platform</th><th>Cause of Death</th><th>Brief Summary</th><th>Suspect(s)</th><th>Relationship</th><th>Suspect Race</th><th>Suspect Gender</th><th>Suspect Age</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Modou Diagne</td><td>Black</td><td>51</td><td>Detroit, MI</td><td>Mar 19</td><td>Uber</td><td>Gunshot</td><td>Senegalese immigrant with a pregnant wife and three young children, who had driven Uber about three years; Watson summoned the pickup through the app late Saturday night, shot him multiple times during an altercation, and took only his phone; his SUV crashed near Joy Road and Livernois and he died at a hospital. Watson was convicted at trial and sentenced in March 2017 to life for murder plus 37.5 to 75 years for armed robbery and a firearm term. <em>[First-day reports gave his age as 50; prosecutor records say 51.]</em></td><td>Dajuan Watson</td><td>Passenger</td><td>Not documented</td><td>Male</td><td>23</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.clickondetroit.com/news/2017/03/09/detroit-man-sentenced-to-life-in-prison-for-deadly-shooting-of-uber-driver/" target="_blank">ClickOnDetroit</a></td></tr>
+
+<tr><td>2</td><td>Andre Jamal Bayyan</td><td>Not documented</td><td>27</td><td>Inglewood, CA</td><td>Mar 20</td><td>Uber</td><td>Gunshot</td><td>Father and primary caregiver of a young son, shot just before 4 AM Sunday while backing his black Nissan Maxima out of a residential driveway on West 109th Street; multiple bullets came through the windshield and the car crashed into a chain-link fence. Uber confirmed he was on a trip; no arrest in available reporting. <em>[Killed roughly 30 hours after Diagne, the second Uber driver shot dead that weekend.]</em></td><td>Unidentified</td><td>Unknown</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://ktla.com/news/local-news/uber-driver-fatally-shot-while-on-duty-in-inglewood-shooter-at-large/" target="_blank">KTLA</a></td></tr>
+
+<tr><td>3</td><td>Shahriar "Shah" Zolfaghari</td><td>Middle Eastern</td><td>34</td><td>Atlanta, GA</td><td>Jun 1</td><td>Lyft</td><td>Gunshot</td><td>Iranian-born husband of a Georgia assistant attorney general and father of a one-year-old daughter, shot twice at close range at a light at Rankin Street and Boulevard about 1 AM, minutes after dropping off a fare; the rider was cleared, nothing was taken, and rewards reached $35,000. The case sat cold for nine years until Edward Lee Tucker was charged and jailed, per July 2025 reporting; robbery is the believed motive. <em>[Age also reported as 36; he drove both Uber and Lyft and was on duty for Lyft per police.]</em></td><td>Edward Lee Tucker</td><td>Not documented</td><td>Not documented</td><td>Male</td><td>&mdash;</td><td><span class="badge badge-suspected">Charged</span></td><td><a href="https://www.ajc.com/news/2025/07/in-2016-a-lyft-driver-and-young-dad-was-killed-a-suspect-is-now-in-custody/" target="_blank">AJC</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- CORRECTIONS TO CIRCULATING LISTS: bottom placement per directive, after data, before methodology -->
+<div class="factcheck">
+  <h2>Corrections to Circulating Lists</h2>
+  <div class="claim">Versions of this victim list circulate publicly in viral social media compilations and older archived tallies; no institutional list exists for 2016. Every case on this page was verified independently against news reports, police statements, prosecutors' offices, and court records. This section corrects the errors in those circulating versions, and the compilations themselves are not a source for any fact in this dataset.</div>
+  <div class="claim"><span class="fc-tag fc-false">Errors Corrected</span><strong>Date and detail errors in the circulating lists:</strong><br>
+  Circulating lists date the Bayyan killing March 19; the shooting was reported just before 4 AM on Sunday, March 20. First-day reports gave Diagne's age as 50; Wayne County prosecutor records say 51. An early wire report placed the Diagne shooting just after 12 AM Saturday; the prosecutor places it after 11 PM on Saturday, March 19. Zolfaghari's age was reported as both 34 and 36; his published obituary and medical examiner reporting say 34.</div>
+  <div class="claim"><span class="fc-tag fc-partial">Partially Supported</span><strong>Zolfaghari is carried on some lists as an Uber driver.</strong><br>
+  He drove for both Uber and Lyft. Atlanta police said he was on duty for Lyft on the fatal trip and subpoenaed Lyft's records, so this dataset codes him Lyft, with the dual-platform fact noted in his row.</div>
+  <div class="claim"><span class="fc-tag fc-true">Status Updates</span><strong>Compilation case statuses are frozen at compile time.</strong><br>
+  Since the circulating lists were compiled: Watson was convicted at trial in February 2017 and sentenced that March to life plus 37.5 to 75 years and a consecutive firearm term for killing Diagne. In the Zolfaghari case, Edward Lee Tucker was charged and jailed per July 2025 reporting, roughly nine years after the killing; no public verdict was found as of August 2026. The Bayyan case remains unsolved with no arrest found through August 2026.</div>
+</div>
+
+<div class="footer">
+<strong>Methodology:</strong> No institutional victim list exists for 2016: Gig Workers Rising's Murdered Behind the Wheel report and public database, the anchor for the 2017 through early-2023 pages of this project, begin in 2017 and do not cover this year. This dataset was compiled directly from local news reports, police statements, prosecutors' offices, and court records, and its totals should be read as floors. Claims examined in the corrections section above come from circulating lists and viral social media compilations; those compilations are not cited as a source for any fact. Inclusion criteria: homicide of a driver working for an app-based rideshare or delivery platform (Amazon Flex included) at the time of the killing, or killed in direct connection with that work. Killings while working but not because of the job are included motive-blind with circumstances stated; no 2016 case required that basis. Non-criminal traffic accidents are excluded. No police-involved killing of a driver was documented in 2016. Bias-motive coding is omitted for this dataset. Suspect race is recorded only where publicly documented via booking photo, court imagery, or law enforcement description; unknowns are coded as unknown, never inferred, and neither surnames nor complexion descriptions are treated as documentation; neither 2016 charged suspect carries a coding. Victim race codings rest on explicit textual statements in published reporting (Diagne, identified as a Senegalese immigrant; Zolfaghari, born in Tehran, Iran per his published obituary) or are recorded as not documented; no coding on this page is provisional. Relationship between killer and victim is coded documented-only: Passenger (rode on or summoned the fatal trip), Customer (delivery recipient), Stranger with the mechanism noted, Known dispute, or Ex-partner where applicable; where a suspect is charged but the relationship is unreported it is coded Not documented, and unsolved cases always code Unknown regardless of any suspected mechanism. "Solved/Charged" counts any case with at least one murder-charged or murder-arrested suspect. All dates, ages, sentences, and statuses verified as of <strong>August 2026</strong>.
+<br><br>Homicides of App-Based Gig Drivers, 2016 &middot; From local news and court records &middot; Verified Aug. 2026
+</div>
+
+<script>
+const NAVY='#1a1a2e', GOLD='#e8a838', RED='#c1121f', GREEN='#2d6a4f', GRAY='#9a9a9a', LGRAY='#d5d0c6', PLUM='#6d597a', STEEL='#3d5a80';
+Chart.defaults.font.family="'DM Sans',sans-serif";
+Chart.defaults.font.size=11;
+Chart.defaults.color='#444';
+const lum=h=>{const n=parseInt(h.slice(1),16);return(0.299*(n>>16&255)+0.587*(n>>8&255)+0.114*(n&255))/255};
+const txtOn=h=>lum(h)>0.62?'#1a1a2e':'#fff';
+const valueLabels={id:'valueLabels',afterDatasetsDraw(chart){const{ctx}=chart;ctx.save();ctx.font="700 11px 'DM Sans',sans-serif";
+if(chart.config.type==='doughnut'){const meta=chart.getDatasetMeta(0);meta.data.forEach((arc,i)=>{const v=chart.data.datasets[0].data[i];if(!v)return;const a=(arc.startAngle+arc.endAngle)/2,r=(arc.innerRadius+arc.outerRadius)/2;ctx.fillStyle=txtOn(chart.data.datasets[0].backgroundColor[i]);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,arc.x+Math.cos(a)*r,arc.y+Math.sin(a)*r)});ctx.restore();return}
+const horiz=chart.options.indexAxis==='y',stacked=!!(chart.options.scales&&chart.options.scales.y&&chart.options.scales.y.stacked);
+chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;meta.data.forEach((bar,i)=>{const v=ds.data[i];if(!v)return;
+if(horiz){ctx.fillStyle='#1a1a2e';ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(v,bar.x+6,bar.y)}
+else if(stacked){if(Math.abs(bar.base-bar.y)<14)return;const bg=Array.isArray(ds.backgroundColor)?ds.backgroundColor[i]:ds.backgroundColor;ctx.fillStyle=txtOn(bg);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,bar.x,(bar.y+bar.base)/2)}
+else{ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(v,bar.x,bar.y-4)}})});
+if(stacked&&!horiz){chart.data.labels.forEach((_,i)=>{let tot=0,top=Infinity,x=null;chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;const v=ds.data[i]||0;tot+=v;const bar=meta.data[i];if(bar){if(x===null)x=bar.x;if(v)top=Math.min(top,bar.y)}});if(tot&&x!==null){ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(tot,x,(top===Infinity?chart.scales.y.getPixelForValue(0):top)-4)}})}
+ctx.restore()}};
+Chart.register(valueLabels);
+new Chart(document.getElementById('chartSUSPECTS'),{type:'bar',data:{labels:['Not publicly documented'],datasets:[{data:[2],backgroundColor:[LGRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 2 charged individuals'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartVICTIMS'),{type:'bar',data:{labels:['Black','Middle Eastern','Not documented'],datasets:[{data:[1,1,1],backgroundColor:[NAVY,PLUM,LGRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 3 victims'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSOLVED'),{type:'bar',data:{labels:['Black','Middle Eastern','Not documented'],datasets:[{label:'Solved/Charged',data:[1,1,0],backgroundColor:GREEN,borderRadius:4},{label:'Unsolved',data:[0,0,1],backgroundColor:RED,borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartPLATFORM'),{type:'doughnut',data:{labels:['Uber','Lyft'],datasets:[{data:[2,1],backgroundColor:[NAVY,'#d14aa0'],borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{position:'bottom',labels:{generateLabels(c){const it=Chart.overrides.doughnut.plugins.legend.labels.generateLabels(c);it.forEach((l,i)=>l.text+=' ('+c.data.datasets[0].data[l.index??i]+')');return it}}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSTATUS'),{type:'bar',data:{labels:['Convicted/Sentenced','Charged','Unsolved'],datasets:[{data:[1,1,1],backgroundColor:[GREEN,GOLD,RED],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 3 cases'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartREL'),{type:'bar',data:{labels:['Passenger','Not documented','Unknown (unsolved)'],datasets:[{data:[1,1,1],backgroundColor:[NAVY,LGRAY,GRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 3 cases'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+</script>
+</body>
+</html>

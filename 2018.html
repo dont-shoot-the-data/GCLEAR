@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- WORKING TITLE: rename "G-CLEAR" here and in index.html if a different project name is chosen -->
+<title>2018 Homicides of App-Based Gig Drivers — Combined Analysis</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#f5f3ef;color:#222;line-height:1.5;padding:20px;max-width:1400px;margin:0 auto}
+@media print{body{background:#fff;padding:0;font-size:9pt}table{font-size:8pt}.chart-card{break-inside:avoid}}
+.header{background:#1a1a2e;border-radius:10px;padding:28px;color:#f0f0f0;margin-bottom:20px}
+.header h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;margin-bottom:8px}
+.header p{font-size:13px;color:#aaa;line-height:1.6}
+.header .year-badge{display:inline-block;background:#e8a838;color:#1a1a2e;font-weight:700;font-size:14px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.stat-box{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:14px 18px;flex:1;min-width:130px}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;line-height:1}
+.stat-box .label{font-size:12px;color:#444;font-weight:600;margin-top:4px}
+.stat-box .sub{font-size:10px;color:#888;margin-top:2px}
+.chart-card{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:16px}
+.chart-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:2px}
+.chart-sub{font-size:11px;color:#666;margin-bottom:12px}
+.chart-wrap{position:relative;width:100%;height:300px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#1a1a2e;margin:24px 0 6px}
+.section-sub{font-size:12px;color:#666;margin-bottom:12px}
+.legend-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-size:11px;color:#555}
+.legend-item{display:flex;align-items:center;gap:5px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:20px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #ddd}
+thead th{background:#1a1a2e;color:#f0f0f0;padding:8px 6px;text-align:left;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;white-space:nowrap}
+tbody td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}
+tbody tr:nth-child(even){background:#faf8f5}
+tbody tr:hover{background:#f0ede6}
+.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.badge-suspected{background:#e8a838;color:#1a1a2e}
+.badge-none{background:#e0e0e0;color:#555}
+.badge-unknown{background:#f0f0f0;color:#888;border:1px solid #ddd}
+.badge-solved{background:#2d6a4f;color:#fff}
+.badge-unsolved{background:#c1121f;color:#fff}
+.badge-closed{background:#555;color:#fff}
+.badge-police{background:#3d5a80;color:#fff}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.note-box{background:#faf8f5;border:1px solid #e8e4dc;border-radius:8px;padding:12px 16px;font-size:11px;color:#555;line-height:1.6;margin:12px 0}
+.note-box strong{color:#1a1a2e}
+.factcheck{background:#fff;border:2px solid #e8a838;border-radius:10px;padding:20px;margin-bottom:16px}
+.factcheck h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:10px}
+.factcheck .claim{font-size:12px;color:#444;line-height:1.7;margin-bottom:12px}
+.factcheck .claim strong{color:#1a1a2e}
+.fc-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-right:6px}
+.fc-false{background:#c1121f;color:#fff}
+.fc-partial{background:#e8a838;color:#1a1a2e}
+.fc-true{background:#2d6a4f;color:#fff}
+.divider{border:none;border-top:3px solid #1a1a2e;margin:40px 0 20px}
+.footer{background:#1a1a2e;border-radius:10px;padding:16px 20px;color:#aaa;font-size:10px;line-height:1.6;margin-top:24px}
+.footer strong{color:#e8a838}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="year-badge">2018</div>
+  <h1>Homicides of App-Based Gig Drivers (Uber, Lyft, DoorDash, Delivery)</h1>
+  <p>Combined analysis and case-by-case dataset. Data from local news, police statements, prosecutors' offices, and court records, verified through August 2026.<br>
+  Victim list anchored to <a href="https://www.powerswitchaction.org/resources/murdered-behind-the-wheel/" target="_blank" style="color:#e8a838;text-decoration:underline">Gig Workers Rising's Murdered Behind the Wheel</a> report and public database, independently verified and expanded; every fact below cites local news, police statements, prosecutors, or court records.<br>
+  This dataset covers 3 victims, all homicides. No police-involved killing of a driver was documented in 2018. It is the smallest verified year in this project, from the era before delivery apps scaled and before the pandemic-era surge in violence against drivers.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="num" style="color:#c1121f">3</div><div class="label">Total Victims</div><div class="sub">All rideshare; no delivery-platform case in 2018</div></div>
+  <div class="stat-box"><div class="num" style="color:#2d6a4f">1</div><div class="label">Cases Solved/Charged</div><div class="sub">33.3%; excludes the never-charged death investigation</div></div>
+  <div class="stat-box"><div class="num" style="color:#e8a838">1</div><div class="label">Unsolved</div><div class="sub">33.3%; a 3rd case has an identified, never-charged passenger</div></div>
+  <div class="stat-box"><div class="num" style="color:#1a1a2e">67%</div><div class="label">Killed by Firearm</div><div class="sub">2 of 3; the third died after a beating</div></div>
+</div>
+
+<!-- CHART 1: CHARGED SUSPECTS by Documented Race -->
+<div class="chart-card"><div class="chart-title">Chart 1: Charged Suspects by Documented Race (N = 1)</div><div class="chart-sub">All individuals charged or arrested for murder across the 1 solved/charged case. Race counted only where publicly documented.</div><div class="chart-wrap"><canvas id="chartSUSPECTS"></canvas></div><div class="note-box"><strong>Note:</strong> The year's only murder-charged individual, Anderson (Kirilov case), has no publicly documented race: no located outlet states it in text and no law enforcement description was published, so it is coded not documented rather than read off his published booking photo, which is queued for the manual verification pass instead. The passenger in the Wallace case was never charged and is excluded from this chart under the uncharged-exclusion rule, the same rule that excludes the uncharged shooter in the 2024 Wilmot case. The Jenkins killers were never identified. Unknowns are coded unknown, never inferred.</div></div>
+
+<!-- CHART 2: VICTIMS by Race -->
+<div class="chart-card"><div class="chart-title">Chart 2: Victims by Race/Ethnicity (N = 3)</div><div class="chart-sub">All 3 victims documented in 2018</div><div class="chart-wrap"><canvas id="chartVICTIMS"></canvas></div><div class="note-box"><strong>Note:</strong> None of the three 2018 victims has a publicly documented race: no textual statement appears in any located coverage, and 2018 predates the compiled circulating lists, so no provisional codings exist for this year, the same situation as 2019 and 2020. Published family imagery exists in all three cases and is queued for the manual verification pass; nothing is inferred from it here.</div></div>
+
+<!-- CHART 3: SPECIFIC Pairings (N = 0: no canvas, slot kept per the 2020 precedent) -->
+<div class="chart-card"><div class="chart-title">Chart 3: Suspect &rarr; Victim Race Pairings (Documented Only, N = 0)</div><div class="chart-sub">Each bar would represent one specific coded pairing. No 2018 case has one.</div><div class="note-box"><strong>Note:</strong> No 2018 case pairs a coded-race charged suspect with a coded-race victim: the year's only charged suspect and all three victims are coded not documented. There is no documented pairing to chart, and none is inferred. The numbered chart slot is kept for cross-year comparability, the same treatment as 2020.</div></div>
+
+<!-- CHART 4: Solved vs Unsolved by Race -->
+<div class="chart-card"><div class="chart-title">Chart 4: Solved/Charged vs. Unsolved by Victim Race (N = 3)</div><div class="chart-sub">Case resolution by victim race, as of August 2026. The Wallace case, with an identified passenger and no charging decision, is shown as its own segment.</div><div class="chart-wrap"><canvas id="chartSOLVED"></canvas></div><div class="note-box"><strong>Note:</strong> With no victim race publicly documented this year, 2018 collapses to a single column: 1 case solved/charged (Kirilov), 1 unsolved (Jenkins), and 1 with an identified, never-charged passenger and no public resolution (Wallace), shown as its own segment per the 2024 precedent. No race-level resolution pattern can be computed for 2018, and none is inferred.</div></div>
+
+<!-- CHART 5: Platform -->
+<div class="chart-card"><div class="chart-title">Chart 5: Victims by Platform (N = 3)</div><div class="chart-sub">Platform the victim was working for at the time of the killing</div><div class="chart-wrap"><canvas id="chartPLATFORM"></canvas></div><div class="note-box"><strong>Note:</strong> All three victims drove for Uber. 2018 is the only built year in this project with no delivery-platform case and no non-Uber rideshare case: the delivery apps were still small, and no Lyft driver killing was documented (the Cleveland Lyft case that circulates under 2018 occurred in 2017; see the corrections section). In 2 of 3 cases the fatal encounter arrived through the app itself: the Kirilov killer summoned the ride under a false name, and Jenkins was answering a pickup request his family publicly called a setup.</div></div>
+
+<!-- CHART 6: Case Status -->
+<div class="chart-card"><div class="chart-title">Chart 6: Case Status (N = 3)</div><div class="chart-sub">All 3 cases, as of August 2026</div><div class="chart-wrap"><canvas id="chartSTATUS"></canvas></div><div class="note-box"><strong>Note:</strong> Convicted/Sentenced 1 (Kirilov case: Anderson was convicted of first-degree premeditated murder on March 26, 2026, nearly eight years after his arrest, and immediately sentenced to life). Unsolved 1 (Jenkins; no arrest found through August 2026). No charges filed 1 (Wallace: the passenger who fought him was identified by police at the scene, the case was run as a death investigation pending autopsy, and no charging decision, autopsy ruling, or further resolution was ever publicly reported).</div></div>
+
+<!-- CHART 7: Relationship of Killer to Victim -->
+<div class="chart-card"><div class="chart-title">Chart 7: Relationship of Killer to Victim (N = 3)</div><div class="chart-sub">Documented relationship between the killer and the driver. Unsolved cases always code Unknown by rule.</div><div class="chart-wrap"><canvas id="chartREL"></canvas></div><div class="note-box"><strong>Finding:</strong> In both resolved cases the killer was a passenger, and in the Kirilov case the platform was not just the access vector but the stated grievance: Anderson, a taxi operator who blamed Uber for destroying his cab business, bought a burner phone, booked a ride under a false name, and shot the driver who answered. It is the only documented killing in this project in which hatred of the platform itself was the motive. The unsolved Jenkins case codes Unknown by hard rule, though his family publicly said they believed the pickup request that lured him was a setup. The coding scheme also includes Stranger, Customer (delivery), Ex-partner, Acquaintance, Known dispute, and Not documented; 2018 has no documented case of any.</div></div>
+
+<hr class="divider">
+
+<div class="section-title">Complete Research Dataset &mdash; 2018</div>
+<div class="section-sub">Chronological order. Sources are local news, police statements, prosecutors' offices, and court records. 3 victims total, all homicides.</div>
+
+<div class="legend-row"><div class="legend-item"><span class="badge badge-solved">Convicted/Sentenced</span> Final verdict entered against at least one defendant</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-suspected">Charged</span> Suspect(s) charged or arrested for murder; no public final outcome found</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-none">No Charges</span> Person identified by police; no charges were ever publicly filed and no ruling or charging decision was reported</div></div>
+<div class="legend-row" style="margin-bottom:16px"><div class="legend-item"><span class="badge badge-unsolved">Unsolved</span> No suspect charged or publicly identified</div></div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>Victim Name</th><th>Race</th><th>Age</th><th>City, State</th><th>Date</th><th>Platform</th><th>Cause of Death</th><th>Brief Summary</th><th>Suspect(s)</th><th>Relationship</th><th>Suspect Race</th><th>Suspect Gender</th><th>Suspect Age</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>DaJuan Jenkins</td><td>Not documented</td><td>24</td><td>Detroit, MI</td><td>Feb 4</td><td>Uber</td><td>Gunshot</td><td>Culinary school graduate ambushed at 7:40 PM answering a pickup request on Coyle Street: a dark pickup pulled head-on with its high beams up, two men chased him down as he ran, shot him, and took his phone and cash. His family publicly said they believed the ride request was a setup. <em>[Crime Stoppers reward publicized June 2018; no arrest found through Aug 2026.]</em></td><td>Unidentified (2 sought)</td><td>Unknown</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.clickondetroit.com/news/2018/06/14/detroit-police-search-for-gunman-who-fatally-shot-24-year-old-uber-driver/" target="_blank">ClickOnDetroit</a></td></tr>
+
+<tr><td>2</td><td>Filip Kirilov</td><td>Not documented</td><td>29</td><td>Okaloosa Island, FL</td><td>Jun 24</td><td>Uber</td><td>Gunshot</td><td>His dashcam recorded the fare directing him to a drop-off, three gunshots 30 seconds later, and Anderson running away; the Uber log showed the ride booked as "Joe Smith" on a burner phone Anderson had bought days earlier. A former taxi operator who had twice sued Uber for destroying his cab business, Anderson was convicted of first-degree premeditated murder in March 2026 and immediately sentenced to life. <em>[Nearly eight years passed between arrest and trial.]</em></td><td>Timothy Layne Anderson</td><td>Passenger</td><td>Not documented</td><td>Male</td><td>35</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://osa1.org/2026/03/31/timothy-anderson-sentenced-to-life-in-prison-for-first-degree-premeditated-murder-assistant-state-attorney-robert-little/" target="_blank">State Attorney</a></td></tr>
+
+<tr><td>3</td><td>Michael Wallace</td><td>Not documented</td><td>37</td><td>Louisville, KY</td><td>Aug 4</td><td>Uber</td><td>Beating (no public ruling)</td><td>Father of four beaten in a hotel parking lot after a fare dispute with a passenger while picking up a group visiting from the Indianapolis area; he collapsed saying he could not breathe and died three days later, on Aug 7. Police cited his medical history, noted only a black eye and cut lip, ran a death investigation pending autopsy, and never charged anyone; no ruling or charging decision was ever publicly reported. <em>[Circulating lists date this killing Aug 9, 2020; the beating was Aug 4, 2018.]</em></td><td>Unnamed passenger (identified by police, never charged)</td><td>Passenger</td><td>Not documented</td><td>&mdash;</td><td>&mdash;</td><td><span class="badge badge-none">No Charges (Review)</span></td><td><a href="https://www.wdrb.com/news/uber-driver-dead-after-fight-with-customer-lmpd-says-no-charges-filed/article_cac30678-2c3b-576e-886a-322691ab5baa.html" target="_blank">WDRB</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- CORRECTIONS TO CIRCULATING LISTS: bottom placement per directive, after data, before methodology -->
+<div class="factcheck">
+  <h2>Corrections to Circulating Lists</h2>
+  <div class="claim">Versions of this victim list circulate publicly, in Gig Workers Rising's database and in viral social media compilations. Every case on this page was verified independently against news reports, police statements, prosecutors' offices, and court records. This section corrects the errors in those circulating versions, and the circulating versions are not a source for any fact in this dataset.</div>
+  <div class="claim"><span class="fc-tag fc-false">Errors Corrected</span><strong>The circulating 2018 count is 4; the correct count is 3.</strong><br>
+  The institutional database lists Mourice Foster, a Cleveland Lyft driver, under August 28, 2018, but its own cited source is 2017 coverage. Contemporaneous Cleveland reporting, the Associated Press wire, and the medical examiner all date the killing to shortly after midnight on Monday, August 28, 2017 (August 28, 2018 fell on a Tuesday). The Foster case belongs on the 2017 page, and 2018's verified total is 3.</div>
+  <div class="claim"><span class="fc-tag fc-false">Errors Corrected</span><strong>Year and date errors in the circulating lists:</strong><br>
+  The institutional database dates the Wallace killing August 9, 2020, even though its own cited sources are 2018 news coverage. The fare dispute and beating occurred August 4, 2018, and Wallace died August 7; August 9 is the date coverage broke. The same database's memorial list of drivers killed since February 2022 also includes DaJuan Jenkins, who was killed in February 2018.</div>
+  <div class="claim"><span class="fc-tag fc-partial">Partially Supported</span><strong>Compilations attach a race to every suspect by default.</strong><br>
+  This dataset codes suspect race only where publicly documented. 2018 has exactly one murder-charged individual, Anderson, and no located outlet states his race in text; it is coded not documented pending a manual photo verification. The Jenkins killers were never identified, and the passenger in the Wallace case was never named. The 2018 record documents the race of no killer at all, so no racial claim about the year's suspects, in any direction, is supported.</div>
+  <div class="claim"><span class="fc-tag fc-true">Status Updates</span><strong>Compilation case statuses are frozen at compile time.</strong><br>
+  Circulating lists carry the Kirilov suspect as a cab driver ruled incompetent, the case's posture when they were compiled. Since then, Anderson was tried, convicted by a jury of first-degree premeditated murder on March 26, 2026, and immediately sentenced by Judge William Stone to life in the Florida Department of Corrections, nearly eight years after the killing.</div>
+</div>
+
+<div class="footer">
+<strong>Methodology:</strong> Victim list anchored to Gig Workers Rising's Murdered Behind the Wheel report and public database, independently verified and expanded; every fact above cites local news, police statements, prosecutors' offices, or court records. Claims examined in the corrections section come from that database and from viral social media compilations; the compilations are not cited as a source for any fact. Inclusion criteria: homicide of a driver working for an app-based rideshare or delivery platform (Amazon Flex included) at the time of the killing, or killed in direct connection with that work. Killings while working but not because of the job are included motive-blind with circumstances stated, matching the institutional list's murdered-while-working standard. Non-criminal traffic accidents are excluded. No police-involved killing of a driver was documented in 2018. Bias-motive coding is omitted for this dataset. Suspect race is recorded only where publicly documented via booking photo, court imagery, or law enforcement description; unknowns are coded as unknown, never inferred, and neither surnames nor complexion descriptions are treated as documentation. 2018 predates the compiled lists this project cross-checks, so race codings for this year are textual-only or absent; no located coverage states a race in text for any 2018 victim or suspect, and no provisional codings appear on this page. Relationship between killer and victim is coded documented-only: Passenger (rode on or summoned the fatal trip), Customer (delivery recipient), Stranger with the mechanism noted, Known dispute, or Ex-partner where applicable; unsolved cases always code Unknown regardless of any suspected mechanism, which is why the Jenkins case codes Unknown despite his family's public statement that the ride request was a setup. "Solved/Charged" counts any case with at least one murder-charged or murder-arrested suspect. The Wallace case carries its own status: the passenger who fought him was identified by police at the scene, the death was investigated pending an autopsy whose findings were never publicly reported, no charges were ever filed, and the case is counted in neither the solved/charged nor the unsolved figures, the same treatment as the identified-but-uncharged 2024 Wilmot case. The cause of death in the Wallace case was never publicly ruled; it is recorded as the beating described by police and family, with that limitation stated in the table. All dates, ages, sentences, and statuses verified as of <strong>August 2026</strong>.
+<br><br>Homicides of App-Based Gig Drivers, 2018 &middot; From local news and court records &middot; Verified Aug. 2026
+</div>
+
+<script>
+const NAVY='#1a1a2e', GOLD='#e8a838', RED='#c1121f', GREEN='#2d6a4f', GRAY='#9a9a9a', LGRAY='#d5d0c6', PLUM='#6d597a', STEEL='#3d5a80';
+Chart.defaults.font.family="'DM Sans',sans-serif";
+Chart.defaults.font.size=11;
+Chart.defaults.color='#444';
+const lum=h=>{const n=parseInt(h.slice(1),16);return(0.299*(n>>16&255)+0.587*(n>>8&255)+0.114*(n&255))/255};
+const txtOn=h=>lum(h)>0.62?'#1a1a2e':'#fff';
+const valueLabels={id:'valueLabels',afterDatasetsDraw(chart){const{ctx}=chart;ctx.save();ctx.font="700 11px 'DM Sans',sans-serif";
+if(chart.config.type==='doughnut'){const meta=chart.getDatasetMeta(0);meta.data.forEach((arc,i)=>{const v=chart.data.datasets[0].data[i];if(!v)return;const a=(arc.startAngle+arc.endAngle)/2,r=(arc.innerRadius+arc.outerRadius)/2;ctx.fillStyle=txtOn(chart.data.datasets[0].backgroundColor[i]);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,arc.x+Math.cos(a)*r,arc.y+Math.sin(a)*r)});ctx.restore();return}
+const horiz=chart.options.indexAxis==='y',stacked=!!(chart.options.scales&&chart.options.scales.y&&chart.options.scales.y.stacked);
+chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;meta.data.forEach((bar,i)=>{const v=ds.data[i];if(!v)return;
+if(horiz){ctx.fillStyle='#1a1a2e';ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(v,bar.x+6,bar.y)}
+else if(stacked){if(Math.abs(bar.base-bar.y)<14)return;const bg=Array.isArray(ds.backgroundColor)?ds.backgroundColor[i]:ds.backgroundColor;ctx.fillStyle=txtOn(bg);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,bar.x,(bar.y+bar.base)/2)}
+else{ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(v,bar.x,bar.y-4)}})});
+if(stacked&&!horiz){chart.data.labels.forEach((_,i)=>{let tot=0,top=Infinity,x=null;chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;const v=ds.data[i]||0;tot+=v;const bar=meta.data[i];if(bar){if(x===null)x=bar.x;if(v)top=Math.min(top,bar.y)}});if(tot&&x!==null){ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(tot,x,(top===Infinity?chart.scales.y.getPixelForValue(0):top)-4)}})}
+ctx.restore()}};
+Chart.register(valueLabels);
+
+new Chart(document.getElementById('chartSUSPECTS'),{type:'bar',data:{labels:['Not publicly documented'],datasets:[{data:[1],backgroundColor:[LGRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 1 charged individual'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartVICTIMS'),{type:'bar',data:{labels:['Not documented'],datasets:[{data:[3],backgroundColor:[LGRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 3 victims'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSOLVED'),{type:'bar',data:{labels:['Not documented'],datasets:[{label:'Solved/Charged',data:[1],backgroundColor:GREEN,borderRadius:4},{label:'Unsolved',data:[1],backgroundColor:RED,borderRadius:4},{label:'No charges (review)',data:[1],backgroundColor:GRAY,borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartPLATFORM'),{type:'doughnut',data:{labels:['Uber'],datasets:[{data:[3],backgroundColor:[NAVY],borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{position:'bottom',labels:{generateLabels(c){const it=Chart.overrides.doughnut.plugins.legend.labels.generateLabels(c);it.forEach((l,i)=>l.text+=' ('+c.data.datasets[0].data[l.index??i]+')');return it}}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSTATUS'),{type:'bar',data:{labels:['Convicted/Sentenced','Unsolved','No charges filed (review)'],datasets:[{data:[1,1,1],backgroundColor:[GREEN,RED,GRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 3 cases'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartREL'),{type:'bar',data:{labels:['Passenger','Unknown (unsolved)'],datasets:[{data:[2,1],backgroundColor:[NAVY,GRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 3 cases'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+</script>
+</body>
+</html>

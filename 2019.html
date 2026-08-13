@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- WORKING TITLE: rename "G-CLEAR" here and in index.html if a different project name is chosen -->
+<title>2019 Homicides of App-Based Gig Drivers — Combined Analysis</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#f5f3ef;color:#222;line-height:1.5;padding:20px;max-width:1400px;margin:0 auto}
+@media print{body{background:#fff;padding:0;font-size:9pt}table{font-size:8pt}.chart-card{break-inside:avoid}}
+.header{background:#1a1a2e;border-radius:10px;padding:28px;color:#f0f0f0;margin-bottom:20px}
+.header h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;margin-bottom:8px}
+.header p{font-size:13px;color:#aaa;line-height:1.6}
+.header .year-badge{display:inline-block;background:#e8a838;color:#1a1a2e;font-weight:700;font-size:14px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.stat-box{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:14px 18px;flex:1;min-width:130px}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;line-height:1}
+.stat-box .label{font-size:12px;color:#444;font-weight:600;margin-top:4px}
+.stat-box .sub{font-size:10px;color:#888;margin-top:2px}
+.chart-card{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:16px}
+.chart-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:2px}
+.chart-sub{font-size:11px;color:#666;margin-bottom:12px}
+.chart-wrap{position:relative;width:100%;height:300px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#1a1a2e;margin:24px 0 6px}
+.section-sub{font-size:12px;color:#666;margin-bottom:12px}
+.legend-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-size:11px;color:#555}
+.legend-item{display:flex;align-items:center;gap:5px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:20px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #ddd}
+thead th{background:#1a1a2e;color:#f0f0f0;padding:8px 6px;text-align:left;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;white-space:nowrap}
+tbody td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}
+tbody tr:nth-child(even){background:#faf8f5}
+tbody tr:hover{background:#f0ede6}
+.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.badge-suspected{background:#e8a838;color:#1a1a2e}
+.badge-none{background:#e0e0e0;color:#555}
+.badge-unknown{background:#f0f0f0;color:#888;border:1px solid #ddd}
+.badge-solved{background:#2d6a4f;color:#fff}
+.badge-unsolved{background:#c1121f;color:#fff}
+.badge-closed{background:#555;color:#fff}
+.badge-police{background:#3d5a80;color:#fff}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.note-box{background:#faf8f5;border:1px solid #e8e4dc;border-radius:8px;padding:12px 16px;font-size:11px;color:#555;line-height:1.6;margin:12px 0}
+.note-box strong{color:#1a1a2e}
+.factcheck{background:#fff;border:2px solid #e8a838;border-radius:10px;padding:20px;margin-bottom:16px}
+.factcheck h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:10px}
+.factcheck .claim{font-size:12px;color:#444;line-height:1.7;margin-bottom:12px}
+.factcheck .claim strong{color:#1a1a2e}
+.fc-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-right:6px}
+.fc-false{background:#c1121f;color:#fff}
+.fc-partial{background:#e8a838;color:#1a1a2e}
+.fc-true{background:#2d6a4f;color:#fff}
+.divider{border:none;border-top:3px solid #1a1a2e;margin:40px 0 20px}
+.footer{background:#1a1a2e;border-radius:10px;padding:16px 20px;color:#aaa;font-size:10px;line-height:1.6;margin-top:24px}
+.footer strong{color:#e8a838}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="year-badge">2019</div>
+  <h1>Homicides of App-Based Gig Drivers (Uber, Lyft, DoorDash, Delivery)</h1>
+  <p>Combined analysis and case-by-case dataset. Data from local news, police statements, prosecutors' offices, and court records, verified through August 2026.<br>
+  Victim list anchored to <a href="https://www.powerswitchaction.org/resources/murdered-behind-the-wheel/" target="_blank" style="color:#e8a838;text-decoration:underline">Gig Workers Rising's Murdered Behind the Wheel</a> report and public database, independently verified and expanded; every fact below cites local news, police statements, prosecutors, or court records.<br>
+  This dataset covers 8 victims, all homicides. No police-involved killing of a driver was documented in 2019.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="num" style="color:#c1121f">8</div><div class="label">Total Victims</div><div class="sub">6 rideshare + 2 delivery</div></div>
+  <div class="stat-box"><div class="num" style="color:#2d6a4f">7</div><div class="label">Cases Solved/Charged</div><div class="sub">87.5%; the Rhoden case is counted via the getaway driver's conviction</div></div>
+  <div class="stat-box"><div class="num" style="color:#e8a838">1</div><div class="label">Unsolved</div><div class="sub">12.5%; the Treadwell case</div></div>
+  <div class="stat-box"><div class="num" style="color:#1a1a2e">75%</div><div class="label">Killed by Firearm</div><div class="sub">6 of 8; two victims were stabbed</div></div>
+</div>
+
+<!-- CHART 1: CHARGED SUSPECTS by Documented Race -->
+<div class="chart-card"><div class="chart-title">Chart 1: Charged Suspects by Documented Race (N = 8)</div><div class="chart-sub">All 8 individuals charged or arrested for murder across the 7 solved/charged cases. Race counted only where publicly documented.</div><div class="chart-wrap"><canvas id="chartSUSPECTS"></canvas></div><div class="note-box"><strong>Note:</strong> The 8 murder-charged individuals of 2019 are Durazo (Howato case), Fanelli (Rosenthal), Evans (Gandonou), Wilson (Tchakounte), Armstrong (French), Whitaker (Rhoden), and Anderson and Walker (Ozgur). None of the 8 has a publicly documented race in available reporting: 2019 predates the compiled lists this project cross-checks against, and no law enforcement race description was published in any of these cases. Booking imagery exists for most of them and each is queued for the manual photo verification pass, but imagery alone is not coded until that pass. Two people are excluded from this chart: the Rhoden shooter, who has never been identified, and Lopez-Jovel, who faced federal robbery charges in the Rosenthal spree rather than the murder count. Unknowns are coded unknown, never inferred.</div></div>
+
+<!-- CHART 2: VICTIMS by Race -->
+<div class="chart-card"><div class="chart-title">Chart 2: Victims by Race/Ethnicity (N = 8)</div><div class="chart-sub">All 8 victims documented in 2019</div><div class="chart-wrap"><canvas id="chartVICTIMS"></canvas></div><div class="note-box"><strong>Note:</strong> 2 of 8 victims (25.0%) are Black, both West African immigrants identified as such in contemporaneous reporting: Gandonou (Beninese) and Tchakounte (Cameroonian). 1 victim (12.5%) is Middle Eastern: Ozgur, a Turkish immigrant, a bucket assignment flagged for review in the photo verification pass. The remaining 5 victims (62.5%, Howato, Rosenthal, Treadwell, French, Rhoden) have no race stated in available text reporting and are coded not documented pending the photo verification pass. As on the 2020 page, no coding on this page carries a provisional dagger: 2019 predates the compiled sheet, so codings here are textual-only or absent.</div></div>
+
+<!-- CHART 3: SPECIFIC Pairings (no documented pairing exists in 2019; numbered slot kept, canvas dropped) -->
+<div class="chart-card"><div class="chart-title">Chart 3: Suspect &rarr; Victim Race Pairings (Documented Only, N = 0)</div><div class="chart-sub">Each bar would represent one specific pairing between a coded-race charged suspect and the victim.</div><div class="note-box"><strong>Note:</strong> No pairing can be charted for 2019. A pairing requires a charged suspect with a publicly documented race, and none of the year's 8 charged individuals has one in available reporting. Cases are excluded rather than guessed; this chart will populate only if the photo verification pass documents suspect codings. The numbered chart slot is kept so chart numbering stays comparable across year pages.</div></div>
+
+<!-- CHART 4: Solved vs Unsolved by Race -->
+<div class="chart-card"><div class="chart-title">Chart 4: Solved/Charged vs. Unsolved by Victim Race (N = 8)</div><div class="chart-sub">Case resolution by victim race, as of August 2026</div><div class="chart-wrap"><canvas id="chartSOLVED"></canvas></div><div class="note-box"><strong>Note:</strong> Both Black victims (Gandonou, Tchakounte) and the one Middle Eastern victim (Ozgur) have charged or convicted killers. Of the 5 victims with no documented race coding, 4 cases are solved or charged and 1 is unsolved (Treadwell). With no coded suspects and only three coded victims, 2019 supports no pairing or disparity claim in either direction.</div></div>
+
+<!-- CHART 5: Platform -->
+<div class="chart-card"><div class="chart-title">Chart 5: Victims by Platform (N = 8)</div><div class="chart-sub">Platform the victim was working for at the time of the killing</div><div class="chart-wrap"><canvas id="chartPLATFORM"></canvas></div><div class="note-box"><strong>Note:</strong> Uber 3 (Rosenthal, Gandonou, Tchakounte), Lyft 3 (Howato, Treadwell, French), DoorDash 2 (Rhoden, Ozgur). Rideshare platforms account for 6 victims and delivery platforms for 2. In all three passenger killings the fatal ride was summoned through the platform's own app (Durazo, Wilson, Armstrong), and in the Tchakounte case the Uber Pool matching added the killer to a car that already held another passenger, who was also killed.</div></div>
+
+<!-- CHART 6: Case Status -->
+<div class="chart-card"><div class="chart-title">Chart 6: Case Status (N = 8)</div><div class="chart-sub">All 8 cases, as of August 2026</div><div class="chart-wrap"><canvas id="chartSTATUS"></canvas></div><div class="note-box"><strong>Note:</strong> Convicted/Sentenced 4 (Howato, Tchakounte, Rhoden, and Ozgur cases; in the Rhoden case the convicted man is the getaway driver and the shooter has never been identified). Charged/awaiting outcome 3 (Rosenthal, Gandonou, and French cases; no public adjudication was found for any of them as of August 2026). Unsolved 1 (Treadwell).</div></div>
+
+<!-- CHART 7: Relationship of Killer to Victim -->
+<div class="chart-card"><div class="chart-title">Chart 7: Relationship of Killer to Victim (N = 8)</div><div class="chart-sub">Documented relationship between the killer and the driver. Unsolved cases always code Unknown by rule.</div><div class="chart-wrap"><canvas id="chartREL"></canvas></div><div class="note-box"><strong>Finding:</strong> In 3 of the 7 solved or charged homicides (42.9%), the killer was a passenger on the fatal trip (Howato, Tchakounte, French), and in all three the ride was summoned through the app, twice by men fleeing or concealing other conduct: Armstrong hailed the Lyft while fleeing a murder he had committed 50 minutes earlier, and Wilson summoned the Uber Pool after smoking PCP. Two killings were committed by strangers: an attempted street robbery of a parked driver (Gandonou) and a robbery encounter at a restaurant pickup (Ozgur). Two cases code Not documented: Rosenthal, where it is unreported whether the spree killers had hailed the ride before the carjacking, and Rhoden, where the shooter who ambushed her was never identified and no motive was announced. <strong>Hard rule:</strong> the unsolved Treadwell case codes Unknown, whatever the suspected mechanism. The coding scheme also includes Ex-partner, Customer (delivery), and Known dispute; 2019 has no documented case of any.</div></div>
+
+<hr class="divider">
+
+<div class="section-title">Complete Research Dataset &mdash; 2019</div>
+<div class="section-sub">Chronological order. Sources are local news, police statements, prosecutors' offices, and court records. 8 victims total, all homicides.</div>
+
+<div class="legend-row"><div class="legend-item"><span class="badge badge-solved">Convicted/Sentenced</span> Final verdict entered against at least one defendant</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-suspected">Charged</span> Suspect(s) charged or arrested for murder; no public final outcome found</div></div>
+<div class="legend-row" style="margin-bottom:16px"><div class="legend-item"><span class="badge badge-unsolved">Unsolved</span> No suspect charged or publicly identified</div></div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>Victim Name</th><th>Race</th><th>Age</th><th>City, State</th><th>Date</th><th>Platform</th><th>Cause of Death</th><th>Brief Summary</th><th>Suspect(s)</th><th>Relationship</th><th>Suspect Race</th><th>Suspect Gender</th><th>Suspect Age</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Kristina Howato</td><td>Not documented</td><td>39</td><td>Tempe, AZ</td><td>Jan 27</td><td>Lyft</td><td>Stabbing</td><td>Pregnant mother of two, stabbed by her passenger at the drop-off after a 1 AM pickup; Durazo fled in her SUV and was caught the same day near Quartzsite through its GPS. He pleaded guilty to two counts of second-degree murder and was sentenced in September 2022 to 50 years. <em>[She and her unborn daughter died; counted here as one victim. Circulating lists date the attack Jan 26; it occurred about 1 AM on Jan 27 per police and court records.]</em></td><td>Fabian Durazo</td><td>Passenger</td><td>Not documented</td><td>Male</td><td>20</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.azfamily.com/2022/09/23/man-who-killed-pregnant-lyft-driver-tempe-sentenced/" target="_blank">AZFamily</a></td></tr>
+
+<tr><td>2</td><td>David Rosenthal</td><td>Not documented</td><td>58</td><td>Denver, CO</td><td>Feb 22</td><td>Uber</td><td>Gunshot</td><td>Shot about 1:50 AM at West Colfax and Perry while on the Uber app, and his Cadillac taken, two hours into a four-state crime spree that ended with Fanelli's arrest in Oregon. Fanelli was charged with first-degree murder in Denver and separately sentenced in Oregon in 2021 to 30 years for shooting a man there. <em>[No public Colorado verdict found as of Aug 2026. Whether the killers had summoned the ride is unreported. Accomplice Lopez-Jovel faced federal robbery charges, not the murder.]</em></td><td>Matthew Anthony Fanelli</td><td>Not documented</td><td>Not documented</td><td>Male</td><td>30</td><td><span class="badge badge-suspected">Charged</span></td><td><a href="https://www.denver7.com/news/local-news/denver-man-killed-in-carjacking-was-driving-for-uber-at-the-time-of-the-shooting" target="_blank">Denver7</a></td></tr>
+
+<tr><td>3</td><td>Ganiou Gandonou</td><td>Black</td><td>27</td><td>Bronx, NY</td><td>Mar 2</td><td>Uber</td><td>Stabbing</td><td>Beninese immigrant with a wife and toddler son, stabbed in the neck and torso in his Camry in Co-op City shortly after 9 PM; police called it a possible attempted robbery and nothing was taken. Evans, a homeless man, was arrested that September and charged with murder and attempted robbery. <em>[No public adjudication found as of Aug 2026. Circulating lists date it Mar 3; the attack was the night of Mar 2.]</em></td><td>Malik Evans</td><td>Stranger (attempted robbery)</td><td>Not documented</td><td>Male</td><td>24</td><td><span class="badge badge-suspected">Charged</span></td><td><a href="https://bronx.news12.com/police-man-charged-in-fatal-stabbing-of-uber-driver-41049126" target="_blank">News 12</a></td></tr>
+
+<tr><td>4</td><td>Harold Treadwell III</td><td>Not documented</td><td>71</td><td>Phoenix, AZ</td><td>Jul 28</td><td>Lyft</td><td>Gunshot</td><td>Retired financial planner shot from outside his car just after midnight while driving on Baseline Road, minutes after phoning his wife on their 52nd wedding anniversary; no passengers were aboard and no suspect has ever been identified. <em>[Still listed with Phoenix Silent Witness; no arrest found through Aug 2026.]</em></td><td>Unidentified</td><td>Unknown</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.abc15.com/news/region-phoenix-metro/south-phoenix/valley-grandfather-shot-killed-while-driving-for-lyft-no-arrests-made" target="_blank">ABC15</a></td></tr>
+
+<tr><td>5</td><td>Beaudouin Tchakounte</td><td>Black</td><td>46</td><td>Oxon Hill, MD</td><td>Aug 27</td><td>Uber</td><td>Gunshot</td><td>Cameroonian immigrant father of four, shot along with his passenger Casey Robinson minutes after the Uber Pool matched them with Wilson, who had smoked PCP after his restaurant shift and summoned the ride home. Wilson pleaded guilty and was sentenced in April 2021 to 50 years. <em>[Double homicide: Robinson, a co-rider, was also killed. The family's federal suit against Uber was dismissed in 2022.]</em></td><td>Aaron Lanier Wilson Jr.</td><td>Passenger</td><td>Not documented</td><td>Male</td><td>42</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://wjla.com/news/local/md-pleads-guilty-50-years-killing-uber-driver-passenger-pcp" target="_blank">WJLA</a></td></tr>
+
+<tr><td>6</td><td>Lamar Jerome French</td><td>Not documented</td><td>38</td><td>Hampton, VA</td><td>Sep 16</td><td>Lyft</td><td>Gunshot</td><td>Shot in the Phoebus High School parking lot by Armstrong, who had summoned the Lyft while fleeing his murder of a man at a Newport News gas station 50 minutes earlier; Armstrong drove the car a block, abandoned it, and surrendered that evening after confessing. Charged with first-degree murder in both killings. <em>[No public adjudication found as of Aug 2026. Circulating lists date it Sep 20; police and court records place it Sep 16.]</em></td><td>Elijah Dayron Armstrong</td><td>Passenger</td><td>Not documented</td><td>Male</td><td>21</td><td><span class="badge badge-suspected">Charged</span></td><td><a href="https://www.wtkr.com/2019/09/17/suspect-arrested-in-connection-with-newport-news-and-hampton-homicides" target="_blank">WTKR</a></td></tr>
+
+<tr><td>7</td><td>Petra Rhoden</td><td>Not documented</td><td>43</td><td>Paterson, NJ</td><td>Oct 4</td><td>DoorDash</td><td>Gunshot</td><td>Aspiring musician ambushed at her delivery address after a car followed her from the restaurant pickup; shot in the chest, she drove off and crashed through a fence. The getaway driver, Whitaker, pleaded guilty to aggravated manslaughter and received 10 years in October 2022. <em>[The shooter has never been identified and remains at large; no motive was announced.]</em></td><td>Quadir Whitaker (getaway driver); unidentified shooter at large</td><td>Not documented</td><td>Not documented</td><td>Male</td><td>34</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://patersontimes.com/2022/10/19/east-orange-man-gets-10-year-prison-sentence-in-paterson-murder-of-doordash-driver/" target="_blank">Paterson Times</a></td></tr>
+
+<tr><td>8</td><td>Yusuf Ozgur</td><td>Middle Eastern</td><td>56</td><td>Manassas, VA</td><td>Dec 26</td><td>DoorDash</td><td>Gunshot</td><td>Turkish immigrant handyman who walked into the Sudley Road Denny's at 2:25 AM to pick up an order as two masked robbers were leaving; Walker clubbed him with a baton and Anderson shot him. Anderson was convicted at trial and sentenced to 87 years; Walker pleaded guilty in January 2024 and received 17 years to serve. <em>[Circulating lists date it Dec 24; the robbery was about 2:25 AM on Dec 26. A diner shot inside the restaurant survived.]</em></td><td>Jordan Anderson; Ryan Thomas Walker</td><td>Stranger (robbery encounter at pickup)</td><td>Not documented</td><td>Male; Male</td><td>22; 22</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.wusa9.com/article/news/local/virginia/man-to-spend-17-years-prison-deadly-robbery-manassas-dennys-could-spend-rest-his-life-behind-bars-he-breaks-the-law-again/65-cb5185b0-13e6-44d0-bbcb-36c68833ba2d" target="_blank">WUSA9</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- CORRECTIONS TO CIRCULATING LISTS: bottom placement per directive, after data, before methodology -->
+<div class="factcheck">
+  <h2>Corrections to Circulating Lists</h2>
+  <div class="claim">Versions of this victim list circulate publicly, in Gig Workers Rising's database and in viral social media compilations. Every case on this page was verified independently against news reports, police statements, prosecutors' offices, and court records. This section corrects the errors in those circulating versions; the compilations themselves are not a source for any fact in this dataset.</div>
+  <div class="claim"><span class="fc-tag fc-false">Errors Corrected</span><strong>Date errors in the circulating lists:</strong><br>
+  Lists date the Howato attack January 26; Tempe police and court records place it about 1 AM on Sunday, January 27. Lists date the Gandonou stabbing March 3; he was attacked the night of Saturday, March 2, and the first major coverage ran the next day. Lists date the French killing September 20; Hampton police and court records place it about 11:50 AM on September 16, the same morning as the Newport News gas station murder committed by the same man. Lists date the Ozgur killing December 24; the Denny's robbery occurred about 2:25 AM on December 26, the morning after Christmas, per police and trial evidence.</div>
+  <div class="claim"><span class="fc-tag fc-true">Supported</span><strong>The institutional victim count for 2019 is supported.</strong><br>
+  Gig Workers Rising's database lists 8 app-based drivers killed on the job in 2019. This page's independently verified roster is also 8: no additional 2019 case surfaced in sweeps of rideshare and delivery coverage, and no listed case failed verification. The count reconciles exactly.</div>
+  <div class="claim"><span class="fc-tag fc-partial">Partially Supported</span><strong>Compilations code unnamed and unresolved suspects by inference.</strong><br>
+  This dataset codes suspect race only where publicly documented. None of the 8 murder-charged individuals in 2019 has a publicly documented race in available reporting, and the shooter in the Rhoden case has never been identified at all. The 2019 record therefore supports no racial claim about the year's killers in either direction, and any compilation that assigns these suspects a race is coding by inference, not documentation.</div>
+  <div class="claim"><span class="fc-tag fc-true">Status Updates</span><strong>Compilation case statuses are frozen at compile time.</strong><br>
+  Since the circulating lists were compiled: Durazo pleaded guilty and was sentenced to 50 years (September 2022); Wilson pleaded guilty and was sentenced to 50 years (April 2021); Whitaker pleaded guilty to aggravated manslaughter and was sentenced to 10 years (October 2022), while the Rhoden shooter remains unidentified; Anderson was convicted at trial (September 2022) and sentenced to 87 years (June 2023); and Walker pleaded guilty (January 2024) and received 17 years to serve. The Fanelli, Evans, and Armstrong murder cases showed no public adjudication as of August 2026.</div>
+</div>
+
+<div class="footer">
+<strong>Methodology:</strong> Victim list anchored to Gig Workers Rising's Murdered Behind the Wheel report and public database, the institutional list covering 2017 through April 2023, then independently verified and expanded; every fact on this page cites local news, police statements, prosecutors' offices, or court records, and claims examined in the corrections section above come from viral social media compilations, which are not cited as a source for any fact. Inclusion criteria: homicide of a driver working for an app-based rideshare or delivery platform (Amazon Flex included) at the time of the killing, or killed in direct connection with that work. Killings while working but not because of the job are included motive-blind with circumstances stated, matching the institutional list's murdered-while-working standard; every 2019 case was killed in direct connection with the work, so no motive-blind edge case arises this year. Non-criminal traffic accidents are excluded. No police-involved killing of a driver was documented in 2019. The Howato case is counted as one victim; she was pregnant, her unborn daughter also died, and the defendant was convicted on two murder counts. The Tchakounte case was a double homicide; his co-passenger Casey Robinson was also killed and falls outside this driver dataset but is stated in the row. Bias-motive coding is omitted for this dataset. Suspect race is recorded only where publicly documented via booking photo, court imagery, or law enforcement description; unknowns are coded as unknown, never inferred, and neither surnames nor complexion descriptions are treated as documentation. No coding on this page carries a provisional dagger: 2019 predates the compiled lists this project cross-checks, so victim codings are textual-only (contemporaneous reporting identifying Gandonou as Beninese, Tchakounte as Cameroonian, and Ozgur as Turkish, the last a bucket assignment flagged for review) or absent, and all eight charged suspects are coded not documented pending the manual photo verification pass. Relationship between killer and victim is coded documented-only: Passenger (rode on the fatal trip), Customer (delivery), Stranger with the mechanism noted, Known dispute, or Ex-partner where applicable; where the killer's relationship is unreported or the killer is unidentified in an otherwise resolved case it is coded Not documented, and unsolved cases always code Unknown regardless of any suspected mechanism. "Solved/Charged" counts any case with at least one murder-charged or murder-arrested suspect; the Rhoden case is counted as convicted on that basis through the getaway driver's aggravated manslaughter plea, with the shooter noted as unidentified and at large. All dates, ages, sentences, and statuses verified as of <strong>August 2026</strong>.
+<br><br>Homicides of App-Based Gig Drivers, 2019 &middot; From local news and court records &middot; Verified Aug. 2026
+</div>
+
+<script>
+const NAVY='#1a1a2e', GOLD='#e8a838', RED='#c1121f', GREEN='#2d6a4f', GRAY='#9a9a9a', LGRAY='#d5d0c6', PLUM='#6d597a', STEEL='#3d5a80';
+Chart.defaults.font.family="'DM Sans',sans-serif";
+Chart.defaults.font.size=11;
+Chart.defaults.color='#444';
+const lum=h=>{const n=parseInt(h.slice(1),16);return(0.299*(n>>16&255)+0.587*(n>>8&255)+0.114*(n&255))/255};
+const txtOn=h=>lum(h)>0.62?'#1a1a2e':'#fff';
+const valueLabels={id:'valueLabels',afterDatasetsDraw(chart){const{ctx}=chart;ctx.save();ctx.font="700 11px 'DM Sans',sans-serif";
+if(chart.config.type==='doughnut'){const meta=chart.getDatasetMeta(0);meta.data.forEach((arc,i)=>{const v=chart.data.datasets[0].data[i];if(!v)return;const a=(arc.startAngle+arc.endAngle)/2,r=(arc.innerRadius+arc.outerRadius)/2;ctx.fillStyle=txtOn(chart.data.datasets[0].backgroundColor[i]);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,arc.x+Math.cos(a)*r,arc.y+Math.sin(a)*r)});ctx.restore();return}
+const horiz=chart.options.indexAxis==='y',stacked=!!(chart.options.scales&&chart.options.scales.y&&chart.options.scales.y.stacked);
+chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;meta.data.forEach((bar,i)=>{const v=ds.data[i];if(!v)return;
+if(horiz){ctx.fillStyle='#1a1a2e';ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(v,bar.x+6,bar.y)}
+else if(stacked){if(Math.abs(bar.base-bar.y)<14)return;const bg=Array.isArray(ds.backgroundColor)?ds.backgroundColor[i]:ds.backgroundColor;ctx.fillStyle=txtOn(bg);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,bar.x,(bar.y+bar.base)/2)}
+else{ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(v,bar.x,bar.y-4)}})});
+if(stacked&&!horiz){chart.data.labels.forEach((_,i)=>{let tot=0,top=Infinity,x=null;chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;const v=ds.data[i]||0;tot+=v;const bar=meta.data[i];if(bar){if(x===null)x=bar.x;if(v)top=Math.min(top,bar.y)}});if(tot&&x!==null){ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(tot,x,(top===Infinity?chart.scales.y.getPixelForValue(0):top)-4)}})}
+ctx.restore()}};
+Chart.register(valueLabels);
+
+new Chart(document.getElementById('chartSUSPECTS'),{type:'bar',data:{labels:['Not publicly documented'],datasets:[{data:[8],backgroundColor:[LGRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 8 charged individuals'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartVICTIMS'),{type:'bar',data:{labels:['Black','Middle Eastern','Not publicly documented'],datasets:[{data:[2,1,5],backgroundColor:[NAVY,PLUM,LGRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 8 victims'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSOLVED'),{type:'bar',data:{labels:['Black','Middle Eastern','Not documented'],datasets:[{label:'Solved/Charged',data:[2,1,4],backgroundColor:GREEN,borderRadius:4},{label:'Unsolved',data:[0,0,1],backgroundColor:RED,borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartPLATFORM'),{type:'doughnut',data:{labels:['Uber','Lyft','DoorDash'],datasets:[{data:[3,3,2],backgroundColor:[NAVY,'#d14aa0',RED],borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{position:'bottom',labels:{generateLabels(c){const it=Chart.overrides.doughnut.plugins.legend.labels.generateLabels(c);it.forEach((l,i)=>l.text+=' ('+c.data.datasets[0].data[l.index??i]+')');return it}}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSTATUS'),{type:'bar',data:{labels:['Convicted/Sentenced','Charged','Unsolved'],datasets:[{data:[4,3,1],backgroundColor:[GREEN,GOLD,RED],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 8 cases'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartREL'),{type:'bar',data:{labels:['Passenger','Stranger','Not documented','Unknown (unsolved)'],datasets:[{data:[3,2,2,1],backgroundColor:[NAVY,RED,LGRAY,GRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 8 cases'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+</script>
+</body>
+</html>

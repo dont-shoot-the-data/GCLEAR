@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- WORKING TITLE: rename "G-CLEAR" here and in index.html if a different project name is chosen -->
+<title>2017 Homicides of App-Based Gig Drivers — Combined Analysis</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#f5f3ef;color:#222;line-height:1.5;padding:20px;max-width:1400px;margin:0 auto}
+@media print{body{background:#fff;padding:0;font-size:9pt}table{font-size:8pt}.chart-card{break-inside:avoid}}
+.header{background:#1a1a2e;border-radius:10px;padding:28px;color:#f0f0f0;margin-bottom:20px}
+.header h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;margin-bottom:8px}
+.header p{font-size:13px;color:#aaa;line-height:1.6}
+.header .year-badge{display:inline-block;background:#e8a838;color:#1a1a2e;font-weight:700;font-size:14px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.stat-box{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:14px 18px;flex:1;min-width:130px}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;line-height:1}
+.stat-box .label{font-size:12px;color:#444;font-weight:600;margin-top:4px}
+.stat-box .sub{font-size:10px;color:#888;margin-top:2px}
+.chart-card{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:16px}
+.chart-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:2px}
+.chart-sub{font-size:11px;color:#666;margin-bottom:12px}
+.chart-wrap{position:relative;width:100%;height:300px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#1a1a2e;margin:24px 0 6px}
+.section-sub{font-size:12px;color:#666;margin-bottom:12px}
+.legend-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-size:11px;color:#555}
+.legend-item{display:flex;align-items:center;gap:5px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:20px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #ddd}
+thead th{background:#1a1a2e;color:#f0f0f0;padding:8px 6px;text-align:left;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;white-space:nowrap}
+tbody td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}
+tbody tr:nth-child(even){background:#faf8f5}
+tbody tr:hover{background:#f0ede6}
+.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.badge-suspected{background:#e8a838;color:#1a1a2e}
+.badge-none{background:#e0e0e0;color:#555}
+.badge-unknown{background:#f0f0f0;color:#888;border:1px solid #ddd}
+.badge-solved{background:#2d6a4f;color:#fff}
+.badge-unsolved{background:#c1121f;color:#fff}
+.badge-closed{background:#555;color:#fff}
+.badge-police{background:#3d5a80;color:#fff}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.note-box{background:#faf8f5;border:1px solid #e8e4dc;border-radius:8px;padding:12px 16px;font-size:11px;color:#555;line-height:1.6;margin:12px 0}
+.note-box strong{color:#1a1a2e}
+.factcheck{background:#fff;border:2px solid #e8a838;border-radius:10px;padding:20px;margin-bottom:16px}
+.factcheck h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:10px}
+.factcheck .claim{font-size:12px;color:#444;line-height:1.7;margin-bottom:12px}
+.factcheck .claim strong{color:#1a1a2e}
+.fc-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-right:6px}
+.fc-false{background:#c1121f;color:#fff}
+.fc-partial{background:#e8a838;color:#1a1a2e}
+.fc-true{background:#2d6a4f;color:#fff}
+.divider{border:none;border-top:3px solid #1a1a2e;margin:40px 0 20px}
+.footer{background:#1a1a2e;border-radius:10px;padding:16px 20px;color:#aaa;font-size:10px;line-height:1.6;margin-top:24px}
+.footer strong{color:#e8a838}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="year-badge">2017</div>
+  <h1>Homicides of App-Based Gig Drivers (Uber, Lyft, DoorDash, Delivery)</h1>
+  <p>Combined analysis and case-by-case dataset. Data from local news, police statements, prosecutors' offices, and court records, verified through August 2026.<br>
+  Victim list anchored to <a href="https://www.powerswitchaction.org/resources/murdered-behind-the-wheel/" target="_blank" style="color:#e8a838;text-decoration:underline">Gig Workers Rising's Murdered Behind the Wheel</a> report and public database, independently verified and expanded; every fact below cites local news, police statements, prosecutors, or court records.<br>
+  This dataset covers 6 victims, all homicides. No police-involved killing of a driver was documented in 2017, and no delivery-platform killing was documented in 2017 at all.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="num" style="color:#c1121f">6</div><div class="label">Total Victims</div><div class="sub">6 rideshare + 0 delivery</div></div>
+  <div class="stat-box"><div class="num" style="color:#2d6a4f">4</div><div class="label">Cases Solved/Charged</div><div class="sub">66.7%; excludes the case that ended in acquittal</div></div>
+  <div class="stat-box"><div class="num" style="color:#e8a838">1</div><div class="label">Unsolved</div><div class="sub">16.7%; a 2nd case is unresolved after a trial acquittal</div></div>
+  <div class="stat-box"><div class="num" style="color:#1a1a2e">50%</div><div class="label">Killed by Firearm</div><div class="sub">3 of 6; the lowest firearm share of any built year</div></div>
+</div>
+
+<!-- CHART 1: CHARGED SUSPECTS by Documented Race -->
+<div class="chart-card"><div class="chart-title">Chart 1: Charged Suspects by Documented Race (N = 5)</div><div class="chart-sub">All 5 individuals charged with murder across the 4 solved/charged cases. Race counted only where publicly documented via booking photo, court imagery, or law enforcement description; 2017 predates the compiled sheets used on later pages, so codings are textual or documented-description only and no provisional codings exist.</div><div class="chart-wrap"><canvas id="chartSUSPECTS"></canvas></div><div class="note-box"><strong>Note:</strong> 1 of 5 murder-charged individuals (20.0%) carries a race coding: Eliza Wasni, White, documented through the description the dying driver gave police, released by law enforcement, and extensive published court imagery. The remaining 4 (Kevin Moran, Diontray Adams, James Aaron Stevens, and Jorge Aponte Figueroa) have no publicly documented race and are coded unknown, never inferred. Two groups are excluded from this chart by rule: Joseph Jovanti Johnson III, the only person ever charged in the Mecklenburg case, who was acquitted at trial in 2022, and the two co-conspirators in the Miami carjacking, who were never publicly charged in the killing.</div></div>
+
+<!-- CHART 2: VICTIMS by Race -->
+<div class="chart-card"><div class="chart-title">Chart 2: Victims by Race/Ethnicity (N = 6)</div><div class="chart-sub">All 6 victims documented in 2017</div><div class="chart-wrap"><canvas id="chartVICTIMS"></canvas></div><div class="note-box"><strong>Note:</strong> 1 of 6 victims (16.7%) carries a race coding: Marlo Johnis Medina-Chevez, Hispanic, documented textually through coverage of his Honduran family. The other 5 victims, including the Miami victim whose name was never publicly released, have no textual race statement in located coverage; their codings are open race lookups on the verification list. 2017 predates the compiled sheets used on later pages, so no provisional photo-based codings are carried.</div></div>
+
+<!-- CHART 3: SPECIFIC Pairings -->
+<div class="chart-card"><div class="chart-title">Chart 3: Suspect &rarr; Victim Race Pairings (Documented Only, N = 0)</div><div class="chart-sub">Each bar would represent one specific pairing between a coded-race charged suspect and a coded-race victim.</div><div class="note-box"><strong>Note:</strong> No documented pairing exists in 2017, so this chart has no data to draw. A pairing requires a documented coding on both sides of a case: the year's only coded charged suspect (Wasni, White) killed a victim with no documented coding, and the year's only coded victim (Medina-Chevez, Hispanic) was killed by suspects with no documented coding. Pairings are never inferred. The numbered chart slot is kept so chart numbering stays comparable across year pages.</div></div>
+
+<!-- CHART 4: Solved vs Unsolved by Race -->
+<div class="chart-card"><div class="chart-title">Chart 4: Solved/Charged vs. Unsolved by Victim Race (N = 6)</div><div class="chart-sub">Case resolution by victim race, as of August 2026. The Mecklenburg case, in which the only person ever charged was acquitted at trial, is shown as its own segment.</div><div class="chart-wrap"><canvas id="chartSOLVED"></canvas></div><div class="note-box"><strong>Note:</strong> With 5 of 6 victims lacking a documented race coding, the resolution-by-race lens carries little signal in 2017 and is presented for cross-year comparability only. The one coded victim (Medina-Chevez, Hispanic) has a fully adjudicated case. Among the 5 not-documented victims: 3 cases are solved with convictions (Parker-Iverson, the Miami victim, Nelson), 1 is unsolved (Foster), and 1 is unresolved after a trial acquittal (Mecklenburg).</div></div>
+
+<!-- CHART 5: Platform -->
+<div class="chart-card"><div class="chart-title">Chart 5: Victims by Platform (N = 6)</div><div class="chart-sub">Platform the victim was working for at the time of the killing</div><div class="chart-wrap"><canvas id="chartPLATFORM"></canvas></div><div class="note-box"><strong>Note:</strong> Uber 5, Lyft 1 (Foster). Rideshare platforms account for all 6 victims; no delivery-platform killing was documented in 2017, the earliest built year, matching 2018. One victim also drove Lyft (Parker-Iverson, coded to Uber, the platform she was working when killed). In both passenger killings the platform's own app was the access vector: Wasni hailed the fatal ride, her third Uber of the night, and Medina-Chevez left home answering a pickup and boarded two riders who had planned to rob an Uber driver.</div></div>
+
+<!-- CHART 6: Case Status -->
+<div class="chart-card"><div class="chart-title">Chart 6: Case Status (N = 6)</div><div class="chart-sub">All 6 cases, as of August 2026</div><div class="chart-wrap"><canvas id="chartSTATUS"></canvas></div><div class="note-box"><strong>Note:</strong> Convicted/Sentenced 4: Moran, 15-to-life (2018); Adams, life without parole (2021), with Stevens pleading to 25 years (2018); Aponte Figueroa, life in federal prison (2023); Wasni, 27 years (2020). Unsolved 1 (Foster; an initial arrestee was released the next day and no arrest has followed). Acquitted 1 (Mecklenburg: the only person ever charged, Johnson, was found not guilty at trial in November 2022; the case is counted in neither the solved/charged nor the unsolved figures). Every 2017 case that reached a verdict against a charged defendant ended in conviction; the acquittal is the year's status outlier.</div></div>
+
+<!-- CHART 7: Relationship of Killer to Victim -->
+<div class="chart-card"><div class="chart-title">Chart 7: Relationship of Killer to Victim (N = 6)</div><div class="chart-sub">Documented relationship between the killer and the driver. Unsolved cases always code Unknown by rule.</div><div class="chart-wrap"><canvas id="chartREL"></canvas></div><div class="note-box"><strong>Finding:</strong> In 2 of the 4 solved homicides (50.0%), the killer was a passenger on the fatal trip, and in both the app summoned the killer to the driver: Wasni hailed the ride she killed Nelson on, and Medina-Chevez was dispatched to the pickup where Adams and Stevens boarded intending to rob whichever driver arrived. The 2 stranger killings are the DUI red-light collision that killed Parker-Iverson mid-ride and the carjacking-abduction of the Miami victim as he slept in his minivan. <strong>Hard rule:</strong> the unsolved Foster case codes Unknown, and the Mecklenburg case also codes Unknown because the acquittal leaves the killer legally undetermined. The coding scheme also includes Ex-partner, Customer (delivery), and Known dispute; 2017 has no documented case of any.</div></div>
+
+<hr class="divider">
+
+<div class="section-title">Complete Research Dataset &mdash; 2017</div>
+<div class="section-sub">Chronological order. Sources are local news, police statements, prosecutors' offices, and court records. 6 victims total, all homicides.</div>
+
+<div class="legend-row"><div class="legend-item"><span class="badge badge-solved">Convicted/Sentenced</span> Final verdict entered against at least one defendant</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-none">Acquitted</span> The only charged defendant was found not guilty at trial; the killing is legally unresolved</div></div>
+<div class="legend-row" style="margin-bottom:16px"><div class="legend-item"><span class="badge badge-unsolved">Unsolved</span> No suspect charged or publicly identified</div></div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>Victim Name</th><th>Race</th><th>Age</th><th>City, State</th><th>Date</th><th>Platform</th><th>Cause of Death</th><th>Brief Summary</th><th>Suspect(s)</th><th>Relationship</th><th>Suspect Race</th><th>Suspect Gender</th><th>Suspect Age</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Folesha Parker-Iverson</td><td>Not documented</td><td>52</td><td>Los Angeles, CA</td><td>Jan 14</td><td>Uber</td><td>Vehicular</td><td>Widowed high school counselor driving rideshare to put her two daughters through school, killed mid-ride at 3:40 AM when a drunk driver ran a red light at high speed at Arlington Avenue and Martin Luther King Jr. Boulevard and struck her Accord; her passenger was critically injured and cut from the wreck, and Moran fled on foot. Moran was convicted of second-degree murder plus hit-and-run counts in March 2018 and sentenced that May to 15 years to life. <em>[Included under the charged-vehicular-homicide standard; she also drove Lyft.]</em></td><td>Kevin Moran</td><td>Stranger (DUI hit-and-run)</td><td>Not documented</td><td>Male</td><td>24</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://ktla.com/news/local-news/man-sentenced-to-life-for-south-l-a-hit-and-run-that-killed-uber-driver-critically-injured-passenger/" target="_blank">KTLA</a></td></tr>
+
+<tr><td>2</td><td>Michael "Mike" Mecklenburg</td><td>Not documented</td><td>59</td><td>Greenville County, SC</td><td>Apr 14</td><td>Uber</td><td>Gunshot</td><td>City Design Review Board member who had driven Uber for several months, found in his wrecked car at 5 Power Street around 3:15 AM after dropping off a passenger; deputies later said a resident of the street confronted him in an unprovoked verbal altercation and shot him in the head. Johnson was arrested in December 2018 after a TV segment produced a tip, and a jury acquitted him of murder in November 2022. <em>[The sheriff's charging release described a single shot; initial coroner reporting described what appeared to be multiple gunshot wounds. The institutional list's Apr 14 date matches the reported homicide ruling; no contemporaneous report states the incident day.]</em></td><td>Joseph Jovanti Johnson III (acquitted at trial)</td><td>Unknown</td><td>Not documented</td><td>Male</td><td>26 (at arrest)</td><td><span class="badge badge-none">Acquitted</span></td><td><a href="https://www.foxcarolina.com/2022/11/03/trial-suspect-accused-killing-uber-driver-begins/" target="_blank">FOX Carolina</a></td></tr>
+
+<tr><td>3</td><td>Marlo Johnis Medina-Chevez</td><td>Hispanic</td><td>44</td><td>Charlotte, NC</td><td>May 20</td><td>Uber</td><td>Cutting (throat)</td><td>Husband and father from Honduras who left home the night of May 20 to pick up passengers and never returned; Adams and Stevens boarded planning to rob an Uber driver, pulled a BB pistol, and when he fought back Adams cut his throat with a utility knife. His body, bound with duct tape, was found May 25 in a Rock Hill, SC field, and the pair were stopped in his Pathfinder on Maryland's Bay Bridge. Adams was convicted of first-degree murder at trial in August 2021 and sentenced to life without parole; Stevens pleaded guilty to second-degree murder in 2018 and received 25 years. <em>[Identified by dental records.]</em></td><td>Diontray Adams; James Aaron Stevens</td><td>Passenger</td><td>Not documented</td><td>Male; Male</td><td>25; 20</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.wcnc.com/article/news/crime/murder-uber-2017-court-trial/275-359371f7-2cd9-4fdf-8980-827ae84527eb" target="_blank">WCNC</a></td></tr>
+
+<tr><td>4</td><td>Name not publicly released</td><td>Not documented</td><td>&mdash;</td><td>Miami, FL</td><td>May 24</td><td>Uber</td><td>Gunshot</td><td>Uber driver carjacked at gunpoint by three men while he slept in his minivan, driven around Miami-Dade County, robbed of his wallet, and shot seven times, including close-range head shots fired, per federal prosecutors, to keep him from serving as a witness. Aponte Figueroa was convicted by a federal jury in March 2022 of carjacking resulting in death and sentenced to life in February 2023, alongside life terms for a nine-pawn-shop robbery spree that killed a second victim. <em>[Federal filings date the killing to May 2017; the day is drawn from case records. His two co-conspirators were never publicly charged in the killing, and no filing or report located names the victim.]</em></td><td>Jorge Aponte Figueroa (2 co-conspirators not publicly charged in the killing)</td><td>Stranger (carjacking)</td><td>Not documented</td><td>Male</td><td>25 (at trial)</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.justice.gov/usao-sdfl/pr/miami-man-found-guilty-murdering-uber-driver-during-carjacking" target="_blank">DOJ</a></td></tr>
+
+<tr><td>5</td><td>Grant Nelson</td><td>Not documented</td><td>34</td><td>Lincolnwood, IL</td><td>May 30</td><td>Uber</td><td>Stabbing</td><td>Wilmette man attacked without provocation around 3:30 AM by his 16-year-old passenger, who had just stolen a machete and knife from the Skokie Walmart and hailed him as her third Uber of the night; hacked and stabbed from the back seat two minutes into the ride, he fled the car and described his attacker to police before dying at a hospital. Wasni, charged as an adult, pleaded guilty to first-degree murder in August 2020 and was sentenced to 27 years. <em>[Circulating lists carry Sep 30 and Skokie; the killing was May 30 in Lincolnwood, and some outlets misprint May 20.]</em></td><td>Eliza Wasni (charged as an adult)</td><td>Passenger</td><td>White (LE description)</td><td>Female</td><td>16</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://patch.com/illinois/skokie/eliza-wasni-pleads-guilty-murder-uber-driver-grant-nelson" target="_blank">Patch</a></td></tr>
+
+<tr><td>6</td><td>Mourice Foster</td><td>Not documented</td><td>32</td><td>Cleveland, OH</td><td>Aug 28</td><td>Lyft</td><td>Gunshot</td><td>Factory worker and engaged father of four, shot shortly after midnight on Wayside Road while driving a passenger home; a car pulled alongside and fired about 10 rounds, hitting him four times, and he died at the scene while his passenger survived an arm wound. A 22-year-old arrested at the hospital that day was released after police concluded he was not a suspect, and no arrest has followed. <em>[The passenger shares his surname; no relationship was stated in coverage. Circulating lists carry this killing under 2018; it occurred Aug 28, 2017.]</em></td><td>Unidentified (initial arrestee released; charges dropped)</td><td>Unknown</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="http://www.cleveland19.com/story/36243131/cleveland-police-identify-lyft-driver-shot-and-killed/" target="_blank">Cleveland 19</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- CORRECTIONS TO CIRCULATING LISTS: bottom placement per directive, after data, before methodology -->
+<div class="factcheck">
+  <h2>Corrections to Circulating Lists</h2>
+  <div class="claim">Versions of this victim list circulate publicly, in Gig Workers Rising's database and in viral social media compilations. Every case on this page was verified independently against news reports, police statements, prosecutors' offices, and court records. This section corrects the errors in those circulating versions, and the compilations themselves are not a source for any fact in this dataset.</div>
+  <div class="claim"><span class="fc-tag fc-false">Errors Corrected</span><strong>The circulating 2017 roster carries one death that was not a homicide.</strong><br>
+  Gig Workers Rising's database counts four 2017 deaths; one of them, Manhattan driver Randolph Tolk, is excluded here. Tolk, 68, was struck on the head with a hockey stick in a road-rage altercation the night of Nov 11, 2017 and crashed blocks later, but the Manhattan District Attorney dropped the manslaughter charge against the attacker in June 2018 after the Medical Examiner concluded Tolk died of an underlying medical condition, not the attack. With no homicide ruling standing, the death falls outside this dataset's inclusion criteria and is documented here only. Lists also date the incident Nov 12; the attack and crash were the night of Nov 11.</div>
+  <div class="claim"><span class="fc-tag fc-false">Errors Corrected</span><strong>Year and date errors in the circulating lists:</strong><br>
+  Circulating lists carry the Foster killing under 2018; contemporaneous Cleveland coverage, the wire report, and the calendar place it shortly after midnight on Monday, Aug 28, 2017. The institutional list dates the Nelson killing Sep 30 and places it in Skokie; it occurred May 30 in Lincolnwood, four months earlier, and some outlets misprint the date as May 20. The institutional list dates the Medina-Chevez killing May 1; he left home to pick up passengers the night of May 20 and his body was found May 25.</div>
+  <div class="claim"><span class="fc-tag fc-false">Errors Corrected</span><strong>A 2017 killing is missing from every circulating list.</strong><br>
+  The May 24 Miami case, in which a federal jury convicted Jorge Aponte Figueroa of carjacking and murdering an Uber driver who was sleeping in his minivan, appears on no circulating list. The victim's name was never publicly released; the case is documented through federal prosecutors and court records.</div>
+  <div class="claim"><span class="fc-tag fc-partial">Partially Supported</span><strong>Compilations code at-large, unnamed, and juvenile suspects as Black by default.</strong><br>
+  This dataset codes suspect race only where publicly documented. Of the 5 murder-charged individuals in 2017, 4 have no publicly documented race (Moran, Adams, Stevens, Aponte Figueroa), and the year's only documented charged killer is White: Wasni, coded through the description the dying driver gave police and extensive published court imagery. The acquitted defendant in the Mecklenburg case is excluded from suspect statistics entirely. As on every other year page, the record does not support coding every unknown as Black.</div>
+  <div class="claim"><span class="fc-tag fc-true">Status Updates</span><strong>Compilation case statuses are frozen at compile time.</strong><br>
+  Since the circulating lists were compiled: Wasni pleaded guilty and was sentenced to 27 years (August 2020); Adams was convicted at trial and sentenced to life without parole (August 2021), after Stevens pleaded guilty and received 25 years (2018); Aponte Figueroa was convicted by a federal jury (March 2022) and sentenced to life (February 2023); and Johnson, the only person ever charged in the Mecklenburg killing, was acquitted at trial (November 2022), leaving that case legally unresolved.</div>
+</div>
+
+<div class="footer">
+<strong>Methodology:</strong> The victim list for 2017 is anchored to Gig Workers Rising's Murdered Behind the Wheel report and public database, the only institutional list of app-based drivers murdered on the job, which covers 2017 through April 2023; every case was then independently verified and the roster expanded against local news reports, police statements, prosecutors' offices, and court records. Inclusion criteria: homicide of a driver working for an app-based rideshare or delivery platform at the time of the killing, or killed in direct connection with that work. Killings while working but not because of the job are included motive-blind with circumstances stated, matching the institutional list's murdered-while-working standard; the Miami case, in which the driver was attacked while sleeping in his work vehicle, is included under that standard, which counts drivers killed resting between trips. Criminal vehicular homicides with a murder-charged driver are included (the Parker-Iverson case); non-criminal traffic accidents are excluded. Deaths with no standing homicide ruling are excluded: the Tolk case, carried on circulating lists, is documented in the corrections section only because the Medical Examiner attributed the death to an underlying medical condition and the charge was dropped. No police-involved killing of a driver was documented in 2017. Bias-motive coding is omitted for this dataset. Suspect race is recorded only where publicly documented via booking photo, court imagery, or law enforcement description; unknowns are coded as unknown, never inferred, and neither surnames nor complexion descriptions are treated as documentation. Because 2017 predates the compiled lists used on later pages, codings are textual or documented-description only and no provisional photo-based codings are carried. Relationship between killer and victim is coded documented-only: Passenger (rode on the fatal trip), Customer (delivery), Stranger with the mechanism noted, Known dispute, or Ex-partner where applicable; unsolved cases always code Unknown regardless of any suspected mechanism, and the Mecklenburg case also codes Unknown because the acquittal leaves the killer legally undetermined. "Solved/Charged" counts any case with at least one murder-charged suspect whose charge ended in conviction or remains pending. The Mecklenburg case carries its own status: the only person ever charged was acquitted at trial in 2022, and the case is counted in neither the solved/charged nor the unsolved figures; the acquitted defendant is excluded from all suspect statistics. All dates, ages, sentences, and statuses verified as of <strong>August 2026</strong>.
+<br><br>Homicides of App-Based Gig Drivers, 2017 &middot; From local news and court records &middot; Verified Aug. 2026
+</div>
+<script>
+const NAVY='#1a1a2e', GOLD='#e8a838', RED='#c1121f', GREEN='#2d6a4f', GRAY='#9a9a9a', LGRAY='#d5d0c6', PLUM='#6d597a', STEEL='#3d5a80';
+Chart.defaults.font.family="'DM Sans',sans-serif";
+Chart.defaults.font.size=11;
+Chart.defaults.color='#444';
+const lum=h=>{const n=parseInt(h.slice(1),16);return(0.299*(n>>16&255)+0.587*(n>>8&255)+0.114*(n&255))/255};
+const txtOn=h=>lum(h)>0.62?'#1a1a2e':'#fff';
+const valueLabels={id:'valueLabels',afterDatasetsDraw(chart){const{ctx}=chart;ctx.save();ctx.font="700 11px 'DM Sans',sans-serif";
+if(chart.config.type==='doughnut'){const meta=chart.getDatasetMeta(0);meta.data.forEach((arc,i)=>{const v=chart.data.datasets[0].data[i];if(!v)return;const a=(arc.startAngle+arc.endAngle)/2,r=(arc.innerRadius+arc.outerRadius)/2;ctx.fillStyle=txtOn(chart.data.datasets[0].backgroundColor[i]);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,arc.x+Math.cos(a)*r,arc.y+Math.sin(a)*r)});ctx.restore();return}
+const horiz=chart.options.indexAxis==='y',stacked=!!(chart.options.scales&&chart.options.scales.y&&chart.options.scales.y.stacked);
+chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;meta.data.forEach((bar,i)=>{const v=ds.data[i];if(!v)return;
+if(horiz){ctx.fillStyle='#1a1a2e';ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(v,bar.x+6,bar.y)}
+else if(stacked){if(Math.abs(bar.base-bar.y)<14)return;const bg=Array.isArray(ds.backgroundColor)?ds.backgroundColor[i]:ds.backgroundColor;ctx.fillStyle=txtOn(bg);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,bar.x,(bar.y+bar.base)/2)}
+else{ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(v,bar.x,bar.y-4)}})});
+if(stacked&&!horiz){chart.data.labels.forEach((_,i)=>{let tot=0,top=Infinity,x=null;chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;const v=ds.data[i]||0;tot+=v;const bar=meta.data[i];if(bar){if(x===null)x=bar.x;if(v)top=Math.min(top,bar.y)}});if(tot&&x!==null){ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(tot,x,(top===Infinity?chart.scales.y.getPixelForValue(0):top)-4)}})}
+ctx.restore()}};
+Chart.register(valueLabels);
+
+new Chart(document.getElementById('chartSUSPECTS'),{type:'bar',data:{labels:['White (documented)','Not publicly documented'],datasets:[{data:[1,4],backgroundColor:[GOLD,LGRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 5 charged individuals'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartVICTIMS'),{type:'bar',data:{labels:['Hispanic','Not documented'],datasets:[{data:[1,5],backgroundColor:[RED,LGRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 6 victims'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSOLVED'),{type:'bar',data:{labels:['Hispanic','Not documented'],datasets:[{label:'Solved/Charged',data:[1,3],backgroundColor:GREEN,borderRadius:4},{label:'Unsolved',data:[0,1],backgroundColor:RED,borderRadius:4},{label:'Acquitted (unresolved)',data:[0,1],backgroundColor:GRAY,borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartPLATFORM'),{type:'doughnut',data:{labels:['Uber','Lyft'],datasets:[{data:[5,1],backgroundColor:[NAVY,'#d14aa0'],borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{position:'bottom',labels:{generateLabels(c){const it=Chart.overrides.doughnut.plugins.legend.labels.generateLabels(c);it.forEach((l,i)=>l.text+=' ('+c.data.datasets[0].data[l.index??i]+')');return it}}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSTATUS'),{type:'bar',data:{labels:['Convicted/Sentenced','Unsolved','Acquitted (unresolved)'],datasets:[{data:[4,1,1],backgroundColor:[GREEN,RED,GRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 6 cases'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartREL'),{type:'bar',data:{labels:['Passenger','Stranger','Unknown'],datasets:[{data:[2,2,2],backgroundColor:[NAVY,RED,GRAY],borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' of 6 cases'}}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}},maintainAspectRatio:false}});
+</script>
+</body>
+</html>

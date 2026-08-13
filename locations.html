@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- WORKING TITLE: rename "G-CLEAR" here and in index.html if a different project name is chosen -->
+<title>Where App Drivers Were Killed, 2016-2025 — Locations Master</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#f5f3ef;color:#222;line-height:1.5;padding:20px;max-width:1400px;margin:0 auto}
+@media print{body{background:#fff;padding:0;font-size:9pt}table{font-size:8pt}.chart-card{break-inside:avoid}}
+.header{background:#1a1a2e;border-radius:10px;padding:28px;color:#f0f0f0;margin-bottom:20px}
+.header h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;margin-bottom:8px}
+.header p{font-size:13px;color:#aaa;line-height:1.6}
+.header .year-badge{display:inline-block;background:#e8a838;color:#1a1a2e;font-weight:700;font-size:14px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.stat-box{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:14px 18px;flex:1;min-width:130px}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;line-height:1}
+.stat-box .label{font-size:12px;color:#444;font-weight:600;margin-top:4px}
+.stat-box .sub{font-size:10px;color:#888;margin-top:2px}
+.chart-card{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:16px}
+.chart-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:2px}
+.chart-sub{font-size:11px;color:#666;margin-bottom:12px}
+.chart-wrap{position:relative;width:100%;height:300px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#1a1a2e;margin:24px 0 6px}
+.section-sub{font-size:12px;color:#666;margin-bottom:12px}
+.legend-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-size:11px;color:#555}
+.legend-item{display:flex;align-items:center;gap:5px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:20px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #ddd}
+thead th{background:#1a1a2e;color:#f0f0f0;padding:8px 6px;text-align:left;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;white-space:nowrap}
+tbody td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}
+tbody tr:nth-child(even){background:#faf8f5}
+tbody tr:hover{background:#f0ede6}
+.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.badge-suspected{background:#e8a838;color:#1a1a2e}
+.badge-none{background:#e0e0e0;color:#555}
+.badge-unknown{background:#f0f0f0;color:#888;border:1px solid #ddd}
+.badge-solved{background:#2d6a4f;color:#fff}
+.badge-unsolved{background:#c1121f;color:#fff}
+.badge-closed{background:#555;color:#fff}
+.badge-police{background:#3d5a80;color:#fff}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.note-box{background:#faf8f5;border:1px solid #e8e4dc;border-radius:8px;padding:12px 16px;font-size:11px;color:#555;line-height:1.6;margin:12px 0}
+.note-box strong{color:#1a1a2e}
+.factcheck{background:#fff;border:2px solid #e8a838;border-radius:10px;padding:20px;margin-bottom:16px}
+.factcheck h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:10px}
+.factcheck .claim{font-size:12px;color:#444;line-height:1.7;margin-bottom:12px}
+.factcheck .claim strong{color:#1a1a2e}
+.fc-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-right:6px}
+.fc-false{background:#c1121f;color:#fff}
+.fc-partial{background:#e8a838;color:#1a1a2e}
+.fc-true{background:#2d6a4f;color:#fff}
+.divider{border:none;border-top:3px solid #1a1a2e;margin:40px 0 20px}
+.footer{background:#1a1a2e;border-radius:10px;padding:16px 20px;color:#aaa;font-size:10px;line-height:1.6;margin-top:24px}
+.footer strong{color:#e8a838}
+</style></head>
+<body>
+
+<div class="header">
+  <div class="year-badge">2016 &ndash; 2025</div>
+  <h1>Where App Drivers Were Killed: The Locations Master</h1>
+  <p>Nobody was keeping count. Now someone is.<br>
+  Geographic analysis of all 151 documented homicides of app-based gig drivers in the United States across the project decade. Every location on this page is taken from the City and State column of the ten G-CLEAR year pages, which were each verified case by case against local news reports, police statements, prosecutors' offices, and court records. No location is estimated, interpolated, or inferred.<br>
+  151 cases fell in 103 cities, 58 metropolitan areas, and 31 states plus the District of Columbia. Nineteen states have no documented case.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="num" style="color:#c1121f">103</div><div class="label">Cities</div><div class="sub">across 31 states and DC</div></div>
+  <div class="stat-box"><div class="num" style="color:#1a1a2e">58</div><div class="label">Metro Areas</div><div class="sub">26 with repeat cases, 32 with one</div></div>
+  <div class="stat-box"><div class="num" style="color:#e8a838">49.7%</div><div class="label">In the Top 10 Metros</div><div class="sub">75 of 151 cases</div></div>
+  <div class="stat-box"><div class="num" style="color:#2d6a4f">46.4%</div><div class="label">In the South</div><div class="sub">70 cases, the largest region share</div></div>
+</div>
+
+<!-- CHART 1: CASES BY STATE -->
+<div class="chart-card"><div class="chart-title">Chart 1: Cases by State (N = 151)</div><div class="chart-sub">All 20 jurisdictions with three or more documented cases. The remaining 13 cases fall in 12 states with one or two cases each.</div><div class="chart-wrap" style="height:420px"><canvas id="chartSTATE"></canvas></div><div class="note-box"><strong>Note:</strong> Texas leads the decade with 15 cases, followed by California with 13 and Florida and Illinois with 10 each. These four states account for 48 of 151 cases (31.8%). The District of Columbia is counted as its own jurisdiction and reaches 5 cases despite being smaller than any state, all of them inside city limits. Nineteen states recorded no documented case at all: Alabama, Alaska, Arkansas, Connecticut, Delaware, Hawaii, Idaho, Maine, Massachusetts, Montana, New Hampshire, North Dakota, Oklahoma, Rhode Island, South Dakota, Utah, Vermont, West Virginia, and Wyoming. Absence here means no documented case was found, not that none occurred; totals for every year should be read as floors.</div></div>
+
+<!-- CHART 2: METRO CONCENTRATION -->
+<div class="chart-card"><div class="chart-title">Chart 2: Metro Area Concentration (N = 151)</div><div class="chart-sub">All 19 metropolitan areas with three or more cases. The remaining 46 cases are spread across 39 metros. Metros are grouped on standard federal metropolitan-area lines, so suburbs count with their core city.</div><div class="chart-wrap" style="height:420px"><canvas id="chartMETRO"></canvas></div><div class="note-box"><strong>Note:</strong> Greater Washington is the deadliest metropolitan area of the decade with 12 cases, ahead of Chicago at 9 and Detroit and Dallas-Fort Worth at 8 each. The Washington figure combines 5 killings inside the District with 6 in its Maryland suburbs and 1 in Manassas, Virginia, a pattern invisible in any state-level count because it splits across three jurisdictions. The top 10 metros hold 75 cases (49.7%), while 32 metros appear exactly once. The dataset is therefore concentrated and diffuse at the same time: half of it sits in ten places, and the other half is scattered across 48 more.</div></div>
+
+<!-- CHART 3: REGION -->
+<div class="chart-card"><div class="chart-title">Chart 3: Cases by Census Region (N = 151)</div><div class="chart-sub">Standard U.S. Census Bureau regions. The District of Columbia is counted in the South, as the Census Bureau counts it.</div><div class="chart-wrap"><canvas id="chartREGION"></canvas></div><div class="note-box"><strong>Note:</strong> The South carries 70 cases (46.4%), close to the other three regions combined. The South is also the fastest growing: 10 cases in 2016 through 2020, 22 in 2021 and 2022, and 38 in 2023 through 2025. The Midwest ran the opposite way, peaking at 17 cases in the 2021 to 2022 surge and falling to 12 across the three years after. The Northeast is the smallest at 12 cases (7.9%) and is the only region where the raw count in the most recent three years (3) is lower than in the two-year surge (7).</div></div>
+
+<!-- CHART 4: STATUS BY REGION -->
+<div class="chart-card"><div class="chart-title">Chart 4: Case Status by Region (N = 151)</div><div class="chart-sub">Every case in the decade by region and outcome. "Other outcome" collects the 7 cases closed with a deceased or non-prosecutable suspect, the 2 with no charging decision, the 1 acquittal, and the 1 police-involved killing.</div><div class="chart-wrap"><canvas id="chartREGSTATUS"></canvas></div><div class="note-box"><strong>Note:</strong> Unsolved shares run from 17.1% in the South (12 of 70) to 33.3% in the Northeast (4 of 12), with the West at 22.2% and the Midwest at 24.2%. The Northeast figure rests on only 12 cases and should be read with that in mind. The single police-involved killing of the decade, the 2023 Kansas City, Kansas case, is the Midwest's one entry in the other-outcome band. The South's comparatively strong clearance is driven mainly by Greater Washington, Atlanta, and Charlotte; it is not uniform, and New Orleans sits at 50.0% within the same region.</div></div>
+
+<!-- CHART 5: CLEARANCE BY METRO -->
+<div class="chart-card"><div class="chart-title">Chart 5: Case Outcomes in the Largest Metros (N = 87)</div><div class="chart-sub">The 13 metropolitan areas with four or more cases, covering 87 of the decade's 151 killings. Solved/Charged counts any case with at least one murder-charged or murder-arrested suspect.</div><div class="chart-wrap" style="height:340px"><canvas id="chartCLEAR"></canvas></div><div class="note-box"><strong>Note:</strong> Outcomes vary far more by metro than by region. Greater Washington cleared 11 of 12 cases (91.7%) and the San Francisco Bay Area cleared all 4, while Los Angeles cleared 2 of 6 (33.3%), the weakest record of any metro with four or more cases. Below that threshold the sharpest result is Philadelphia, where all 3 cases, in 2021, 2023, and 2025, remain unsolved; it is the only metro with more than one case and no clearance at all. A metro's clearance rate reflects local investigative outcomes and the age of its cases, not the severity of the killings.</div></div>
+
+<!-- CHART 6: RIDESHARE VS DELIVERY BY REGION -->
+<div class="chart-card"><div class="chart-title">Chart 6: Rideshare and Delivery Killings by Region (N = 151)</div><div class="chart-sub">Rideshare covers Uber, Lyft, Veyo, and cases recorded as rideshare without a named platform. Delivery covers DoorDash, Uber Eats, Instacart, GoPuff, Amazon Flex, Grubhub, Postmates, and one unnamed delivery app.</div><div class="chart-wrap"><canvas id="chartMODE"></canvas></div><div class="note-box"><strong>Note:</strong> Rideshare accounts for 110 of 151 cases (72.8%) nationally, but the balance shifts by region. Delivery drivers make up 31.4% of Southern cases and 30.6% of Western cases, against just 15.2% in the Midwest, where 28 of 33 victims were rideshare drivers. The Midwest gap is the single largest regional divergence in the dataset and is not explained by case volume alone.</div></div>
+
+<!-- CHART 7: GEOGRAPHIC SPREAD BY YEAR -->
+<div class="chart-card"><div class="chart-title">Chart 7: Geographic Spread by Year (N = 151 cases)</div><div class="chart-sub">Cases, distinct states, and distinct metropolitan areas recorded in each year of the decade.</div><div class="chart-wrap" style="height:340px"><canvas id="chartSPREAD"></canvas></div><div class="note-box"><strong>Note:</strong> Geographic spread tracks case volume closely rather than independently. The 2022 peak of 31 cases touched 18 states and 24 metros, the widest footprint of the decade; 2016 and 2018, with 3 cases each, touched 3 states. In the thin early years every case fell in a different metro, so the spread figures for 2016 through 2018 describe the size of the record rather than the geography of the risk. The pre-2021 record is also the most likely to be incomplete, because no institutional list covered app-driver homicides before 2017 and the one that did ended in April 2023.</div></div>
+
+<hr class="divider">
+
+<div class="section-title">Table 1: State Master &mdash; 2016 to 2025</div>
+<div class="section-sub">Every state and district with at least one documented case, ordered by case count. 32 jurisdictions, 151 cases. Rideshare / delivery gives the platform split. Clearance is the share of that state's cases with at least one murder-charged or murder-arrested suspect.</div>
+
+<div class="legend-row"><div class="legend-item"><span class="badge badge-solved">75%+</span> High clearance</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-suspected">50&ndash;74%</span> Mid clearance</div></div>
+<div class="legend-row" style="margin-bottom:16px"><div class="legend-item"><span class="badge badge-unsolved">Under 50%</span> Low clearance</div></div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>State</th><th>Region</th><th>Cases</th><th>Cities</th><th>Metros</th><th>Ride / Del</th><th>Solved or Charged</th><th>Unsolved</th><th>Other</th><th>Clearance</th><th>Years Active</th><th>Cities Recorded</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>Texas</strong> (TX)</td><td>South</td><td><strong>15</strong></td><td>11</td><td>5</td><td>13 / 2</td><td>10</td><td>3</td><td>2</td><td><span class="badge badge-suspected">66.7%</span></td><td>2021, 2022, 2023, 2024, 2025</td><td>Bryan, Dallas, El Paso, Fort Worth, Garland, Haltom City, Harris County, Houston, Mesquite, North Richland Hills, San Antonio</td></tr>
+<tr><td>2</td><td><strong>California</strong> (CA)</td><td>West</td><td><strong>13</strong></td><td>10</td><td>5</td><td>7 / 6</td><td>9</td><td>3</td><td>1</td><td><span class="badge badge-suspected">69.2%</span></td><td>2016, 2017, 2020, 2021, 2022, 2023, 2024</td><td>Inglewood, Los Angeles, Lynwood, Milpitas, Modesto, National City, Oakland, Sacramento, San Francisco, Walnut Creek</td></tr>
+<tr><td>3</td><td><strong>Florida</strong> (FL)</td><td>South</td><td><strong>10</strong></td><td>9</td><td>7</td><td>5 / 5</td><td>8</td><td>2</td><td>&mdash;</td><td><span class="badge badge-solved">80.0%</span></td><td>2017, 2018, 2022, 2023, 2024, 2025</td><td>Holiday, Jacksonville, Miami, Okaloosa Island, Opa-locka, Palm Beach Gardens, Panama City Beach, Port St. Lucie, Tallahassee</td></tr>
+<tr><td>4</td><td><strong>Illinois</strong> (IL)</td><td>Midwest</td><td><strong>10</strong></td><td>5</td><td>3</td><td>10 / 0</td><td>7</td><td>3</td><td>&mdash;</td><td><span class="badge badge-suspected">70.0%</span></td><td>2017, 2021, 2022, 2023</td><td>Chicago, Cicero, East St. Louis, Lincolnwood, Urbana</td></tr>
+<tr><td>5</td><td><strong>Louisiana</strong> (LA)</td><td>South</td><td><strong>8</strong></td><td>4</td><td>3</td><td>6 / 2</td><td>5</td><td>2</td><td>1</td><td><span class="badge badge-suspected">62.5%</span></td><td>2021, 2022, 2023, 2025</td><td>Harvey, New Orleans, Shreveport, Westlake</td></tr>
+<tr><td>6</td><td><strong>Michigan</strong> (MI)</td><td>Midwest</td><td><strong>8</strong></td><td>4</td><td>1</td><td>6 / 2</td><td>6</td><td>2</td><td>&mdash;</td><td><span class="badge badge-solved">75.0%</span></td><td>2016, 2018, 2021, 2022, 2025</td><td>Detroit, Ferndale, Pontiac, Warren</td></tr>
+<tr><td>7</td><td><strong>Georgia</strong> (GA)</td><td>South</td><td><strong>7</strong></td><td>4</td><td>1</td><td>5 / 2</td><td>5</td><td>1</td><td>1</td><td><span class="badge badge-suspected">71.4%</span></td><td>2016, 2022, 2024, 2025</td><td>Atlanta, DeKalb County, Lithonia, Union City</td></tr>
+<tr><td>8</td><td><strong>Maryland</strong> (MD)</td><td>South</td><td><strong>7</strong></td><td>5</td><td>2</td><td>4 / 3</td><td>6</td><td>1</td><td>&mdash;</td><td><span class="badge badge-solved">85.7%</span></td><td>2019, 2021, 2022, 2023, 2025</td><td>Baltimore, Cottage City, Mitchellville, Oxon Hill, Temple Hills</td></tr>
+<tr><td>9</td><td><strong>Washington</strong> (WA)</td><td>West</td><td><strong>7</strong></td><td>5</td><td>2</td><td>5 / 2</td><td>4</td><td>2</td><td>1</td><td><span class="badge badge-suspected">57.1%</span></td><td>2020, 2022, 2023, 2024</td><td>Edmonds, Issaquah, Renton, Richland, Seattle</td></tr>
+<tr><td>10</td><td><strong>Arizona</strong> (AZ)</td><td>West</td><td><strong>6</strong></td><td>4</td><td>1</td><td>5 / 1</td><td>4</td><td>2</td><td>&mdash;</td><td><span class="badge badge-suspected">66.7%</span></td><td>2019, 2022, 2023, 2025</td><td>Glendale, Guadalupe, Phoenix, Tempe</td></tr>
+<tr><td>11</td><td><strong>North Carolina</strong> (NC)</td><td>South</td><td><strong>6</strong></td><td>4</td><td>4</td><td>5 / 1</td><td>4</td><td>1</td><td>1</td><td><span class="badge badge-suspected">66.7%</span></td><td>2017, 2022, 2024, 2025</td><td>Benson (Johnston County), Charlotte, Durham, Fayetteville</td></tr>
+<tr><td>12</td><td><strong>New York</strong> (NY)</td><td>Northeast</td><td><strong>6</strong></td><td>4</td><td>1</td><td>4 / 2</td><td>5</td><td>1</td><td>&mdash;</td><td><span class="badge badge-solved">83.3%</span></td><td>2019, 2021, 2022, 2024</td><td>Bronx, Brooklyn, Long Beach, New York</td></tr>
+<tr><td>13</td><td><strong>District of Columbia</strong> (DC)</td><td>South</td><td><strong>5</strong></td><td>1</td><td>1</td><td>3 / 2</td><td>5</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2021, 2023, 2024</td><td>Washington</td></tr>
+<tr><td>14</td><td><strong>Ohio</strong> (OH)</td><td>Midwest</td><td><strong>5</strong></td><td>4</td><td>3</td><td>4 / 1</td><td>4</td><td>1</td><td>&mdash;</td><td><span class="badge badge-solved">80.0%</span></td><td>2017, 2021, 2022, 2023, 2024</td><td>Akron, Cleveland, Dayton, South Charleston</td></tr>
+<tr><td>15</td><td><strong>Pennsylvania</strong> (PA)</td><td>Northeast</td><td><strong>5</strong></td><td>3</td><td>2</td><td>5 / 0</td><td>2</td><td>3</td><td>&mdash;</td><td><span class="badge badge-unsolved">40.0%</span></td><td>2021, 2022, 2023, 2025</td><td>Monroeville, Philadelphia, Pittsburgh</td></tr>
+<tr><td>16</td><td><strong>Virginia</strong> (VA)</td><td>South</td><td><strong>5</strong></td><td>5</td><td>3</td><td>3 / 2</td><td>4</td><td>1</td><td>&mdash;</td><td><span class="badge badge-solved">80.0%</span></td><td>2019, 2020, 2023</td><td>Chesterfield County, Hampton, Manassas, Petersburg, Prince George County</td></tr>
+<tr><td>17</td><td><strong>Colorado</strong> (CO)</td><td>West</td><td><strong>4</strong></td><td>3</td><td>2</td><td>3 / 1</td><td>4</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2019, 2021, 2023, 2025</td><td>Boulder, Denver, El Paso County</td></tr>
+<tr><td>18</td><td><strong>Indiana</strong> (IN)</td><td>Midwest</td><td><strong>4</strong></td><td>2</td><td>2</td><td>4 / 0</td><td>3</td><td>1</td><td>&mdash;</td><td><span class="badge badge-solved">75.0%</span></td><td>2021, 2022, 2023</td><td>Gary, Indianapolis</td></tr>
+<tr><td>19</td><td><strong>Oregon</strong> (OR)</td><td>West</td><td><strong>4</strong></td><td>1</td><td>1</td><td>3 / 1</td><td>3</td><td>1</td><td>&mdash;</td><td><span class="badge badge-solved">75.0%</span></td><td>2020, 2022, 2024</td><td>Portland</td></tr>
+<tr><td>20</td><td><strong>South Carolina</strong> (SC)</td><td>South</td><td><strong>3</strong></td><td>3</td><td>3</td><td>1 / 2</td><td>2</td><td>0</td><td>1</td><td><span class="badge badge-suspected">66.7%</span></td><td>2017, 2025</td><td>Anderson County, Greenville County, Rock Hill</td></tr>
+<tr><td>21</td><td><strong>Tennessee</strong> (TN)</td><td>South</td><td><strong>2</strong></td><td>1</td><td>1</td><td>2 / 0</td><td>1</td><td>1</td><td>&mdash;</td><td><span class="badge badge-suspected">50.0%</span></td><td>2022</td><td>Memphis</td></tr>
+<tr><td>22</td><td><strong>Iowa</strong> (IA)</td><td>Midwest</td><td><strong>1</strong></td><td>1</td><td>1</td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2023</td><td>Cedar Rapids</td></tr>
+<tr><td>23</td><td><strong>Kansas</strong> (KS)</td><td>Midwest</td><td><strong>1</strong></td><td>1</td><td>1</td><td>0 / 1</td><td>0</td><td>0</td><td>1</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2023</td><td>Kansas City</td></tr>
+<tr><td>24</td><td><strong>Kentucky</strong> (KY)</td><td>South</td><td><strong>1</strong></td><td>1</td><td>1</td><td>1 / 0</td><td>0</td><td>0</td><td>1</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2018</td><td>Louisville</td></tr>
+<tr><td>25</td><td><strong>Minnesota</strong> (MN)</td><td>Midwest</td><td><strong>1</strong></td><td>1</td><td>1</td><td>1 / 0</td><td>0</td><td>1</td><td>&mdash;</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2021</td><td>Minneapolis</td></tr>
+<tr><td>26</td><td><strong>Missouri</strong> (MO)</td><td>Midwest</td><td><strong>1</strong></td><td>1</td><td>1</td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2021</td><td>St. Louis</td></tr>
+<tr><td>27</td><td><strong>Mississippi</strong> (MS)</td><td>South</td><td><strong>1</strong></td><td>1</td><td>1</td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2022</td><td>Jackson</td></tr>
+<tr><td>28</td><td><strong>Nebraska</strong> (NE)</td><td>Midwest</td><td><strong>1</strong></td><td>1</td><td>1</td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2024</td><td>Omaha</td></tr>
+<tr><td>29</td><td><strong>New Jersey</strong> (NJ)</td><td>Northeast</td><td><strong>1</strong></td><td>1</td><td>1</td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2019</td><td>Paterson</td></tr>
+<tr><td>30</td><td><strong>New Mexico</strong> (NM)</td><td>West</td><td><strong>1</strong></td><td>1</td><td>1</td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>Albuquerque</td></tr>
+<tr><td>31</td><td><strong>Nevada</strong> (NV)</td><td>West</td><td><strong>1</strong></td><td>1</td><td>1</td><td>1 / 0</td><td>0</td><td>0</td><td>1</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2024</td><td>Las Vegas</td></tr>
+<tr><td>32</td><td><strong>Wisconsin</strong> (WI)</td><td>Midwest</td><td><strong>1</strong></td><td>1</td><td>1</td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>Milwaukee</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section-title">Table 2: Metropolitan Area Master &mdash; 2016 to 2025</div>
+<div class="section-sub">All 58 metropolitan areas with at least one documented case, ordered by case count. Metros follow standard federal metropolitan-area lines, so suburbs are counted with their core city and five metros cross a jurisdiction line.</div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>Metropolitan Area</th><th>Cases</th><th>Ride / Del</th><th>Solved or Charged</th><th>Unsolved</th><th>Other</th><th>Clearance</th><th>Years Active</th><th>Cities Recorded</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>Washington, DC</strong></td><td><strong>12</strong></td><td>7 / 5</td><td>11</td><td>1</td><td>&mdash;</td><td><span class="badge badge-solved">91.7%</span></td><td>2019, 2021, 2022, 2023, 2024, 2025</td><td>Cottage City, Manassas, Mitchellville, Oxon Hill, Temple Hills, Washington</td></tr>
+<tr><td>2</td><td><strong>Chicago, IL-IN</strong></td><td><strong>9</strong></td><td>9 / 0</td><td>6</td><td>3</td><td>&mdash;</td><td><span class="badge badge-suspected">66.7%</span></td><td>2017, 2021, 2022, 2023</td><td>Chicago, Cicero, Gary, Lincolnwood</td></tr>
+<tr><td>3</td><td><strong>Dallas-Fort Worth, TX</strong></td><td><strong>8</strong></td><td>6 / 2</td><td>5</td><td>2</td><td>1</td><td><span class="badge badge-suspected">62.5%</span></td><td>2021, 2024, 2025</td><td>Dallas, Fort Worth, Garland, Haltom City, Mesquite, North Richland Hills</td></tr>
+<tr><td>4</td><td><strong>Detroit, MI</strong></td><td><strong>8</strong></td><td>6 / 2</td><td>6</td><td>2</td><td>&mdash;</td><td><span class="badge badge-solved">75.0%</span></td><td>2016, 2018, 2021, 2022, 2025</td><td>Detroit, Ferndale, Pontiac, Warren</td></tr>
+<tr><td>5</td><td><strong>Atlanta, GA</strong></td><td><strong>7</strong></td><td>5 / 2</td><td>5</td><td>1</td><td>1</td><td><span class="badge badge-suspected">71.4%</span></td><td>2016, 2022, 2024, 2025</td><td>Atlanta, DeKalb County, Lithonia, Union City</td></tr>
+<tr><td>6</td><td><strong>New York, NY-NJ</strong></td><td><strong>7</strong></td><td>4 / 3</td><td>6</td><td>1</td><td>&mdash;</td><td><span class="badge badge-solved">85.7%</span></td><td>2019, 2021, 2022, 2024</td><td>Bronx, Brooklyn, Long Beach, New York, Paterson</td></tr>
+<tr><td>7</td><td><strong>Los Angeles, CA</strong></td><td><strong>6</strong></td><td>5 / 1</td><td>2</td><td>3</td><td>1</td><td><span class="badge badge-unsolved">33.3%</span></td><td>2016, 2017, 2020, 2021, 2023</td><td>Inglewood, Los Angeles, Lynwood</td></tr>
+<tr><td>8</td><td><strong>New Orleans, LA</strong></td><td><strong>6</strong></td><td>4 / 2</td><td>3</td><td>2</td><td>1</td><td><span class="badge badge-suspected">50.0%</span></td><td>2021, 2022, 2023, 2025</td><td>Harvey, New Orleans</td></tr>
+<tr><td>9</td><td><strong>Phoenix, AZ</strong></td><td><strong>6</strong></td><td>5 / 1</td><td>4</td><td>2</td><td>&mdash;</td><td><span class="badge badge-suspected">66.7%</span></td><td>2019, 2022, 2023, 2025</td><td>Glendale, Guadalupe, Phoenix, Tempe</td></tr>
+<tr><td>10</td><td><strong>Seattle, WA</strong></td><td><strong>6</strong></td><td>5 / 1</td><td>4</td><td>2</td><td>&mdash;</td><td><span class="badge badge-suspected">66.7%</span></td><td>2020, 2022, 2023, 2024</td><td>Edmonds, Issaquah, Renton, Seattle</td></tr>
+<tr><td>11</td><td><strong>Charlotte, NC-SC</strong></td><td><strong>4</strong></td><td>3 / 1</td><td>3</td><td>0</td><td>1</td><td><span class="badge badge-solved">75.0%</span></td><td>2017, 2024, 2025</td><td>Charlotte, Rock Hill</td></tr>
+<tr><td>12</td><td><strong>Portland, OR</strong></td><td><strong>4</strong></td><td>3 / 1</td><td>3</td><td>1</td><td>&mdash;</td><td><span class="badge badge-solved">75.0%</span></td><td>2020, 2022, 2024</td><td>Portland</td></tr>
+<tr><td>13</td><td><strong>San Francisco Bay Area, CA</strong></td><td><strong>4</strong></td><td>1 / 3</td><td>4</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2021, 2022</td><td>Milpitas, Oakland, San Francisco, Walnut Creek</td></tr>
+<tr><td>14</td><td><strong>Denver-Boulder, CO</strong></td><td><strong>3</strong></td><td>2 / 1</td><td>3</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2019, 2021, 2023</td><td>Boulder, Denver</td></tr>
+<tr><td>15</td><td><strong>Houston, TX</strong></td><td><strong>3</strong></td><td>3 / 0</td><td>3</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2023, 2025</td><td>Harris County, Houston</td></tr>
+<tr><td>16</td><td><strong>Indianapolis, IN</strong></td><td><strong>3</strong></td><td>3 / 0</td><td>2</td><td>1</td><td>&mdash;</td><td><span class="badge badge-suspected">66.7%</span></td><td>2021, 2022, 2023</td><td>Indianapolis</td></tr>
+<tr><td>17</td><td><strong>Miami-Fort Lauderdale-West Palm Beach, FL</strong></td><td><strong>3</strong></td><td>2 / 1</td><td>3</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2017, 2023, 2024</td><td>Miami, Opa-locka, Palm Beach Gardens</td></tr>
+<tr><td>18</td><td><strong>Philadelphia, PA</strong></td><td><strong>3</strong></td><td>3 / 0</td><td>0</td><td>3</td><td>&mdash;</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2021, 2023, 2025</td><td>Philadelphia</td></tr>
+<tr><td>19</td><td><strong>Richmond-Petersburg, VA</strong></td><td><strong>3</strong></td><td>2 / 1</td><td>2</td><td>1</td><td>&mdash;</td><td><span class="badge badge-suspected">66.7%</span></td><td>2020, 2023</td><td>Chesterfield County, Petersburg, Prince George County</td></tr>
+<tr><td>20</td><td><strong>Akron, OH</strong></td><td><strong>2</strong></td><td>1 / 1</td><td>2</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2021, 2023</td><td>Akron</td></tr>
+<tr><td>21</td><td><strong>Dayton-Springfield, OH</strong></td><td><strong>2</strong></td><td>2 / 0</td><td>2</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2022, 2024</td><td>Dayton, South Charleston</td></tr>
+<tr><td>22</td><td><strong>Jacksonville, FL</strong></td><td><strong>2</strong></td><td>1 / 1</td><td>1</td><td>1</td><td>&mdash;</td><td><span class="badge badge-suspected">50.0%</span></td><td>2022, 2023</td><td>Jacksonville</td></tr>
+<tr><td>23</td><td><strong>Memphis, TN</strong></td><td><strong>2</strong></td><td>2 / 0</td><td>1</td><td>1</td><td>&mdash;</td><td><span class="badge badge-suspected">50.0%</span></td><td>2022</td><td>Memphis</td></tr>
+<tr><td>24</td><td><strong>Pittsburgh, PA</strong></td><td><strong>2</strong></td><td>2 / 0</td><td>2</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2021, 2022</td><td>Monroeville, Pittsburgh</td></tr>
+<tr><td>25</td><td><strong>San Antonio, TX</strong></td><td><strong>2</strong></td><td>2 / 0</td><td>1</td><td>1</td><td>&mdash;</td><td><span class="badge badge-suspected">50.0%</span></td><td>2023, 2024</td><td>San Antonio</td></tr>
+<tr><td>26</td><td><strong>St. Louis, MO-IL</strong></td><td><strong>2</strong></td><td>2 / 0</td><td>2</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2021, 2022</td><td>East St. Louis, St. Louis</td></tr>
+<tr><td>27</td><td><strong>Albuquerque, NM</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>Albuquerque</td></tr>
+<tr><td>28</td><td><strong>Baltimore, MD</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2022</td><td>Baltimore</td></tr>
+<tr><td>29</td><td><strong>Bryan-College Station, TX</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2022</td><td>Bryan</td></tr>
+<tr><td>30</td><td><strong>Cedar Rapids, IA</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2023</td><td>Cedar Rapids</td></tr>
+<tr><td>31</td><td><strong>Champaign-Urbana, IL</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2022</td><td>Urbana</td></tr>
+<tr><td>32</td><td><strong>Cleveland, OH</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>0</td><td>1</td><td>&mdash;</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2017</td><td>Cleveland</td></tr>
+<tr><td>33</td><td><strong>Colorado Springs, CO</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>El Paso County</td></tr>
+<tr><td>34</td><td><strong>Durham, NC</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>0</td><td>1</td><td>&mdash;</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2022</td><td>Durham</td></tr>
+<tr><td>35</td><td><strong>El Paso, TX</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>0</td><td>0</td><td>1</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2023</td><td>El Paso</td></tr>
+<tr><td>36</td><td><strong>Fayetteville, NC</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2024</td><td>Fayetteville</td></tr>
+<tr><td>37</td><td><strong>Fort Walton Beach, FL</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2018</td><td>Okaloosa Island</td></tr>
+<tr><td>38</td><td><strong>Greenville, SC</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>0</td><td>0</td><td>1</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2017</td><td>Greenville County</td></tr>
+<tr><td>39</td><td><strong>Greenville-Anderson, SC</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>Anderson County</td></tr>
+<tr><td>40</td><td><strong>Jackson, MS</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2022</td><td>Jackson</td></tr>
+<tr><td>41</td><td><strong>Kansas City, KS-MO</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>0</td><td>0</td><td>1</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2023</td><td>Kansas City</td></tr>
+<tr><td>42</td><td><strong>Lake Charles, LA</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>Westlake</td></tr>
+<tr><td>43</td><td><strong>Las Vegas, NV</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>0</td><td>0</td><td>1</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2024</td><td>Las Vegas</td></tr>
+<tr><td>44</td><td><strong>Louisville, KY</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>0</td><td>0</td><td>1</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2018</td><td>Louisville</td></tr>
+<tr><td>45</td><td><strong>Milwaukee, WI</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>Milwaukee</td></tr>
+<tr><td>46</td><td><strong>Minneapolis, MN</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>0</td><td>1</td><td>&mdash;</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2021</td><td>Minneapolis</td></tr>
+<tr><td>47</td><td><strong>Modesto, CA</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2022</td><td>Modesto</td></tr>
+<tr><td>48</td><td><strong>Omaha, NE</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2024</td><td>Omaha</td></tr>
+<tr><td>49</td><td><strong>Panama City, FL</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>Panama City Beach</td></tr>
+<tr><td>50</td><td><strong>Port St. Lucie, FL</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>0</td><td>1</td><td>&mdash;</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2022</td><td>Port St. Lucie</td></tr>
+<tr><td>51</td><td><strong>Raleigh, NC</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>Benson (Johnston County)</td></tr>
+<tr><td>52</td><td><strong>Sacramento, CA</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2024</td><td>Sacramento</td></tr>
+<tr><td>53</td><td><strong>San Diego, CA</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2021</td><td>National City</td></tr>
+<tr><td>54</td><td><strong>Shreveport, LA</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>Shreveport</td></tr>
+<tr><td>55</td><td><strong>Tallahassee, FL</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2025</td><td>Tallahassee</td></tr>
+<tr><td>56</td><td><strong>Tampa-St. Petersburg, FL</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2023</td><td>Holiday</td></tr>
+<tr><td>57</td><td><strong>Tri-Cities, WA</strong></td><td><strong>1</strong></td><td>0 / 1</td><td>0</td><td>0</td><td>1</td><td><span class="badge badge-unsolved">0.0%</span></td><td>2022</td><td>Richland</td></tr>
+<tr><td>58</td><td><strong>Virginia Beach-Hampton Roads, VA</strong></td><td><strong>1</strong></td><td>1 / 0</td><td>1</td><td>0</td><td>&mdash;</td><td><span class="badge badge-solved">100.0%</span></td><td>2019</td><td>Hampton</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section-title">Table 3: Cities With More Than One Case</div>
+<div class="section-sub">The 25 cities where two or more drivers were killed during the decade. These 25 cities account for 73 of the 151 cases (48.3%); the remaining 78 cases each fall in a city that appears exactly once.</div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>City</th><th>Metropolitan Area</th><th>Cases</th><th>Years</th><th>Solved or Charged</th><th>Unsolved</th><th>Clearance</th><th>Platforms</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>Chicago, IL</strong></td><td>Chicago, IL-IN</td><td><strong>6</strong></td><td>2021, 2022, 2022, 2023, 2023, 2023</td><td>3</td><td>3</td><td><span class="badge badge-suspected">50.0%</span></td><td>Uber (4), Lyft (2)</td></tr>
+<tr><td>2</td><td><strong>Washington, DC</strong></td><td>Washington, DC</td><td><strong>5</strong></td><td>2021, 2023, 2023, 2023, 2024</td><td>5</td><td>0</td><td><span class="badge badge-solved">100.0%</span></td><td>Uber Eats (2), Lyft (2), Uber (1)</td></tr>
+<tr><td>3</td><td><strong>New Orleans, LA</strong></td><td>New Orleans, LA</td><td><strong>5</strong></td><td>2021, 2022, 2023, 2023, 2025</td><td>3</td><td>2</td><td><span class="badge badge-suspected">60.0%</span></td><td>Uber (2), Uber Eats (1), DoorDash (1), Lyft (1)</td></tr>
+<tr><td>4</td><td><strong>Detroit, MI</strong></td><td>Detroit, MI</td><td><strong>5</strong></td><td>2016, 2018, 2021, 2021, 2022</td><td>3</td><td>2</td><td><span class="badge badge-suspected">60.0%</span></td><td>Uber (4), DoorDash (1)</td></tr>
+<tr><td>5</td><td><strong>Portland, OR</strong></td><td>Portland, OR</td><td><strong>4</strong></td><td>2020, 2020, 2022, 2024</td><td>3</td><td>1</td><td><span class="badge badge-solved">75.0%</span></td><td>Uber (3), Uber Eats (1)</td></tr>
+<tr><td>6</td><td><strong>Phoenix, AZ</strong></td><td>Phoenix, AZ</td><td><strong>3</strong></td><td>2019, 2023, 2025</td><td>1</td><td>2</td><td><span class="badge badge-unsolved">33.3%</span></td><td>Lyft (2), Veyo (medical rideshare) (1)</td></tr>
+<tr><td>7</td><td><strong>Los Angeles, CA</strong></td><td>Los Angeles, CA</td><td><strong>3</strong></td><td>2017, 2020, 2021</td><td>1</td><td>1</td><td><span class="badge badge-unsolved">33.3%</span></td><td>Uber (2), Postmates (1)</td></tr>
+<tr><td>8</td><td><strong>DeKalb County, GA</strong></td><td>Atlanta, GA</td><td><strong>3</strong></td><td>2022, 2024, 2024</td><td>2</td><td>1</td><td><span class="badge badge-suspected">66.7%</span></td><td>GoPuff (1), DoorDash (1), Lyft (1)</td></tr>
+<tr><td>9</td><td><strong>Indianapolis, IN</strong></td><td>Indianapolis, IN</td><td><strong>3</strong></td><td>2021, 2022, 2023</td><td>2</td><td>1</td><td><span class="badge badge-suspected">66.7%</span></td><td>Lyft (2), Uber (1)</td></tr>
+<tr><td>10</td><td><strong>Temple Hills, MD</strong></td><td>Washington, DC</td><td><strong>3</strong></td><td>2022, 2022, 2023</td><td>2</td><td>1</td><td><span class="badge badge-suspected">66.7%</span></td><td>Lyft (1), Uber (1), Amazon Flex (1)</td></tr>
+<tr><td>11</td><td><strong>Charlotte, NC</strong></td><td>Charlotte, NC-SC</td><td><strong>3</strong></td><td>2017, 2024, 2025</td><td>2</td><td>0</td><td><span class="badge badge-suspected">66.7%</span></td><td>Lyft (2), Uber (1)</td></tr>
+<tr><td>12</td><td><strong>New York, NY</strong></td><td>New York, NY-NJ</td><td><strong>3</strong></td><td>2021, 2021, 2021</td><td>3</td><td>0</td><td><span class="badge badge-solved">100.0%</span></td><td>DoorDash (1), Uber (1), Grubhub (1)</td></tr>
+<tr><td>13</td><td><strong>Philadelphia, PA</strong></td><td>Philadelphia, PA</td><td><strong>3</strong></td><td>2021, 2023, 2025</td><td>0</td><td>3</td><td><span class="badge badge-unsolved">0.0%</span></td><td>Uber (2), Lyft (disputed) (1)</td></tr>
+<tr><td>14</td><td><strong>Inglewood, CA</strong></td><td>Los Angeles, CA</td><td><strong>2</strong></td><td>2016, 2023</td><td>0</td><td>2</td><td><span class="badge badge-unsolved">0.0%</span></td><td>Uber (2)</td></tr>
+<tr><td>15</td><td><strong>Denver, CO</strong></td><td>Denver-Boulder, CO</td><td><strong>2</strong></td><td>2019, 2023</td><td>2</td><td>0</td><td><span class="badge badge-solved">100.0%</span></td><td>Uber (2)</td></tr>
+<tr><td>16</td><td><strong>Jacksonville, FL</strong></td><td>Jacksonville, FL</td><td><strong>2</strong></td><td>2022, 2023</td><td>1</td><td>1</td><td><span class="badge badge-suspected">50.0%</span></td><td>DoorDash (1), Uber (1)</td></tr>
+<tr><td>17</td><td><strong>Atlanta, GA</strong></td><td>Atlanta, GA</td><td><strong>2</strong></td><td>2016, 2025</td><td>2</td><td>0</td><td><span class="badge badge-solved">100.0%</span></td><td>Lyft (1), Uber (1)</td></tr>
+<tr><td>18</td><td><strong>Akron, OH</strong></td><td>Akron, OH</td><td><strong>2</strong></td><td>2021, 2023</td><td>2</td><td>0</td><td><span class="badge badge-solved">100.0%</span></td><td>Lyft (1), DoorDash (1)</td></tr>
+<tr><td>19</td><td><strong>Memphis, TN</strong></td><td>Memphis, TN</td><td><strong>2</strong></td><td>2022, 2022</td><td>1</td><td>1</td><td><span class="badge badge-suspected">50.0%</span></td><td>Lyft (2)</td></tr>
+<tr><td>20</td><td><strong>Dallas, TX</strong></td><td>Dallas-Fort Worth, TX</td><td><strong>2</strong></td><td>2021, 2024</td><td>2</td><td>0</td><td><span class="badge badge-solved">100.0%</span></td><td>Uber (1), Lyft (1)</td></tr>
+<tr><td>21</td><td><strong>Fort Worth, TX</strong></td><td>Dallas-Fort Worth, TX</td><td><strong>2</strong></td><td>2021, 2024</td><td>1</td><td>1</td><td><span class="badge badge-suspected">50.0%</span></td><td>DoorDash (1), Lyft (1)</td></tr>
+<tr><td>22</td><td><strong>Houston, TX</strong></td><td>Houston, TX</td><td><strong>2</strong></td><td>2023, 2025</td><td>2</td><td>0</td><td><span class="badge badge-solved">100.0%</span></td><td>Uber (1), Lyft (1)</td></tr>
+<tr><td>23</td><td><strong>San Antonio, TX</strong></td><td>San Antonio, TX</td><td><strong>2</strong></td><td>2023, 2024</td><td>1</td><td>1</td><td><span class="badge badge-suspected">50.0%</span></td><td>Uber (2)</td></tr>
+<tr><td>24</td><td><strong>Renton, WA</strong></td><td>Seattle, WA</td><td><strong>2</strong></td><td>2023, 2024</td><td>1</td><td>1</td><td><span class="badge badge-suspected">50.0%</span></td><td>Uber (1), Amazon Flex (1)</td></tr>
+<tr><td>25</td><td><strong>Seattle, WA</strong></td><td>Seattle, WA</td><td><strong>2</strong></td><td>2022, 2023</td><td>1</td><td>1</td><td><span class="badge badge-suspected">50.0%</span></td><td>Lyft (1), Uber/Lyft (1)</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="factcheck">
+<h2>Corrections to Circulating Lists</h2>
+<div class="claim">Versions of this victim list circulate publicly, in Gig Workers Rising's database and in viral social media compilations. Every case counted on this page was verified independently against local news reports, police statements, prosecutors' offices, and court records. Several of those circulating versions place killings in the wrong city, usually by recording where the victim lived or where the ride began rather than where the driver died. Because this page counts places rather than people, those errors move numbers here that they would not move anywhere else, so they are corrected below.</div>
+
+<div class="claim"><span class="fc-tag fc-false">Wrong city</span><strong>Durham, North Carolina (2025).</strong> Circulating lists place the January 2025 killing of an Uber driver in Durham. Durham was his home city. He was killed near Benson, in Johnston County, roughly 40 miles away, and the case is counted there. Recording it as Durham would put a case in the Durham metro that does not belong to it.</div>
+
+<div class="claim"><span class="fc-tag fc-false">Wrong city</span><strong>Tempe, Arizona (2025).</strong> Circulating lists place the September 2025 Lyft killing in Tempe, which is where the ride began. The driver was shot at an added stop in Guadalupe, a separate town, and the case is counted there. Both fall inside the Phoenix metro, so the metro total is unaffected and only the city-level record changes.</div>
+
+<div class="claim"><span class="fc-tag fc-partial">Imprecise</span><strong>Houston and Colorado Springs (2025).</strong> Two 2025 killings are commonly listed under the nearest large city. The September case occurred in unincorporated northwest Harris County, not inside Houston, and the October case in unincorporated El Paso County, Colorado, not inside Colorado Springs. Both are counted at their actual locations and both remain inside their respective metros.</div>
+
+<div class="claim"><span class="fc-tag fc-partial">Merge risk</span><strong>Places that look like duplicates and are not.</strong> Four pairs in this dataset invite a false merge. El Paso, Texas (2023) and El Paso County, Colorado (2025) are roughly 700 miles apart. Long Beach, New York (2022) is not Long Beach, California. Washington State holds 7 cases and the District of Columbia holds 5; they are separate jurisdictions throughout. Kansas City in this dataset is the Kansas side, not Missouri. Any of these collapsed into one another would misstate a state total.</div>
+
+<div class="claim"><span class="fc-tag fc-partial">Coincidence</span><strong>Charlotte, October 23.</strong> A Lyft driver was killed in Charlotte on October 23, 2024, and another Lyft driver was killed in Charlotte on October 23, 2025. These are two different victims and two unrelated cases one year apart. The date and city match is coincidence, noted here because a locations table is exactly where it would be mistaken for a duplicated row.</div>
+
+<div class="claim"><span class="fc-tag fc-true">Confirmed</span><strong>Repeat locations are real.</strong> Chicago recorded 6 killings, Detroit, Washington, and New Orleans 5 each, and Portland 4, across separate years and separate victims in every instance. These are verified as distinct cases, not repeated entries for the same killing.</div>
+</div>
+
+<div class="footer">
+<strong>Methodology:</strong> This page contains no new case research. It is a geographic reorganization of the ten G-CLEAR year pages for 2016 through 2025, built entirely from the City and State column of those pages, where every case was verified individually against local news reports, police statements, prosecutors' offices, and court records. All 151 cases are included, comprising 150 homicides and the single police-involved killing of a driver documented in the decade. Locations are the place the killing occurred, not the victim's home city and not the origin of the trip; where a circulating list disagrees, the correction is stated in the section above. Killings in unincorporated areas are recorded at the county level rather than assigned to the nearest incorporated city. Metropolitan areas follow standard federal metropolitan-area definitions, so suburbs are grouped with their core city and five metros in this dataset cross a jurisdiction line: Washington (District of Columbia, Maryland, and Virginia), Chicago (Illinois and Indiana), New York (New York and New Jersey), Charlotte (North Carolina and South Carolina), and St. Louis (Missouri and Illinois). Regions follow U.S. Census Bureau definitions, which place the District of Columbia in the South. "Solved/Charged" counts any case with at least one murder-charged or murder-arrested suspect; cases closed with a deceased suspect, closed on a not-guilty-by-reason-of-insanity finding, left without a charging decision, ended in acquittal, or police-involved are counted separately as other outcomes and are excluded from both the solved and unsolved figures. Clearance percentages for small jurisdictions rest on very few cases and should not be read as a measure of local police performance. <strong>This page reports raw counts only and is not adjusted for population, driver headcount, or trip volume.</strong> No public source records how many app drivers work in a given city, so a per-driver rate cannot be calculated honestly and none is attempted; a state with more cases may simply have more drivers. Absence of a case in a state means no case was documented, not that none occurred. Gig Workers Rising's <a href="https://www.powerswitchaction.org/resources/murdered-behind-the-wheel/" target="_blank" style="color:#e8a838;text-decoration:underline">Murdered Behind the Wheel</a> report and database, the institutional anchor for the 2017 through early-2023 portion of this project, end in April 2023 and never recorded perpetrators; no institutional list exists for 2016 or for mid-2023 onward. All totals on this page should be read as floors. Verified as of <strong>August 2026</strong>.
+<br><br>Homicides of App-Based Gig Drivers, 2016-2025 &middot; Locations Master &middot; From local news and court records &middot; Verified Aug. 2026
+</div>
+
+<script>
+const NAVY='#1a1a2e', GOLD='#e8a838', RED='#c1121f', GREEN='#2d6a4f', GRAY='#9a9a9a', LGRAY='#d5d0c6', PLUM='#6d597a', STEEL='#3d5a80';
+Chart.defaults.font.family="'DM Sans',sans-serif";
+Chart.defaults.font.size=11;
+Chart.defaults.color='#444';
+const lum=h=>{const n=parseInt(h.slice(1),16);return(0.299*(n>>16&255)+0.587*(n>>8&255)+0.114*(n&255))/255};
+const txtOn=h=>lum(h)>0.62?'#1a1a2e':'#fff';
+const valueLabels={id:'valueLabels',afterDatasetsDraw(chart){const{ctx}=chart;ctx.save();ctx.font="700 11px 'DM Sans',sans-serif";
+if(chart.config.type==='doughnut'){const meta=chart.getDatasetMeta(0);meta.data.forEach((arc,i)=>{const v=chart.data.datasets[0].data[i];if(!v)return;const a=(arc.startAngle+arc.endAngle)/2,r=(arc.innerRadius+arc.outerRadius)/2;ctx.fillStyle=txtOn(chart.data.datasets[0].backgroundColor[i]);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,arc.x+Math.cos(a)*r,arc.y+Math.sin(a)*r)});ctx.restore();return}
+const horiz=chart.options.indexAxis==='y',stacked=!!(chart.options.scales&&chart.options.scales.y&&chart.options.scales.y.stacked);
+chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;meta.data.forEach((bar,i)=>{const v=ds.data[i];if(!v)return;
+if(horiz){ctx.fillStyle='#1a1a2e';ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(v,bar.x+6,bar.y)}
+else if(stacked){if(Math.abs(bar.base-bar.y)<14)return;const bg=Array.isArray(ds.backgroundColor)?ds.backgroundColor[i]:ds.backgroundColor;ctx.fillStyle=txtOn(bg);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,bar.x,(bar.y+bar.base)/2)}
+else{ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(v,bar.x,bar.y-4)}})});
+if(stacked&&!horiz){chart.data.labels.forEach((_,i)=>{let tot=0,top=Infinity,x=null;chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);if(meta.hidden)return;const v=ds.data[i]||0;tot+=v;const bar=meta.data[i];if(bar){if(x===null)x=bar.x;if(v)top=Math.min(top,bar.y)}});if(tot&&x!==null){ctx.fillStyle='#1a1a2e';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(tot,x,(top===Infinity?chart.scales.y.getPixelForValue(0):top)-4)}})}
+ctx.restore()}};
+Chart.register(valueLabels);
+
+new Chart(document.getElementById('chartSTATE'),{type:'bar',data:{labels:["TX", "CA", "FL", "IL", "LA", "MI", "GA", "MD", "WA", "AZ", "NC", "NY", "DC", "OH", "PA", "VA", "CO", "IN", "OR", "SC"],datasets:[{data:[15, 13, 10, 10, 8, 8, 7, 7, 7, 6, 6, 6, 5, 5, 5, 5, 4, 4, 4, 3],backgroundColor:NAVY,borderRadius:4}]},options:{indexAxis:'y',layout:{padding:{right:28}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x+' of 151 cases'}}},scales:{x:{beginAtZero:true,ticks:{stepSize:2}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartMETRO'),{type:'bar',data:{labels:["Washington DC", "Chicago", "Dallas-Ft Worth", "Detroit", "Atlanta", "New York", "Los Angeles", "New Orleans", "Phoenix", "Seattle", "Charlotte", "Portland", "SF Bay Area", "Denver", "Houston", "Indianapolis", "Miami", "Philadelphia", "Richmond"],datasets:[{data:[12, 9, 8, 8, 7, 7, 6, 6, 6, 6, 4, 4, 4, 3, 3, 3, 3, 3, 3],backgroundColor:RED,borderRadius:4}]},options:{indexAxis:'y',layout:{padding:{right:28}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x+' of 151 cases'}}},scales:{x:{beginAtZero:true,ticks:{stepSize:2}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartREGION'),{type:'doughnut',data:{labels:["South", "West", "Midwest", "Northeast"],datasets:[{data:[70, 36, 33, 12],backgroundColor:[NAVY,GOLD,RED,GREEN],borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{position:'bottom',labels:{generateLabels(c){const it=Chart.overrides.doughnut.plugins.legend.labels.generateLabels(c);it.forEach((l,i)=>l.text+=' ('+c.data.datasets[0].data[l.index??i]+')');return it}}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartREGSTATUS'),{type:'bar',data:{labels:["South", "West", "Midwest", "Northeast"],datasets:[{label:'Convicted/Sentenced',data:[18, 10, 16, 4],backgroundColor:GREEN,borderRadius:4},{label:'Charged',data:[33, 15, 8, 4],backgroundColor:GOLD,borderRadius:4},{label:'Unsolved',data:[12, 8, 8, 4],backgroundColor:RED,borderRadius:4},{label:'Other outcome',data:[7, 3, 1, 0],backgroundColor:GRAY,borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:5}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartCLEAR'),{type:'bar',data:{labels:["Washington DC", "Chicago", "Dallas-Ft Worth", "Detroit", "Atlanta", "New York", "Los Angeles", "New Orleans", "Phoenix", "Seattle", "Charlotte", "Portland", "SF Bay Area"],datasets:[{label:'Solved/Charged',data:[11, 6, 5, 6, 5, 6, 2, 3, 4, 4, 3, 3, 4],backgroundColor:GREEN,borderRadius:4},{label:'Unsolved',data:[1, 3, 2, 2, 1, 1, 3, 2, 2, 2, 0, 1, 0],backgroundColor:RED,borderRadius:4},{label:'Other outcome',data:[0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0],backgroundColor:GRAY,borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:2}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartMODE'),{type:'bar',data:{labels:["South", "West", "Midwest", "Northeast"],datasets:[{label:'Rideshare',data:[48, 25, 28, 9],backgroundColor:NAVY,borderRadius:4},{label:'Delivery',data:[22, 11, 5, 3],backgroundColor:GOLD,borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:5}}},maintainAspectRatio:false}});
+
+new Chart(document.getElementById('chartSPREAD'),{type:'bar',data:{labels:["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],datasets:[{label:'Cases',data:[3, 6, 3, 8, 5, 27, 31, 28, 18, 22],backgroundColor:RED,borderRadius:4},{label:'States',data:[3, 6, 3, 6, 4, 14, 18, 16, 12, 13],backgroundColor:NAVY,borderRadius:4},{label:'Metro areas',data:[3, 6, 3, 5, 4, 16, 24, 19, 14, 18],backgroundColor:GOLD,borderRadius:4}]},options:{layout:{padding:{top:24}},plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true,ticks:{stepSize:5}}},maintainAspectRatio:false}});
+</script>
+
+</body>
+</html>
