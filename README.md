@@ -1,48 +1,42 @@
 # G-CLEAR
 
-**Gig Worker — Comprehensive Lethal Evidence Analysis Report**
+**Gig Worker Comprehensive Lethal Evidence Analysis Report, 2016–2025**
 
-### 🔗 https://dont-shoot-the-data.github.io/GCLEAR/
+### 🔗 [dont-shoot-the-data.github.io/GCLEAR](https://dont-shoot-the-data.github.io/GCLEAR/)
 
-Case-level analysis of every documented homicide of an app-based rideshare or delivery driver in
-the United States, 2016 through 2025. 151 victims. Every case independently verified against local
-news reporting, police statements, prosecutors' offices, and court records.
+Five organizations have published counts of app-based rideshare and delivery drivers killed on the job: Uber, Lyft, Gig Workers Rising, The Markup and the U.S. Government Accountability Office (GAO). None of them named a single suspect.
 
-Companion study to [T-CLEAR](https://dont-shoot-the-data.github.io/TCLEAR/).
+This study verified every case from 2016 through 2025 against court records, police statements and news coverage, and identified the people charged.
 
-> Nobody was keeping count. Now someone is.
+## Principal findings
+
+- **167 drivers killed**: 166 homicides plus 1 police-involved death. 118 homicides solved or charged; 38 unsolved.
+- **156 counted suspects; 131 with a verified race.** 102 of the 131 are Black (77.9%), 5.73 times the Black share of the US population.
+- **The passenger is the leading threat.** In 59 of 112 cases with a documented relationship, the killer was the passenger the app sent.
+- **One in five suspects was a minor.** The average suspect was 25; the average victim was 42.
+- **Half the killings crossed racial lines**, against roughly 20% in national homicide.
+
+Every person's race is labeled with its source: a booking, prison or court record, a published photo, or a news report. Suspects whose race could not be verified are left out of the race counts, not assigned one.
 
 ## What is here
 
 | File | Contents |
 |---|---|
-| `index.html` | Main report: abstract, introduction, 13 charts, year index, research paper sections, robustness checks |
-| `2016.html` – `2025.html` | One page per year: full case table, seven charts, corrections to circulating lists |
-| `locations.html` | Every state, metro area and city in the dataset |
+| `index.html` | Main report: abstract, introduction, charts, year index, case study, research paper, suspects and victims galleries, objections, discussion, references |
+| `2016.html` – `2025.html` | One page per year: full case table with photos and race sources, charts, corrections to circulating lists |
+| `og-image.jpg` | Link preview image |
+| `locations.html` | Redirects to the main report |
 
-## Method in one paragraph
+## Method in brief
 
-Homicide of a driver working for an app-based rideshare or delivery platform at the time of the
-killing, or killed in direct connection with that work. Killings while working but not because of
-the work are included motive-blind with circumstances stated. Non-criminal traffic accidents are
-excluded. Police-involved killings of drivers are counted in victim totals and broken out of
-homicide statistics. Suspect race is recorded only where publicly documented through a booking
-photo, court imagery, or a law enforcement description; unknowns are coded unknown and never
-inferred. No rate per driver, per trip or per capita is computed anywhere, because no public source
-records how many app drivers work in a given place or year. Every total is a floor.
+Counted: intentional killings of a driver working for an app-based rideshare or delivery platform, or killed in direct connection with that work. Excluded: vehicle crashes, cases with no app named, no homicide ruling, or no charge. Suspects counted are people charged with the killing, plus killers identified by police who died before they could be charged. Acquittals, dismissals, accessories and people charged in a different killing are shown but not counted. No rate per driver, per trip or per capita is computed, because no public source records how many app drivers work in a given place or year. Every total is a floor.
 
-## Status
+## Sources and thanks
 
-**Preliminary draft.** Counts before 2021 and after April 2023 rest on this project's own
-compilation and should be read as floors. A systematic search for additional cases is underway.
+Gig Workers Rising's database is the backbone of the 2017 through April 2023 roster. The Markup's open datasets were checked name by name. National Conservative's list was used as a lead source only. Full references and acknowledgments are in the report.
 
 Corrections are welcome and will be published.
 
----
+**Companion study:** [T-CLEAR](https://dont-shoot-the-data.github.io/TCLEAR/)
 
-**Live site:** https://dont-shoot-the-data.github.io/GCLEAR/
-**Companion study:** https://dont-shoot-the-data.github.io/TCLEAR/
-
-Cover image: dashcam still from the vehicle of Christina Spicuzza, an Uber driver killed in
-Monroeville, Pennsylvania on February 10, 2022. Her killer was convicted of first-degree murder and
-sentenced to life. Her case appears in the 2022 dataset.
+*Cover image: dashcam still from the car of Christina Spicuzza, an Uber driver killed in Monroeville, Pennsylvania, in February 2022. Her killer was convicted of first-degree murder and sentenced to life without parole. Her case is the study's case study and appears on the 2022 page.*
