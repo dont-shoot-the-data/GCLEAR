@@ -39,4 +39,5 @@ Corrections are welcome and will be published.
 
 **Companion study:** [T-CLEAR](https://dont-shoot-the-data.github.io/TCLEAR/)
 
-*Cover image: dashcam still from the car of Christina Spicuzza, an Uber driver killed in Monroeville, Pennsylvania, in February 2022. Her killer was convicted of first-degree murder and sentenced to life without parole. Her case is the study's case study and appears on the 2022 page.*
+*Cover image: dashcam still from the car of Christina Spicuzza, an Uber driver killed in Monroeville, Pennsylvania, in February 2022. Her killer was convicted of first-degree murder and sentenced to life without parole. Her case is the study's case study and appears on the 2022 page.* 
+
