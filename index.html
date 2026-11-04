@@ -21,8 +21,8 @@
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="favicon.svg" rel="apple-touch-icon"/>
 <title>G-CLEAR: Gig Worker — Comprehensive Lethal Evidence Analysis Report, 2016-2025</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script><script id="otherlabel">(function(){if(typeof Chart==='undefined')return;var L='Asian/Other';
-function f(s){return typeof s==='string'?s.split(L).join('Other'):Array.isArray(s)?s.map(f):s}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script><script id="otherlabel">(function(){if(typeof Chart==='undefined')return;var L='Other (Asian, Pacific Islander, MENA)';
+function f(s){return typeof s==='string'?s.split(L).join('Asian/Other'):Array.isArray(s)?s.map(f):s}
 Chart.register({id:'otherlabel',beforeUpdate:function(c){if(c.data.labels)c.data.labels=c.data.labels.map(f);(c.data.datasets||[]).forEach(function(d){if(d.label)d.label=f(d.label)})}});})();</script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
@@ -2298,7 +2298,7 @@ const chDispro=reg(new Chart(document.getElementById('chDispro'),{type:'bar',dat
 function renderDispro(){ try{
   chDispro.$fmt=(DUNITS==='pct')?PCT:(v=>v);
   const d=DISPRO[DV], useP=(DUNITS==='pct');
-  var SHORT={'Asian/Pac. Isl.':'Asian/PI','Middle Eastern':'Mid. East','Asian/Other':'Other'};
+  var SHORT={'Asian/Pac. Isl.':'Asian/PI','Middle Eastern':'Mid. East','Asian/Other':'Asian/Other'};
   chDispro.data.labels=d.races.map(function(r){return NARROW&&SHORT[r]?SHORT[r]:r;});
   chDispro.data.datasets[0].label=(DV==='suspects'?'Share of charged individuals':'Share of victims')+(useP?' (%)':' (count)');
   chDispro.data.datasets[0].data=(useP?d.pct:d.cnt).slice();

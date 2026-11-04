@@ -6,8 +6,8 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- WORKING TITLE: rename "G-CLEAR" here and in index.html if a different project name is chosen -->
 <title>2020 Homicides of App-Based Gig Drivers — Combined Analysis</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script><script id="otherlabel">(function(){if(typeof Chart==='undefined')return;var L='Asian/Other';
-function f(s){return typeof s==='string'?s.split(L).join('Other'):Array.isArray(s)?s.map(f):s}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script><script id="otherlabel">(function(){if(typeof Chart==='undefined')return;var L='Other (Asian, Pacific Islander, MENA)';
+function f(s){return typeof s==='string'?s.split(L).join('Asian/Other'):Array.isArray(s)?s.map(f):s}
 Chart.register({id:'otherlabel',beforeUpdate:function(c){if(c.data.labels)c.data.labels=c.data.labels.map(f);(c.data.datasets||[]).forEach(function(d){if(d.label)d.label=f(d.label)})}});})();</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
