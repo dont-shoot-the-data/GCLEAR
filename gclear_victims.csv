@@ -1,0 +1,173 @@
+case_id,year,victim,victim_race,victim_race_source,victim_race_tier,victim_sex,platform,city,status,relationship,police_involved,counted_as_homicide
+g-2016-1,2016,Modou Diagne,Black,Photo,visual,Male,Uber,"Detroit, MI",Convicted/Sentenced,Passenger,False,True
+g-2016-2,2016,Andre Jamal Bayyan,Black,Photo,visual,Male,Uber,"Inglewood, CA",Unsolved,Unknown (unsolved),False,True
+g-2016-3,2016,"Shahriar ""Shah"" Zolfaghari",Asian/Other,Original study,legacy_unrecorded,Male,Lyft,"Atlanta, GA",Charged,Not documented,False,True
+g-2017-2,2017,"Michael ""Mike"" Mecklenburg",White,Photo,visual,Male,Uber,"Greenville County, SC",Acquitted (unresolved),Unknown (unsolved),False,True
+g-2017-3,2017,Marlo Johnis Medina-Chevez,Hispanic,Photo,visual,Male,Uber,"Charlotte, NC",Convicted/Sentenced,Passenger,False,True
+g-2017-4,2017,Name not publicly released,,Undetermined (searched; no photo or record),none,Male,Uber,"Miami, FL",Convicted/Sentenced,Stranger,False,True
+g-2017-5,2017,Grant Nelson,White,Photo,visual,Male,Uber,"Lincolnwood, IL",Convicted/Sentenced,Passenger,False,True
+g-2017-6,2017,Mourice Foster,Black,Photo,visual,Male,Lyft,"Cleveland, OH",Unsolved,Unknown (unsolved),False,True
+g-2018-1,2018,DaJuan Jenkins,Black,Photo,visual,Male,Uber,"Detroit, MI",Unsolved,Unknown (unsolved),False,True
+g-2018-2,2018,Filip Kirilov,White,Photo,visual,Male,Uber,"Okaloosa Island, FL",Convicted/Sentenced,Passenger,False,True
+g-2019-1,2019,Kristina Howato,,Undetermined (searched; no photo or record),none,Female,Lyft,"Tempe, AZ",Convicted/Sentenced,Passenger,False,True
+g-2019-2,2019,David Rosenthal,White,Photo,visual,Male,Uber,"Denver, CO",Charged,Not documented,False,True
+g-2019-3,2019,Ganiou Gandonou,Black,Photo,visual,Male,Uber,"Bronx, NY",Charged,Stranger,False,True
+g-2019-4,2019,Harold Treadwell III,White,Photo,visual,Male,Lyft,"Phoenix, AZ",Unsolved,Unknown (unsolved),False,True
+g-2019-5,2019,Beaudouin Tchakounte,Black,Photo,visual,Male,Uber,"Oxon Hill, MD",Convicted/Sentenced,Passenger,False,True
+g-2019-6,2019,Lamar Jerome French,Black,Photo,visual,Male,Lyft,"Hampton, VA",Charged,Passenger,False,True
+g-2019-7,2019,Petra Rhoden,Black,Photo,visual,Female,DoorDash,"Paterson, NJ",Convicted/Sentenced,Not documented,False,True
+g-2019-8,2019,Yusuf Ozgur,Asian/Other,Photo,visual,Male,DoorDash,"Manassas, VA",Convicted/Sentenced,Stranger,False,True
+g-2020-1,2020,Franklin L. Farrens,White,Photo,visual,Male,Lyft,"Chesterfield County, VA",Charged,Passenger,False,True
+g-2020-2,2020,Dhulfiqar Kareem Mseer,Asian/Other,Photo,visual,Male,Uber,"Portland, OR",Charged,Stranger,False,True
+g-2020-3,2020,"Cherno ""Che"" Ceesay",Black,Original study,legacy_unrecorded,Male,Uber,"Issaquah, WA",Convicted/Sentenced,Passenger,False,True
+g-2020-4,2020,Roderick Thomas,Black,Photo,visual,Male,Postmates,"Los Angeles, CA",Unsolved,Unknown (unsolved),False,True
+g-2020-5,2020,Kelley Marie Smith,Black,Photo,visual,Female,Uber Eats,"Portland, OR",Unsolved,Unknown (unsolved),False,True
+g-2021-1,2021,Joshua Miller,White,Photo,visual,Male,Uber,"Dallas, TX",Charged,Passenger,False,True
+g-2021-2,2021,Yousef Al-Gabri,Asian/Other,Photo,visual,Male,Uber,"Detroit, MI",Convicted/Sentenced,Passenger,False,True
+g-2021-3,2021,Timothy Perkins,Black,Photo,visual,Male,Uber,"Detroit, MI",Convicted/Sentenced,Passenger,False,True
+g-2021-4,2021,Ryan Munsie,White,Photo,visual,Female,Uber Eats,"Haltom City, TX",Convicted/Sentenced,Stranger,False,True
+g-2021-5,2021,Kristofer Metzger,White,Photo,visual,Male,Uber,"Pittsburgh, PA",Charged,Not documented,False,True
+g-2021-6,2021,Lynn Murray,White,Photo,visual,Female,Instacart,"Boulder, CO",Convicted/Sentenced,Stranger,False,True
+g-2021-7,2021,Mohammad Anwar,Asian/Other,Photo,visual,Male,Uber Eats,"Washington, DC",Convicted/Sentenced,Passenger,False,True
+g-2021-8,2021,Javier Ramos,Hispanic,Photo,visual,Male,Uber,"Chicago, IL",Charged,Passenger,False,True
+g-2021-9,2021,Francisco Villalva Vitinio,Hispanic,Original study,legacy_unrecorded,Male,DoorDash,"New York, NY",Convicted/Sentenced,Stranger,False,True
+g-2021-10,2021,Ahmed Badal,Black,Record,documented,Male,Lyft,"Minneapolis, MN",Unsolved,Unknown (unsolved),False,True
+g-2021-11,2021,Elijah Newman,Black,Photo,visual,Male,Lyft,"St. Louis, MO",Convicted/Sentenced,Passenger,False,True
+g-2021-12,2021,Robert Douglas Berry,White,Photo,visual,Male,Lyft,"Mesquite, TX",Unsolved,Unknown (unsolved),False,True
+g-2021-13,2021,Mingzhi Zhu,Asian/Other,Original study,legacy_unrecorded,Male,Uber,"Los Angeles, CA",Closed (suspect deceased),Stranger,False,True
+g-2021-14,2021,Kristopher Roukey,White,Photo,visual,Male,Lyft,"Akron, OH",Convicted/Sentenced,Passenger,False,True
+g-2021-15,2021,Joseph Schelstraete,White,Photo,visual,Male,Uber,"Cicero, IL",Charged,Passenger,False,True
+g-2021-16,2021,Stacy Corley Jr.,Black,Photo,visual,Male,DoorDash,"Walnut Creek, CA",Convicted/Sentenced,Stranger,False,True
+g-2021-17,2021,Ceyonne Riley,Black,Photo,visual,Female,Uber Eats,"New Orleans, LA",Unsolved,Unknown (unsolved),False,True
+g-2021-18,2021,Raquel Spohn Wehber,Hispanic,Photo,visual,Female,Uber,"National City, CA",Charged,Passenger,False,True
+g-2021-20,2021,Noel Njoku,Black,Original study,legacy_unrecorded,Male,DoorDash,"Mitchellville, MD",Charged,Stranger,False,True
+g-2021-21,2021,Isabella Lewis,White,Photo,visual,Female,Lyft,"Garland, TX",Closed (suspect deceased),Passenger,False,True
+g-2021-22,2021,Kuldip Singh,Asian/Other,Photo,visual,Male,Uber,"New York, NY",Charged,Stranger,False,True
+g-2021-23,2021,Hamzah Faraj,Asian/Other,Photo,visual,Male,DoorDash,"Fort Worth, TX",Unsolved,Unknown (unsolved),False,True
+g-2021-24,2021,Glynon Nelson,Black,Photo,visual,Male,Lyft,"Gary, IN",Charged,Passenger,False,True
+g-2021-25,2021,Terrell Harris,Black,Photo,visual,Male,Lyft,"Philadelphia, PA",Unsolved,Unknown (unsolved),False,True
+g-2021-26,2021,Salauddin Bablu,Asian/Other,Photo,visual,Male,Grubhub,"New York, NY",Convicted/Sentenced,Stranger,False,True
+g-2021-27,2021,Ahmad Fawad Yusufi,Asian/Other,Original study,legacy_unrecorded,Male,Uber,"San Francisco, CA",Convicted/Sentenced,Stranger,False,True
+g-2022-1,2022,Christina Raymond,White,Photo,visual,Female,DoorDash,"Milpitas, CA",Charged,Ex-partner,False,True
+g-2022-2,2022,Kristian Philpotts,Black,Photo,visual,Male,Lyft,"Urbana, IL",Convicted/Sentenced,Passenger,False,True
+g-2022-3,2022,Cheryl McCormack,White,Record,documented,Female,DoorDash,"Baltimore, MD",Charged,Stranger,False,True
+g-2022-4,2022,Brandon Cooper,Black,Photo,visual,Male,Lyft,"Dayton, OH",Convicted/Sentenced,Passenger,False,True
+g-2022-5,2022,Justin Krumbah,White,Photo,visual,Male,Instacart,"Richland, WA",Closed (suspect deceased),Stranger,False,True
+g-2022-6,2022,Christina Spicuzza,White,Record,documented,Female,Uber,"Monroeville, PA",Convicted/Sentenced,Passenger,False,True
+g-2022-7,2022,Abdul Rauf Khan,Asian/Other,Photo,visual,Male,Lyft,"Temple Hills, MD",Charged,Passenger,False,True
+g-2022-8,2022,Manuel Francis-Hernandez,Black,Photo,visual,Male,Uber,"Long Beach, NY",Convicted/Sentenced,Not documented,False,True
+g-2022-9,2022,Shaani Mohamed,Black,Photo,visual,Male,Uber,"Portland, OR",Charged,Not documented,False,True
+g-2022-10,2022,Andrew Satavu,Asian/Other,Record,documented,Male,DoorDash,"Modesto, CA",Convicted/Sentenced,Stranger,False,True
+g-2022-11,2022,Paris-James Smith,Black,Photo,visual,Male,GoPuff,"DeKalb County, GA",Unsolved,Unknown (unsolved),False,True
+g-2022-12,2022,Dushaundra Lee Ward,Black,Record,documented,Female,Lyft,"Memphis, TN",Unsolved,Unknown (unsolved),False,True
+g-2022-13,2022,Pamela Rae Martinez,Hispanic,Photo,visual,Female,Uber Eats,"Glendale, AZ",Charged,Stranger,False,True
+g-2022-14,2022,Raymond Hill III,Black,Photo,visual,Male,DoorDash,"New Orleans, LA",Unsolved,Unknown (unsolved),False,True
+g-2022-15,2022,Anthony Garland,White,Original study,legacy_unrecorded,Male,Lyft,"Indianapolis, IN",Convicted/Sentenced,Passenger,False,True
+g-2022-16,2022,Da'Jour Russ,Black,Photo,visual,Male,DoorDash,"Detroit, MI",Unsolved,Unknown (unsolved),False,True
+g-2022-17,2022,Roberto Peigne,Black,Photo,visual,Male,DoorDash,"Port St. Lucie, FL",Unsolved,Unknown (unsolved),False,True
+g-2022-18,2022,"Kon ""Patrick"" Woo Fung",Asian/Other,Photo,visual,Male,Rideshare/delivery (unspecified),"Oakland, CA",Charged,Stranger,False,True
+g-2022-19,2022,Nesredin Esleiman,Asian/Other,Photo,visual,Male,Uber,"Temple Hills, MD",Charged,Stranger,False,True
+g-2022-20,2022,Crayton Saffolds,Black,Author call,author_judgment,,Uber,"Chicago, IL",Unsolved,Unknown (unsolved),False,True
+g-2022-21,2022,Althia Smith Jenkins-Perry,White,Photo,visual,Female,Uber,"Bryan, TX",Convicted/Sentenced,Passenger,False,True
+g-2022-22,2022,Harriett Childers,Black,Photo,visual,Female,Uber,"East St. Louis, IL",Charged,Stranger,False,True
+g-2022-23,2022,Mohamed Kediye,Black,Photo,visual,Male,Lyft,"Seattle, WA",Unsolved,Unknown (unsolved),False,True
+g-2022-24,2022,Dina May-Terrell,Black,Photo,visual,Female,Lyft,"Pontiac, MI",Convicted/Sentenced,Passenger,False,True
+g-2022-25,2022,Richard Skelskey,White,Photo,visual,Male,Lyft,"Memphis, TN",Convicted/Sentenced,Passenger,False,True
+g-2022-26,2022,Corey Antwan Price,Black,Original study,legacy_unrecorded,Male,DoorDash,"Jackson, MS",Convicted/Sentenced,Stranger,False,True
+g-2022-27,2022,Caron Arterberry,Black,Record,documented,Male,Uber,"Chicago, IL",Unsolved,Unknown (unsolved),False,True
+g-2022-28,2022,Lauren Allen (Sawyer-Allen),Black,Photo,visual,Female,Lyft,"Lithonia, GA",Closed (suspect deceased),Ex-partner,False,True
+g-2022-29,2022,James Barron,Black,Photo,visual,Male,DoorDash,"Jacksonville, FL",Unsolved,Unknown (unsolved),False,True
+g-2022-30,2022,Yolanda Dillion,Black,Record,documented,Female,Uber,"Harvey, LA",Closed (suspect deceased),Passenger,False,True
+g-2022-31,2022,Ainzargul Totakhil,Asian/Other,Photo,visual,Male,Uber,"Durham, NC",Unsolved,Unknown (unsolved),False,True
+g-2023-1,2023,Mahamadou Kabba,Black,Record,documented,Male,Uber,"Renton, WA",Charged,Stranger,False,True
+g-2023-2,2023,Christopher Beushausen,White,Photo,visual,Male,Uber,"Indianapolis, IN",Unsolved,Unknown (unsolved),False,True
+g-2023-3,2023,Stephen Lee Green,White,Original study,legacy_unrecorded,Male,Amazon Flex,"Temple Hills, MD",Unsolved,Unknown (unsolved),False,True
+g-2023-4,2023,Gary Levin,White,Photo,visual,Male,Lyft,"Palm Beach Gardens, FL",Charged,Passenger,False,True
+g-2023-5,2023,Andrew Stiller,White,Photo,visual,Male,Uber,"New Orleans, LA",Convicted/Sentenced,Stranger,False,True
+g-2023-6,2023,Milton Pillacela Ayora,Hispanic,Record,documented,Male,Lyft,"Chicago, IL",Unsolved,Unknown (unsolved),False,True
+g-2023-7,2023,Brice Djembissi,Black,Original study,legacy_unrecorded,Male,Uber,"Washington, DC",Charged,Stranger,False,True
+g-2023-8,2023,Marvin Enrique Bardales Valle,Hispanic,Photo,visual,Male,Lyft,"New Orleans, LA",Convicted/Sentenced,Passenger,False,True
+g-2023-9,2023,Robert Diaz,Hispanic,Original study,legacy_unrecorded,Male,Uber,"San Antonio, TX",Convicted/Sentenced,Passenger,False,True
+g-2023-11,2023,Aaron Orozco,Hispanic,Record,documented,Male,Uber,"Lynwood, CA",Charged,Passenger,False,True
+g-2023-12,2023,Randall William Cooke,White,Photo,visual,Male,Uber Eats,"Holiday, FL",Charged,Customer (delivery),False,True
+g-2023-13,2023,Jaevierre Greer,Black,Photo,visual,Male,DoorDash,"Akron, OH",Convicted/Sentenced,Stranger,False,True
+g-2023-14,2023,Amaree'ya Henderson,Black,Photo,visual,Female,DoorDash,"Kansas City, KS",Police-Involved,Known dispute,True,False
+g-2023-15,2023,Cameron Cole,White,Record,documented,Male,DoorDash,"Prince George County, VA",Unsolved,Unknown (unsolved),False,True
+g-2023-16,2023,Hector Torres,Hispanic,Original study,legacy_unrecorded,Male,Uber,"Houston, TX",Charged,Passenger,False,True
+g-2023-17,2023,Michael Almonte,Hispanic,Record,documented,Male,Uber,"Philadelphia, PA",Unsolved,Unknown (unsolved),False,True
+g-2023-18,2023,Daniel Piedra Garcia,Hispanic,Record,documented,Male,Uber,"El Paso, TX",Closed (suspect deceased),Passenger,False,True
+g-2023-19,2023,Juan Miguel Chan,Hispanic,Photo,visual,Male,Uber,"Inglewood, CA",Unsolved,Unknown (unsolved),False,True
+g-2023-21,2023,Kirk Nims,Black,Original study,legacy_unrecorded,Male,Uber,"Petersburg, VA",Charged,Not documented,False,True
+g-2023-22,2023,Amare Geda,Black,Photo,visual,Male,Uber,"Seattle, WA",Convicted/Sentenced,Stranger,False,True
+g-2023-23,2023,Goitom Hagos,Black,Photo,visual,Male,Uber,"Denver, CO",Charged,Stranger,False,True
+g-2023-24,2023,Myron Snyder,Black,Original study,legacy_unrecorded,Male,DoorDash,"Cedar Rapids, IA",Convicted/Sentenced,Known dispute,False,True
+g-2023-25,2023,Bryant Scott Grund,White,Photo,visual,Male,Uber,"Jacksonville, FL",Convicted/Sentenced,Stranger,False,True
+g-2023-26,2023,Mohammed Al Hijoj,Asian/Other,Original study,legacy_unrecorded,Male,Uber,"Chicago, IL",Charged,Passenger,False,True
+g-2023-27,2023,Quincy McMillon,Black,Photo,visual,Male,Lyft,"Phoenix, AZ",Unsolved,Unknown (unsolved),False,True
+g-2023-28,2023,Adriana Arocha-Duque,Hispanic,Original study,legacy_unrecorded,Female,Lyft,"Chicago, IL",Charged,Stranger,False,True
+g-2024-1,2024,Abdikadir Gedi Shariif,Black,Original study,legacy_unrecorded,Male,Uber,"Edmonds, WA",Convicted/Sentenced,Stranger,False,True
+g-2024-2,2024,Sergey Kubay,White,Original study,legacy_unrecorded,Male,Amazon Flex,"Renton, WA",Unsolved,Unknown (unsolved),False,True
+g-2024-3,2024,Rasheek Abdullah,,Undetermined (searched; no photo or record),none,Male,Uber Eats,"Washington, DC",Convicted/Sentenced,Stranger,False,True
+g-2024-4,2024,Joseph Anthony Soto Jr.,Hispanic,Photo,visual,Male,DoorDash,"Sacramento, CA",Convicted/Sentenced,Stranger,False,True
+g-2024-5,2024,Lo-Letha Hall,Black,Photo,visual,Female,Uber,"South Charleston, OH",Convicted/Sentenced,Stranger,False,True
+g-2024-6,2024,Mohammad Haddad-Farshi,Asian/Other,Photo,visual,Male,Lyft,"Dallas, TX",Charged,Passenger,False,True
+g-2024-7,2024,Cequan James,Black,Photo,visual,Male,DoorDash,"DeKalb County, GA",Charged,Stranger,False,True
+g-2024-8,2024,Reginald Folks Jr.,Black,Original study,legacy_unrecorded,Male,Lyft,"Union City, GA",Convicted/Sentenced,Passenger,False,True
+g-2024-9,2024,Shawali Sherali,Asian/Other,Original study,legacy_unrecorded,Male,Lyft,"Fort Worth, TX",Charged,Passenger,False,True
+g-2024-10,2024,Joshua Kelvin,White,Photo,visual,Male,Uber,"Portland, OR",Charged,Stranger,False,True
+g-2024-11,2024,Alejandro Linares,Hispanic,Original study,legacy_unrecorded,Male,Uber Eats,"Opa-locka, FL",Charged,Stranger,False,True
+g-2024-12,2024,Naveed Afzal,Asian/Other,Photo,visual,Male,Rideshare/delivery (unspecified),"Brooklyn, NY",Unsolved,Unknown (unsolved),False,True
+g-2024-13,2024,Mursal Jama,Black,Original study,legacy_unrecorded,Male,Uber,"Omaha, NE",Convicted/Sentenced,Stranger,False,True
+g-2024-14,2024,"Robert ""Bobby"" Renteria",Hispanic,Photo,visual,Male,Uber,"San Antonio, TX",Unsolved,Unknown (unsolved),False,True
+g-2024-15,2024,Carlos Leiva,Hispanic,Photo,visual,Male,Lyft,"Charlotte, NC",Charged,Not documented,False,True
+g-2024-16,2024,Michael Wilmot,White,Photo,visual,Male,Uber,"Las Vegas, NV",No Charges (Review),Stranger,False,True
+g-2024-17,2024,Rafeeq Badee,Black,Photo,visual,Male,Lyft,"DeKalb County, GA",Charged,Stranger,False,True
+g-2024-18,2024,Samori Husamudeen,Black,Photo,visual,Male,DoorDash,"Fayetteville, NC",Charged,Stranger,False,True
+g-2025-1,2025,"Oluwatosin ""Tosin"" Adetula",Black,Photo,visual,Male,Lyft,"Cottage City, MD",Charged,Passenger,False,True
+g-2025-2,2025,Emmanuel Gbedee Sr.,Black,Original study,legacy_unrecorded,Male,Uber,"Benson (Johnston County), NC",Charged,Passenger,False,True
+g-2025-3,2025,Samuel Webster,,Undetermined (searched; no photo or record),none,Male,Veyo (medical rideshare),"Phoenix, AZ",Charged,Passenger,False,True
+g-2025-4,2025,"Samuel ""Sammy"" Jackson",Black,Photo,visual,Male,Uber,"Atlanta, GA",Charged,Passenger,False,True
+g-2025-5,2025,Jimmy Allen Ramey,White,Photo,visual,Male,DoorDash,"Anderson County, SC",Charged,Not documented,False,True
+g-2025-6,2025,Philip Kim,Asian/Other,Photo,visual,Male,Lyft,"Houston, TX",Charged,Passenger,False,True
+g-2025-7,2025,Mamadou Diallo,Black,Photo,visual,Male,DoorDash,"Ferndale, MI",Convicted/Sentenced,Stranger,False,True
+g-2025-8,2025,Aaron Giles,Black,Original study,legacy_unrecorded,Male,GoPuff,"Tallahassee, FL",Charged,Stranger,False,True
+g-2025-9,2025,Olatunji W. Bolaji,Black,Record,documented,Male,Uber,"Philadelphia, PA",Unsolved,Unknown (unsolved),False,True
+g-2025-10,2025,Tahirou Diallo,Black,Photo,visual,Male,Uber,"North Richland Hills, TX",Charged,Passenger,False,True
+g-2025-11,2025,William Robert McArthur,White,Photo,visual,Male,Lyft,"Panama City Beach, FL",Charged,Passenger,False,True
+g-2025-12,2025,ZyDerec Massey,Black,Photo,visual,Male,DoorDash,"Rock Hill, SC",Charged,Stranger,False,True
+g-2025-15,2025,"Joseph ""Joey"" Andrus",Hispanic,Photo,visual,Male,Uber,"Albuquerque, NM",Charged,Passenger,False,True
+g-2025-16,2025,"Quoc ""Jake"" Hieu Nguyen",Asian/Other,Photo,visual,Male,Uber,"Harris County, TX",Charged,Passenger,False,True
+g-2025-17,2025,John Lucas,White,Photo,visual,Male,Lyft,"Guadalupe, AZ",Charged,Passenger,False,True
+g-2025-18,2025,"Miguel ""Nation"" Stemley",Black,Photo,visual,Male,Uber,"New Orleans, LA",Charged,Stranger,False,True
+g-2025-19,2025,LaWanna J. Lewis,White,Photo,visual,Female,Lyft,"Westlake, LA",Charged,Passenger,False,True
+g-2025-20,2025,Shabazz Mesiah Grant,Black,Photo,visual,Male,Lyft,"Charlotte, NC",Closed (suspect deceased),Stranger,False,True
+g-2025-21,2025,Jeremy Campbell,White,Photo,visual,Male,Uber,"El Paso County, CO",Charged,Passenger,False,True
+g-2025-22,2025,Frederick Kiprono,Black,Photo,visual,Male,Uber,"Shreveport, LA",Charged,Stranger,False,True
+gn-2017-49,2017,Adekunte M. Adaranijo,Black,Photo,visual,Male,Lyft,"Maywood, IL",Charged,Not documented,False,True
+gn-2018-0,2018,Henry Miller,White,Photo,visual,Male,Uber,"Boston, MA",Unsolved,Known dispute,False,True
+gn-2018-52,2018,Raymond Holloway-Creighton,Black,Photo,visual,Male,Grubhub,"Boston, MA",Convicted/Sentenced,Not documented,False,True
+gp-2019-8,2019,Roger Williams,White,Photo,visual,Male,Lyft,"New Castle County, DE",Acquitted (unresolved),Unknown (unsolved),False,True
+gn-2019-4,2019,Dwayne Roberts,Black,Record,documented,Male,Rideshare/delivery (unspecified),"Decatur, GA",Convicted/Sentenced,Not documented,False,True
+gn-2020-6,2020,Andrew D. Ameer,Asian/Other,Photo,visual,Male,Lyft,"St. Louis, MO",Charged,Passenger,False,True
+gn-2020-7,2020,Timothy Paul Allen,White,Photo,visual,Male,Amazon Flex,"Dallas, TX",Convicted/Sentenced,Stranger,False,True
+gp-2023-26,2023,Tramon Thomas,Black,Photo,visual,Male,Uber Eats,"Chicago, IL",Unsolved,Unknown (unsolved),False,True
+gn-2023-9,2023,Julia Holland,White,Photo,visual,Female,Uber,"Canton, Haywood County, NC",Convicted/Sentenced,Passenger,False,True
+gn-2023-10,2023,Mohamadou Thera (also spelled Mohamed Thera),Black,News report,documented,Male,Uber,"Plano, TX",Charged,Passenger,False,True
+gn-2023-11,2023,Shawn Joseph,Black,Photo,visual,Male,DoorDash,"Round Rock, TX; body found in rural Milam County, TX",Convicted/Sentenced,Not documented,False,True
+gn-2024-13,2024,Faneal Tesfit,Black,Photo,visual,Male,Uber,"Dallas, TX",Charged,Not documented,False,True
+gn-2024-56,2024,Adesina David Aderinwoye,Black,Photo,visual,Male,GoPuff,"Indianapolis, IN",Unsolved,Not documented,False,True
+gn-2024-57,2024,Steven Keliiaa,White,Photo,visual,Male,Uber Eats,"Albuquerque, NM",Convicted/Sentenced,Not documented,False,True
+gn-2025-16,2025,Altmann Mnyuku,Black,Photo,visual,Male,Uber,"Chicago, IL",Charged,Passenger,False,True
+gr-2021-1,2021,Hurts Presendieu,,Undetermined (searched; no photo or record),none,Male,Lyft,"Indianapolis, IN",Convicted/Sentenced,Passenger,False,True
+gr-2021-2,2021,Robbie Smythe Jr.,Black,Photo,visual,Male,Lyft,"Cincinnati, OH",Charged,Passenger,False,True
+gr-2021-3,2021,Garcia Danielle Gaddis,Black,Photo,visual,Male,Uber,"Sandy Springs, GA",Convicted/Sentenced,Not documented,False,True
+gr-2022-1,2022,Ibrahim Alkhateeb,,Undetermined (searched; no photo or record),none,Male,Lyft,"Fort Worth, TX",Charged,Passenger,False,True
+gr-2023-1,2023,Nasrat Ahmad Yar,Asian/Other,Photo,visual,Male,Lyft,"Washington, DC",Charged,Passenger,False,True
+g-2018-3,2018,Michael Wallace,,,,,,,"POSSIBLE, not counted: no charge and no homicide ruling",,False,False
+gn-2017-50,2017,Randolph Tolk,,,,,,,"POSSIBLE, not counted: charge dropped; DA said death was medical",,False,False
+gn-2021-8,2021,Qiaoming Shao,,,,,,,"POSSIBLE, not counted: no app named",,False,False
+gn-2024-14,2024,Brandon Dean,,,,,,,"POSSIBLE, not counted: no app named",,False,False
+gn-2018-51,2018,Aaron Wiley,,,,,,,"POSSIBLE, not counted: no app named; unsolved",,False,False
+gn-2016-1,2016,Delano Deonte Jackson,,,,,,,"POSSIBLE, not counted: UNVERIFIED app duty: drove for Uber, but no source says he was working when killed",,False,False
+gn-2023-12,2023,Hamza Jamil Zaki Abo Halaoh,,,,,,,"POSSIBLE, not counted: no app named: employer described a company ""like Uber""",,False,False
+gn-2024-15,2024,"Christian ""Chris"" Estrada-Petersen",,,,,,,"POSSIBLE, not counted: family did not know if he was working for Uber when shot",,False,False

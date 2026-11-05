@@ -10,8 +10,10 @@ This study verified every case from 2016 through 2025 against court records, pol
 
 ## Principal findings
 
-- **167 drivers killed**: 166 homicides plus 1 police-involved death. 118 homicides solved or charged; 38 unsolved.
-- **156 counted suspects; 131 with a verified race.** 102 of the 131 are Black (77.9%), 5.73 times the Black share of the US population.
+- **164 drivers killed**: 163 homicides plus 1 police-involved death. 118 homicides solved or charged; 35 unsolved.
+- **157 counted suspects; 129 with a coded race.** 101 of the 129 are Black (78.3%), 5.8 times the Black share of the US population.
+- **Data files:** `gclear_suspects.csv` and `gclear_victims.csv`, one row per person, with race source and source tier.
+- **Independent audit (Nov 2026):** three out-of-scope victims moved to possible cases, two co-defendants counted separately, three unsupported race calls recoded as undetermined, one platform corrected, p-values replaced with confidence intervals.
 - **The passenger is the leading threat.** In 59 of 112 cases with a documented relationship, the killer was the passenger the app sent.
 - **One in five suspects was a minor.** The average suspect was 25; the average victim was 42.
 - **Half the killings crossed racial lines**, against roughly 20% in national homicide.
@@ -39,5 +41,4 @@ Corrections are welcome and will be published.
 
 **Companion study:** [T-CLEAR](https://dont-shoot-the-data.github.io/TCLEAR/)
 
-*Cover image: dashcam still from the car of Christina Spicuzza, an Uber driver killed in Monroeville, Pennsylvania, in February 2022. Her killer was convicted of first-degree murder and sentenced to life without parole. Her case is the study's case study and appears on the 2022 page.* 
-
+*Cover image: dashcam still from the car of Christina Spicuzza, an Uber driver killed in Monroeville, Pennsylvania, in February 2022. Her killer was convicted of first-degree murder and sentenced to life without parole. Her case is the study's case study and appears on the 2022 page.*
