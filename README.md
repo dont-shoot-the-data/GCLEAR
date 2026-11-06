@@ -14,6 +14,7 @@ This study verified every case from 2016 through 2025 against court records, pol
 - **157 counted suspects; 129 with a coded race.** 101 of the 129 are Black (78.3%), 5.8 times the Black share of the US population.
 - **Data files:** `gclear_suspects.csv` and `gclear_victims.csv`, one row per person, with race source and source tier.
 - **Independent audit (Nov 2026):** three out-of-scope victims moved to possible cases, two co-defendants counted separately, three unsupported race calls recoded as undetermined, one platform corrected, p-values replaced with confidence intervals.
+- **Follow-up review (Nov 2026):** source URLs added to both CSVs, metro counts and minors denominator corrected, suspect cards now say charged/convicted rather than "killed", confidence-interval caveat added. The two legacy race codes (Powell, Phillips) were confirmed Black in Indiana and Michigan prison records. Open: no independent second coder.
 - **The passenger is the leading threat.** In 59 of 112 cases with a documented relationship, the killer was the passenger the app sent.
 - **One in five suspects was a minor.** The average suspect was 25; the average victim was 42.
 - **Half the killings crossed racial lines**, against roughly 20% in national homicide.
@@ -35,7 +36,7 @@ Counted: intentional killings of a driver working for an app-based rideshare or 
 
 ## Sources and thanks
 
-Gig Workers Rising's database is the backbone of the 2017 through April 2023 roster. The Markup's open datasets were checked name by name. National Conservative's list was used as a lead source only. Full references and acknowledgments are in the report.
+Gig Workers Rising's database is the backbone of the 2017 through April 2023 roster. The Markup's open datasets were checked name by name. National Conservative's running list was used as a final cross-check for every year. Full references and acknowledgments are in the report.
 
 Corrections are welcome and will be published.
 

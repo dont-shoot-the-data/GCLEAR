@@ -1,173 +1,173 @@
-case_id,year,victim,victim_race,victim_race_source,victim_race_tier,victim_sex,platform,city,status,relationship,police_involved,counted_as_homicide
-g-2016-1,2016,Modou Diagne,Black,Photo,visual,Male,Uber,"Detroit, MI",Convicted/Sentenced,Passenger,False,True
-g-2016-2,2016,Andre Jamal Bayyan,Black,Photo,visual,Male,Uber,"Inglewood, CA",Unsolved,Unknown (unsolved),False,True
-g-2016-3,2016,"Shahriar ""Shah"" Zolfaghari",Asian/Other,Original study,legacy_unrecorded,Male,Lyft,"Atlanta, GA",Charged,Not documented,False,True
-g-2017-2,2017,"Michael ""Mike"" Mecklenburg",White,Photo,visual,Male,Uber,"Greenville County, SC",Acquitted (unresolved),Unknown (unsolved),False,True
-g-2017-3,2017,Marlo Johnis Medina-Chevez,Hispanic,Photo,visual,Male,Uber,"Charlotte, NC",Convicted/Sentenced,Passenger,False,True
-g-2017-4,2017,Name not publicly released,,Undetermined (searched; no photo or record),none,Male,Uber,"Miami, FL",Convicted/Sentenced,Stranger,False,True
-g-2017-5,2017,Grant Nelson,White,Photo,visual,Male,Uber,"Lincolnwood, IL",Convicted/Sentenced,Passenger,False,True
-g-2017-6,2017,Mourice Foster,Black,Photo,visual,Male,Lyft,"Cleveland, OH",Unsolved,Unknown (unsolved),False,True
-g-2018-1,2018,DaJuan Jenkins,Black,Photo,visual,Male,Uber,"Detroit, MI",Unsolved,Unknown (unsolved),False,True
-g-2018-2,2018,Filip Kirilov,White,Photo,visual,Male,Uber,"Okaloosa Island, FL",Convicted/Sentenced,Passenger,False,True
-g-2019-1,2019,Kristina Howato,,Undetermined (searched; no photo or record),none,Female,Lyft,"Tempe, AZ",Convicted/Sentenced,Passenger,False,True
-g-2019-2,2019,David Rosenthal,White,Photo,visual,Male,Uber,"Denver, CO",Charged,Not documented,False,True
-g-2019-3,2019,Ganiou Gandonou,Black,Photo,visual,Male,Uber,"Bronx, NY",Charged,Stranger,False,True
-g-2019-4,2019,Harold Treadwell III,White,Photo,visual,Male,Lyft,"Phoenix, AZ",Unsolved,Unknown (unsolved),False,True
-g-2019-5,2019,Beaudouin Tchakounte,Black,Photo,visual,Male,Uber,"Oxon Hill, MD",Convicted/Sentenced,Passenger,False,True
-g-2019-6,2019,Lamar Jerome French,Black,Photo,visual,Male,Lyft,"Hampton, VA",Charged,Passenger,False,True
-g-2019-7,2019,Petra Rhoden,Black,Photo,visual,Female,DoorDash,"Paterson, NJ",Convicted/Sentenced,Not documented,False,True
-g-2019-8,2019,Yusuf Ozgur,Asian/Other,Photo,visual,Male,DoorDash,"Manassas, VA",Convicted/Sentenced,Stranger,False,True
-g-2020-1,2020,Franklin L. Farrens,White,Photo,visual,Male,Lyft,"Chesterfield County, VA",Charged,Passenger,False,True
-g-2020-2,2020,Dhulfiqar Kareem Mseer,Asian/Other,Photo,visual,Male,Uber,"Portland, OR",Charged,Stranger,False,True
-g-2020-3,2020,"Cherno ""Che"" Ceesay",Black,Original study,legacy_unrecorded,Male,Uber,"Issaquah, WA",Convicted/Sentenced,Passenger,False,True
-g-2020-4,2020,Roderick Thomas,Black,Photo,visual,Male,Postmates,"Los Angeles, CA",Unsolved,Unknown (unsolved),False,True
-g-2020-5,2020,Kelley Marie Smith,Black,Photo,visual,Female,Uber Eats,"Portland, OR",Unsolved,Unknown (unsolved),False,True
-g-2021-1,2021,Joshua Miller,White,Photo,visual,Male,Uber,"Dallas, TX",Charged,Passenger,False,True
-g-2021-2,2021,Yousef Al-Gabri,Asian/Other,Photo,visual,Male,Uber,"Detroit, MI",Convicted/Sentenced,Passenger,False,True
-g-2021-3,2021,Timothy Perkins,Black,Photo,visual,Male,Uber,"Detroit, MI",Convicted/Sentenced,Passenger,False,True
-g-2021-4,2021,Ryan Munsie,White,Photo,visual,Female,Uber Eats,"Haltom City, TX",Convicted/Sentenced,Stranger,False,True
-g-2021-5,2021,Kristofer Metzger,White,Photo,visual,Male,Uber,"Pittsburgh, PA",Charged,Not documented,False,True
-g-2021-6,2021,Lynn Murray,White,Photo,visual,Female,Instacart,"Boulder, CO",Convicted/Sentenced,Stranger,False,True
-g-2021-7,2021,Mohammad Anwar,Asian/Other,Photo,visual,Male,Uber Eats,"Washington, DC",Convicted/Sentenced,Passenger,False,True
-g-2021-8,2021,Javier Ramos,Hispanic,Photo,visual,Male,Uber,"Chicago, IL",Charged,Passenger,False,True
-g-2021-9,2021,Francisco Villalva Vitinio,Hispanic,Original study,legacy_unrecorded,Male,DoorDash,"New York, NY",Convicted/Sentenced,Stranger,False,True
-g-2021-10,2021,Ahmed Badal,Black,Record,documented,Male,Lyft,"Minneapolis, MN",Unsolved,Unknown (unsolved),False,True
-g-2021-11,2021,Elijah Newman,Black,Photo,visual,Male,Lyft,"St. Louis, MO",Convicted/Sentenced,Passenger,False,True
-g-2021-12,2021,Robert Douglas Berry,White,Photo,visual,Male,Lyft,"Mesquite, TX",Unsolved,Unknown (unsolved),False,True
-g-2021-13,2021,Mingzhi Zhu,Asian/Other,Original study,legacy_unrecorded,Male,Uber,"Los Angeles, CA",Closed (suspect deceased),Stranger,False,True
-g-2021-14,2021,Kristopher Roukey,White,Photo,visual,Male,Lyft,"Akron, OH",Convicted/Sentenced,Passenger,False,True
-g-2021-15,2021,Joseph Schelstraete,White,Photo,visual,Male,Uber,"Cicero, IL",Charged,Passenger,False,True
-g-2021-16,2021,Stacy Corley Jr.,Black,Photo,visual,Male,DoorDash,"Walnut Creek, CA",Convicted/Sentenced,Stranger,False,True
-g-2021-17,2021,Ceyonne Riley,Black,Photo,visual,Female,Uber Eats,"New Orleans, LA",Unsolved,Unknown (unsolved),False,True
-g-2021-18,2021,Raquel Spohn Wehber,Hispanic,Photo,visual,Female,Uber,"National City, CA",Charged,Passenger,False,True
-g-2021-20,2021,Noel Njoku,Black,Original study,legacy_unrecorded,Male,DoorDash,"Mitchellville, MD",Charged,Stranger,False,True
-g-2021-21,2021,Isabella Lewis,White,Photo,visual,Female,Lyft,"Garland, TX",Closed (suspect deceased),Passenger,False,True
-g-2021-22,2021,Kuldip Singh,Asian/Other,Photo,visual,Male,Uber,"New York, NY",Charged,Stranger,False,True
-g-2021-23,2021,Hamzah Faraj,Asian/Other,Photo,visual,Male,DoorDash,"Fort Worth, TX",Unsolved,Unknown (unsolved),False,True
-g-2021-24,2021,Glynon Nelson,Black,Photo,visual,Male,Lyft,"Gary, IN",Charged,Passenger,False,True
-g-2021-25,2021,Terrell Harris,Black,Photo,visual,Male,Lyft,"Philadelphia, PA",Unsolved,Unknown (unsolved),False,True
-g-2021-26,2021,Salauddin Bablu,Asian/Other,Photo,visual,Male,Grubhub,"New York, NY",Convicted/Sentenced,Stranger,False,True
-g-2021-27,2021,Ahmad Fawad Yusufi,Asian/Other,Original study,legacy_unrecorded,Male,Uber,"San Francisco, CA",Convicted/Sentenced,Stranger,False,True
-g-2022-1,2022,Christina Raymond,White,Photo,visual,Female,DoorDash,"Milpitas, CA",Charged,Ex-partner,False,True
-g-2022-2,2022,Kristian Philpotts,Black,Photo,visual,Male,Lyft,"Urbana, IL",Convicted/Sentenced,Passenger,False,True
-g-2022-3,2022,Cheryl McCormack,White,Record,documented,Female,DoorDash,"Baltimore, MD",Charged,Stranger,False,True
-g-2022-4,2022,Brandon Cooper,Black,Photo,visual,Male,Lyft,"Dayton, OH",Convicted/Sentenced,Passenger,False,True
-g-2022-5,2022,Justin Krumbah,White,Photo,visual,Male,Instacart,"Richland, WA",Closed (suspect deceased),Stranger,False,True
-g-2022-6,2022,Christina Spicuzza,White,Record,documented,Female,Uber,"Monroeville, PA",Convicted/Sentenced,Passenger,False,True
-g-2022-7,2022,Abdul Rauf Khan,Asian/Other,Photo,visual,Male,Lyft,"Temple Hills, MD",Charged,Passenger,False,True
-g-2022-8,2022,Manuel Francis-Hernandez,Black,Photo,visual,Male,Uber,"Long Beach, NY",Convicted/Sentenced,Not documented,False,True
-g-2022-9,2022,Shaani Mohamed,Black,Photo,visual,Male,Uber,"Portland, OR",Charged,Not documented,False,True
-g-2022-10,2022,Andrew Satavu,Asian/Other,Record,documented,Male,DoorDash,"Modesto, CA",Convicted/Sentenced,Stranger,False,True
-g-2022-11,2022,Paris-James Smith,Black,Photo,visual,Male,GoPuff,"DeKalb County, GA",Unsolved,Unknown (unsolved),False,True
-g-2022-12,2022,Dushaundra Lee Ward,Black,Record,documented,Female,Lyft,"Memphis, TN",Unsolved,Unknown (unsolved),False,True
-g-2022-13,2022,Pamela Rae Martinez,Hispanic,Photo,visual,Female,Uber Eats,"Glendale, AZ",Charged,Stranger,False,True
-g-2022-14,2022,Raymond Hill III,Black,Photo,visual,Male,DoorDash,"New Orleans, LA",Unsolved,Unknown (unsolved),False,True
-g-2022-15,2022,Anthony Garland,White,Original study,legacy_unrecorded,Male,Lyft,"Indianapolis, IN",Convicted/Sentenced,Passenger,False,True
-g-2022-16,2022,Da'Jour Russ,Black,Photo,visual,Male,DoorDash,"Detroit, MI",Unsolved,Unknown (unsolved),False,True
-g-2022-17,2022,Roberto Peigne,Black,Photo,visual,Male,DoorDash,"Port St. Lucie, FL",Unsolved,Unknown (unsolved),False,True
-g-2022-18,2022,"Kon ""Patrick"" Woo Fung",Asian/Other,Photo,visual,Male,Rideshare/delivery (unspecified),"Oakland, CA",Charged,Stranger,False,True
-g-2022-19,2022,Nesredin Esleiman,Asian/Other,Photo,visual,Male,Uber,"Temple Hills, MD",Charged,Stranger,False,True
-g-2022-20,2022,Crayton Saffolds,Black,Author call,author_judgment,,Uber,"Chicago, IL",Unsolved,Unknown (unsolved),False,True
-g-2022-21,2022,Althia Smith Jenkins-Perry,White,Photo,visual,Female,Uber,"Bryan, TX",Convicted/Sentenced,Passenger,False,True
-g-2022-22,2022,Harriett Childers,Black,Photo,visual,Female,Uber,"East St. Louis, IL",Charged,Stranger,False,True
-g-2022-23,2022,Mohamed Kediye,Black,Photo,visual,Male,Lyft,"Seattle, WA",Unsolved,Unknown (unsolved),False,True
-g-2022-24,2022,Dina May-Terrell,Black,Photo,visual,Female,Lyft,"Pontiac, MI",Convicted/Sentenced,Passenger,False,True
-g-2022-25,2022,Richard Skelskey,White,Photo,visual,Male,Lyft,"Memphis, TN",Convicted/Sentenced,Passenger,False,True
-g-2022-26,2022,Corey Antwan Price,Black,Original study,legacy_unrecorded,Male,DoorDash,"Jackson, MS",Convicted/Sentenced,Stranger,False,True
-g-2022-27,2022,Caron Arterberry,Black,Record,documented,Male,Uber,"Chicago, IL",Unsolved,Unknown (unsolved),False,True
-g-2022-28,2022,Lauren Allen (Sawyer-Allen),Black,Photo,visual,Female,Lyft,"Lithonia, GA",Closed (suspect deceased),Ex-partner,False,True
-g-2022-29,2022,James Barron,Black,Photo,visual,Male,DoorDash,"Jacksonville, FL",Unsolved,Unknown (unsolved),False,True
-g-2022-30,2022,Yolanda Dillion,Black,Record,documented,Female,Uber,"Harvey, LA",Closed (suspect deceased),Passenger,False,True
-g-2022-31,2022,Ainzargul Totakhil,Asian/Other,Photo,visual,Male,Uber,"Durham, NC",Unsolved,Unknown (unsolved),False,True
-g-2023-1,2023,Mahamadou Kabba,Black,Record,documented,Male,Uber,"Renton, WA",Charged,Stranger,False,True
-g-2023-2,2023,Christopher Beushausen,White,Photo,visual,Male,Uber,"Indianapolis, IN",Unsolved,Unknown (unsolved),False,True
-g-2023-3,2023,Stephen Lee Green,White,Original study,legacy_unrecorded,Male,Amazon Flex,"Temple Hills, MD",Unsolved,Unknown (unsolved),False,True
-g-2023-4,2023,Gary Levin,White,Photo,visual,Male,Lyft,"Palm Beach Gardens, FL",Charged,Passenger,False,True
-g-2023-5,2023,Andrew Stiller,White,Photo,visual,Male,Uber,"New Orleans, LA",Convicted/Sentenced,Stranger,False,True
-g-2023-6,2023,Milton Pillacela Ayora,Hispanic,Record,documented,Male,Lyft,"Chicago, IL",Unsolved,Unknown (unsolved),False,True
-g-2023-7,2023,Brice Djembissi,Black,Original study,legacy_unrecorded,Male,Uber,"Washington, DC",Charged,Stranger,False,True
-g-2023-8,2023,Marvin Enrique Bardales Valle,Hispanic,Photo,visual,Male,Lyft,"New Orleans, LA",Convicted/Sentenced,Passenger,False,True
-g-2023-9,2023,Robert Diaz,Hispanic,Original study,legacy_unrecorded,Male,Uber,"San Antonio, TX",Convicted/Sentenced,Passenger,False,True
-g-2023-11,2023,Aaron Orozco,Hispanic,Record,documented,Male,Uber,"Lynwood, CA",Charged,Passenger,False,True
-g-2023-12,2023,Randall William Cooke,White,Photo,visual,Male,Uber Eats,"Holiday, FL",Charged,Customer (delivery),False,True
-g-2023-13,2023,Jaevierre Greer,Black,Photo,visual,Male,DoorDash,"Akron, OH",Convicted/Sentenced,Stranger,False,True
-g-2023-14,2023,Amaree'ya Henderson,Black,Photo,visual,Female,DoorDash,"Kansas City, KS",Police-Involved,Known dispute,True,False
-g-2023-15,2023,Cameron Cole,White,Record,documented,Male,DoorDash,"Prince George County, VA",Unsolved,Unknown (unsolved),False,True
-g-2023-16,2023,Hector Torres,Hispanic,Original study,legacy_unrecorded,Male,Uber,"Houston, TX",Charged,Passenger,False,True
-g-2023-17,2023,Michael Almonte,Hispanic,Record,documented,Male,Uber,"Philadelphia, PA",Unsolved,Unknown (unsolved),False,True
-g-2023-18,2023,Daniel Piedra Garcia,Hispanic,Record,documented,Male,Uber,"El Paso, TX",Closed (suspect deceased),Passenger,False,True
-g-2023-19,2023,Juan Miguel Chan,Hispanic,Photo,visual,Male,Uber,"Inglewood, CA",Unsolved,Unknown (unsolved),False,True
-g-2023-21,2023,Kirk Nims,Black,Original study,legacy_unrecorded,Male,Uber,"Petersburg, VA",Charged,Not documented,False,True
-g-2023-22,2023,Amare Geda,Black,Photo,visual,Male,Uber,"Seattle, WA",Convicted/Sentenced,Stranger,False,True
-g-2023-23,2023,Goitom Hagos,Black,Photo,visual,Male,Uber,"Denver, CO",Charged,Stranger,False,True
-g-2023-24,2023,Myron Snyder,Black,Original study,legacy_unrecorded,Male,DoorDash,"Cedar Rapids, IA",Convicted/Sentenced,Known dispute,False,True
-g-2023-25,2023,Bryant Scott Grund,White,Photo,visual,Male,Uber,"Jacksonville, FL",Convicted/Sentenced,Stranger,False,True
-g-2023-26,2023,Mohammed Al Hijoj,Asian/Other,Original study,legacy_unrecorded,Male,Uber,"Chicago, IL",Charged,Passenger,False,True
-g-2023-27,2023,Quincy McMillon,Black,Photo,visual,Male,Lyft,"Phoenix, AZ",Unsolved,Unknown (unsolved),False,True
-g-2023-28,2023,Adriana Arocha-Duque,Hispanic,Original study,legacy_unrecorded,Female,Lyft,"Chicago, IL",Charged,Stranger,False,True
-g-2024-1,2024,Abdikadir Gedi Shariif,Black,Original study,legacy_unrecorded,Male,Uber,"Edmonds, WA",Convicted/Sentenced,Stranger,False,True
-g-2024-2,2024,Sergey Kubay,White,Original study,legacy_unrecorded,Male,Amazon Flex,"Renton, WA",Unsolved,Unknown (unsolved),False,True
-g-2024-3,2024,Rasheek Abdullah,,Undetermined (searched; no photo or record),none,Male,Uber Eats,"Washington, DC",Convicted/Sentenced,Stranger,False,True
-g-2024-4,2024,Joseph Anthony Soto Jr.,Hispanic,Photo,visual,Male,DoorDash,"Sacramento, CA",Convicted/Sentenced,Stranger,False,True
-g-2024-5,2024,Lo-Letha Hall,Black,Photo,visual,Female,Uber,"South Charleston, OH",Convicted/Sentenced,Stranger,False,True
-g-2024-6,2024,Mohammad Haddad-Farshi,Asian/Other,Photo,visual,Male,Lyft,"Dallas, TX",Charged,Passenger,False,True
-g-2024-7,2024,Cequan James,Black,Photo,visual,Male,DoorDash,"DeKalb County, GA",Charged,Stranger,False,True
-g-2024-8,2024,Reginald Folks Jr.,Black,Original study,legacy_unrecorded,Male,Lyft,"Union City, GA",Convicted/Sentenced,Passenger,False,True
-g-2024-9,2024,Shawali Sherali,Asian/Other,Original study,legacy_unrecorded,Male,Lyft,"Fort Worth, TX",Charged,Passenger,False,True
-g-2024-10,2024,Joshua Kelvin,White,Photo,visual,Male,Uber,"Portland, OR",Charged,Stranger,False,True
-g-2024-11,2024,Alejandro Linares,Hispanic,Original study,legacy_unrecorded,Male,Uber Eats,"Opa-locka, FL",Charged,Stranger,False,True
-g-2024-12,2024,Naveed Afzal,Asian/Other,Photo,visual,Male,Rideshare/delivery (unspecified),"Brooklyn, NY",Unsolved,Unknown (unsolved),False,True
-g-2024-13,2024,Mursal Jama,Black,Original study,legacy_unrecorded,Male,Uber,"Omaha, NE",Convicted/Sentenced,Stranger,False,True
-g-2024-14,2024,"Robert ""Bobby"" Renteria",Hispanic,Photo,visual,Male,Uber,"San Antonio, TX",Unsolved,Unknown (unsolved),False,True
-g-2024-15,2024,Carlos Leiva,Hispanic,Photo,visual,Male,Lyft,"Charlotte, NC",Charged,Not documented,False,True
-g-2024-16,2024,Michael Wilmot,White,Photo,visual,Male,Uber,"Las Vegas, NV",No Charges (Review),Stranger,False,True
-g-2024-17,2024,Rafeeq Badee,Black,Photo,visual,Male,Lyft,"DeKalb County, GA",Charged,Stranger,False,True
-g-2024-18,2024,Samori Husamudeen,Black,Photo,visual,Male,DoorDash,"Fayetteville, NC",Charged,Stranger,False,True
-g-2025-1,2025,"Oluwatosin ""Tosin"" Adetula",Black,Photo,visual,Male,Lyft,"Cottage City, MD",Charged,Passenger,False,True
-g-2025-2,2025,Emmanuel Gbedee Sr.,Black,Original study,legacy_unrecorded,Male,Uber,"Benson (Johnston County), NC",Charged,Passenger,False,True
-g-2025-3,2025,Samuel Webster,,Undetermined (searched; no photo or record),none,Male,Veyo (medical rideshare),"Phoenix, AZ",Charged,Passenger,False,True
-g-2025-4,2025,"Samuel ""Sammy"" Jackson",Black,Photo,visual,Male,Uber,"Atlanta, GA",Charged,Passenger,False,True
-g-2025-5,2025,Jimmy Allen Ramey,White,Photo,visual,Male,DoorDash,"Anderson County, SC",Charged,Not documented,False,True
-g-2025-6,2025,Philip Kim,Asian/Other,Photo,visual,Male,Lyft,"Houston, TX",Charged,Passenger,False,True
-g-2025-7,2025,Mamadou Diallo,Black,Photo,visual,Male,DoorDash,"Ferndale, MI",Convicted/Sentenced,Stranger,False,True
-g-2025-8,2025,Aaron Giles,Black,Original study,legacy_unrecorded,Male,GoPuff,"Tallahassee, FL",Charged,Stranger,False,True
-g-2025-9,2025,Olatunji W. Bolaji,Black,Record,documented,Male,Uber,"Philadelphia, PA",Unsolved,Unknown (unsolved),False,True
-g-2025-10,2025,Tahirou Diallo,Black,Photo,visual,Male,Uber,"North Richland Hills, TX",Charged,Passenger,False,True
-g-2025-11,2025,William Robert McArthur,White,Photo,visual,Male,Lyft,"Panama City Beach, FL",Charged,Passenger,False,True
-g-2025-12,2025,ZyDerec Massey,Black,Photo,visual,Male,DoorDash,"Rock Hill, SC",Charged,Stranger,False,True
-g-2025-15,2025,"Joseph ""Joey"" Andrus",Hispanic,Photo,visual,Male,Uber,"Albuquerque, NM",Charged,Passenger,False,True
-g-2025-16,2025,"Quoc ""Jake"" Hieu Nguyen",Asian/Other,Photo,visual,Male,Uber,"Harris County, TX",Charged,Passenger,False,True
-g-2025-17,2025,John Lucas,White,Photo,visual,Male,Lyft,"Guadalupe, AZ",Charged,Passenger,False,True
-g-2025-18,2025,"Miguel ""Nation"" Stemley",Black,Photo,visual,Male,Uber,"New Orleans, LA",Charged,Stranger,False,True
-g-2025-19,2025,LaWanna J. Lewis,White,Photo,visual,Female,Lyft,"Westlake, LA",Charged,Passenger,False,True
-g-2025-20,2025,Shabazz Mesiah Grant,Black,Photo,visual,Male,Lyft,"Charlotte, NC",Closed (suspect deceased),Stranger,False,True
-g-2025-21,2025,Jeremy Campbell,White,Photo,visual,Male,Uber,"El Paso County, CO",Charged,Passenger,False,True
-g-2025-22,2025,Frederick Kiprono,Black,Photo,visual,Male,Uber,"Shreveport, LA",Charged,Stranger,False,True
-gn-2017-49,2017,Adekunte M. Adaranijo,Black,Photo,visual,Male,Lyft,"Maywood, IL",Charged,Not documented,False,True
-gn-2018-0,2018,Henry Miller,White,Photo,visual,Male,Uber,"Boston, MA",Unsolved,Known dispute,False,True
-gn-2018-52,2018,Raymond Holloway-Creighton,Black,Photo,visual,Male,Grubhub,"Boston, MA",Convicted/Sentenced,Not documented,False,True
-gp-2019-8,2019,Roger Williams,White,Photo,visual,Male,Lyft,"New Castle County, DE",Acquitted (unresolved),Unknown (unsolved),False,True
-gn-2019-4,2019,Dwayne Roberts,Black,Record,documented,Male,Rideshare/delivery (unspecified),"Decatur, GA",Convicted/Sentenced,Not documented,False,True
-gn-2020-6,2020,Andrew D. Ameer,Asian/Other,Photo,visual,Male,Lyft,"St. Louis, MO",Charged,Passenger,False,True
-gn-2020-7,2020,Timothy Paul Allen,White,Photo,visual,Male,Amazon Flex,"Dallas, TX",Convicted/Sentenced,Stranger,False,True
-gp-2023-26,2023,Tramon Thomas,Black,Photo,visual,Male,Uber Eats,"Chicago, IL",Unsolved,Unknown (unsolved),False,True
-gn-2023-9,2023,Julia Holland,White,Photo,visual,Female,Uber,"Canton, Haywood County, NC",Convicted/Sentenced,Passenger,False,True
-gn-2023-10,2023,Mohamadou Thera (also spelled Mohamed Thera),Black,News report,documented,Male,Uber,"Plano, TX",Charged,Passenger,False,True
-gn-2023-11,2023,Shawn Joseph,Black,Photo,visual,Male,DoorDash,"Round Rock, TX; body found in rural Milam County, TX",Convicted/Sentenced,Not documented,False,True
-gn-2024-13,2024,Faneal Tesfit,Black,Photo,visual,Male,Uber,"Dallas, TX",Charged,Not documented,False,True
-gn-2024-56,2024,Adesina David Aderinwoye,Black,Photo,visual,Male,GoPuff,"Indianapolis, IN",Unsolved,Not documented,False,True
-gn-2024-57,2024,Steven Keliiaa,White,Photo,visual,Male,Uber Eats,"Albuquerque, NM",Convicted/Sentenced,Not documented,False,True
-gn-2025-16,2025,Altmann Mnyuku,Black,Photo,visual,Male,Uber,"Chicago, IL",Charged,Passenger,False,True
-gr-2021-1,2021,Hurts Presendieu,,Undetermined (searched; no photo or record),none,Male,Lyft,"Indianapolis, IN",Convicted/Sentenced,Passenger,False,True
-gr-2021-2,2021,Robbie Smythe Jr.,Black,Photo,visual,Male,Lyft,"Cincinnati, OH",Charged,Passenger,False,True
-gr-2021-3,2021,Garcia Danielle Gaddis,Black,Photo,visual,Male,Uber,"Sandy Springs, GA",Convicted/Sentenced,Not documented,False,True
-gr-2022-1,2022,Ibrahim Alkhateeb,,Undetermined (searched; no photo or record),none,Male,Lyft,"Fort Worth, TX",Charged,Passenger,False,True
-gr-2023-1,2023,Nasrat Ahmad Yar,Asian/Other,Photo,visual,Male,Lyft,"Washington, DC",Charged,Passenger,False,True
-g-2018-3,2018,Michael Wallace,,,,,,,"POSSIBLE, not counted: no charge and no homicide ruling",,False,False
-gn-2017-50,2017,Randolph Tolk,,,,,,,"POSSIBLE, not counted: charge dropped; DA said death was medical",,False,False
-gn-2021-8,2021,Qiaoming Shao,,,,,,,"POSSIBLE, not counted: no app named",,False,False
-gn-2024-14,2024,Brandon Dean,,,,,,,"POSSIBLE, not counted: no app named",,False,False
-gn-2018-51,2018,Aaron Wiley,,,,,,,"POSSIBLE, not counted: no app named; unsolved",,False,False
-gn-2016-1,2016,Delano Deonte Jackson,,,,,,,"POSSIBLE, not counted: UNVERIFIED app duty: drove for Uber, but no source says he was working when killed",,False,False
-gn-2023-12,2023,Hamza Jamil Zaki Abo Halaoh,,,,,,,"POSSIBLE, not counted: no app named: employer described a company ""like Uber""",,False,False
-gn-2024-15,2024,"Christian ""Chris"" Estrada-Petersen",,,,,,,"POSSIBLE, not counted: family did not know if he was working for Uber when shot",,False,False
+case_id,year,victim,victim_race,victim_race_source,victim_race_tier,victim_sex,platform,city,status,relationship,police_involved,counted_as_homicide,source_urls
+g-2016-1,2016,Modou Diagne,Black,Photo,visual,Male,Uber,"Detroit, MI",Convicted/Sentenced,Passenger,False,True,https://www.clickondetroit.com/news/2017/03/09/detroit-man-sentenced-to-life-in-prison-for-deadly-shooting-of-uber-driver/
+g-2016-2,2016,Andre Jamal Bayyan,Black,Photo,visual,Male,Uber,"Inglewood, CA",Unsolved,Unknown (unsolved),False,True,https://ktla.com/news/local-news/uber-driver-fatally-shot-while-on-duty-in-inglewood-shooter-at-large/
+g-2016-3,2016,"Shahriar ""Shah"" Zolfaghari",Asian/Other,Original study,legacy_unrecorded,Male,Lyft,"Atlanta, GA",Charged,Not documented,False,True,https://www.ajc.com/news/2025/07/in-2016-a-lyft-driver-and-young-dad-was-killed-a-suspect-is-now-in-custody/
+g-2017-2,2017,"Michael ""Mike"" Mecklenburg",White,Photo,visual,Male,Uber,"Greenville County, SC",Acquitted (unresolved),Unknown (unsolved),False,True,https://www.foxcarolina.com/2022/11/03/trial-suspect-accused-killing-uber-driver-begins/
+g-2017-3,2017,Marlo Johnis Medina-Chevez,Hispanic,Photo,visual,Male,Uber,"Charlotte, NC",Convicted/Sentenced,Passenger,False,True,https://www.wcnc.com/article/news/crime/murder-uber-2017-court-trial/275-359371f7-2cd9-4fdf-8980-827ae84527eb
+g-2017-4,2017,Name not publicly released,,Undetermined (searched; no photo or record),none,Male,Uber,"Miami, FL",Convicted/Sentenced,Stranger,False,True,https://www.justice.gov/usao-sdfl/pr/miami-man-found-guilty-murdering-uber-driver-during-carjacking
+g-2017-5,2017,Grant Nelson,White,Photo,visual,Male,Uber,"Lincolnwood, IL",Convicted/Sentenced,Passenger,False,True,https://patch.com/illinois/skokie/eliza-wasni-pleads-guilty-murder-uber-driver-grant-nelson
+g-2017-6,2017,Mourice Foster,Black,Photo,visual,Male,Lyft,"Cleveland, OH",Unsolved,Unknown (unsolved),False,True,http://www.cleveland19.com/story/36243131/cleveland-police-identify-lyft-driver-shot-and-killed/
+g-2018-1,2018,DaJuan Jenkins,Black,Photo,visual,Male,Uber,"Detroit, MI",Unsolved,Unknown (unsolved),False,True,https://www.clickondetroit.com/news/2018/06/14/detroit-police-search-for-gunman-who-fatally-shot-24-year-old-uber-driver/
+g-2018-2,2018,Filip Kirilov,White,Photo,visual,Male,Uber,"Okaloosa Island, FL",Convicted/Sentenced,Passenger,False,True,https://osa1.org/2026/03/31/timothy-anderson-sentenced-to-life-in-prison-for-first-degree-premeditated-murder-assistant-state-attorney-robert-little/
+g-2019-1,2019,Kristina Howato,,Undetermined (searched; no photo or record),none,Female,Lyft,"Tempe, AZ",Convicted/Sentenced,Passenger,False,True,https://www.azfamily.com/2022/09/23/man-who-killed-pregnant-lyft-driver-tempe-sentenced/
+g-2019-2,2019,David Rosenthal,White,Photo,visual,Male,Uber,"Denver, CO",Charged,Not documented,False,True,https://www.denver7.com/news/local-news/denver-man-killed-in-carjacking-was-driving-for-uber-at-the-time-of-the-shooting
+g-2019-3,2019,Ganiou Gandonou,Black,Photo,visual,Male,Uber,"Bronx, NY",Charged,Stranger,False,True,https://bronx.news12.com/police-man-charged-in-fatal-stabbing-of-uber-driver-41049126
+g-2019-4,2019,Harold Treadwell III,White,Photo,visual,Male,Lyft,"Phoenix, AZ",Unsolved,Unknown (unsolved),False,True,https://www.abc15.com/news/region-phoenix-metro/south-phoenix/valley-grandfather-shot-killed-while-driving-for-lyft-no-arrests-made
+g-2019-5,2019,Beaudouin Tchakounte,Black,Photo,visual,Male,Uber,"Oxon Hill, MD",Convicted/Sentenced,Passenger,False,True,https://wjla.com/news/local/md-pleads-guilty-50-years-killing-uber-driver-passenger-pcp
+g-2019-6,2019,Lamar Jerome French,Black,Photo,visual,Male,Lyft,"Hampton, VA",Charged,Passenger,False,True,https://www.wtkr.com/2019/09/17/suspect-arrested-in-connection-with-newport-news-and-hampton-homicides
+g-2019-7,2019,Petra Rhoden,Black,Photo,visual,Female,DoorDash,"Paterson, NJ",Convicted/Sentenced,Not documented,False,True,https://patersontimes.com/2022/10/19/east-orange-man-gets-10-year-prison-sentence-in-paterson-murder-of-doordash-driver/
+g-2019-8,2019,Yusuf Ozgur,Asian/Other,Photo,visual,Male,DoorDash,"Manassas, VA",Convicted/Sentenced,Stranger,False,True,https://www.wusa9.com/article/news/local/virginia/man-to-spend-17-years-prison-deadly-robbery-manassas-dennys-could-spend-rest-his-life-behind-bars-he-breaks-the-law-again/65-cb5185b0-13e6-44d0-bbcb-36c68833ba2d
+g-2020-1,2020,Franklin L. Farrens,White,Photo,visual,Male,Lyft,"Chesterfield County, VA",Charged,Passenger,False,True,https://www.wric.com/news/crime/teen-charged-with-murder-in-shooting-death-of-78-year-old-chesterfield-man/
+g-2020-2,2020,Dhulfiqar Kareem Mseer,Asian/Other,Photo,visual,Male,Uber,"Portland, OR",Charged,Stranger,False,True,https://www.justice.gov/usao-or/pr/four-hoover-criminal-gang-members-indicted-murder-aid-racketeering
+g-2020-3,2020,"Cherno ""Che"" Ceesay",Black,Original study,legacy_unrecorded,Male,Uber,"Issaquah, WA",Convicted/Sentenced,Passenger,False,True,https://www.king5.com/article/news/crime/suspect-issaquah-uber-driver-murder-sentenced/281-0fe87304-5bdd-4c22-ad71-28ba29816e14
+g-2020-4,2020,Roderick Thomas,Black,Photo,visual,Male,Postmates,"Los Angeles, CA",Unsolved,Unknown (unsolved),False,True,https://abc7.com/postmates-shooting-driver-lapd/10066273/
+g-2020-5,2020,Kelley Marie Smith,Black,Photo,visual,Female,Uber Eats,"Portland, OR",Unsolved,Unknown (unsolved),False,True,https://www.fbi.gov/wanted/seeking-info/kelley-marie-smith
+g-2021-1,2021,Joshua Miller,White,Photo,visual,Male,Uber,"Dallas, TX",Charged,Passenger,False,True,http://www.irvingweekly.com/s/10801/Man-Accused-of-Brutal-2021-Uber-Driver-Murder-Found-Competent-Back-in-Dallas-County-Jail.php
+g-2021-2,2021,Yousef Al-Gabri,Asian/Other,Photo,visual,Male,Uber,"Detroit, MI",Convicted/Sentenced,Passenger,False,True,https://storage.courtlistener.com/pdf/2026/06/24/people_of_michigan_v._carlous_skipper_jr.pdf
+g-2021-3,2021,Timothy Perkins,Black,Photo,visual,Male,Uber,"Detroit, MI",Convicted/Sentenced,Passenger,False,True,https://www.clickondetroit.com/news/local/2022/05/06/teens-accused-of-murdering-uber-driver-in-southwest-detroit-face-sentencing/
+g-2021-4,2021,Ryan Munsie,White,Photo,visual,Female,Uber Eats,"Haltom City, TX",Convicted/Sentenced,Stranger,False,True,https://www.nbcdfw.com/news/local/convicted-17-year-old-sentenced-in-death-of-mother-working-as-uber-eats-driver/3217293/
+g-2021-5,2021,Kristofer Metzger,White,Photo,visual,Male,Uber,"Pittsburgh, PA",Charged,Not documented,False,True,https://triblive.com/local/2-suspects-arrested-in-sheraden-killing/
+g-2021-6,2021,Lynn Murray,White,Photo,visual,Female,Instacart,"Boulder, CO",Convicted/Sentenced,Stranger,False,True,https://coloradosun.com/2024/09/23/boulder-king-soopers-shooter-verdict/
+g-2021-7,2021,Mohammad Anwar,Asian/Other,Photo,visual,Male,Uber Eats,"Washington, DC",Convicted/Sentenced,Passenger,False,True,https://www.nbcwashington.com/news/local/teen-sentenced-to-juvenile-detention-for-dc-carjacking-that-killed-uber-eats-driver/2721236/
+g-2021-8,2021,Javier Ramos,Hispanic,Photo,visual,Male,Uber,"Chicago, IL",Charged,Passenger,False,True,https://cwbchicago.com/2025/06/feds-may-pursue-death-penalty-uber-driver-murder-carjacking-case.html
+g-2021-9,2021,Francisco Villalva Vitinio,Hispanic,Original study,legacy_unrecorded,Male,DoorDash,"New York, NY",Convicted/Sentenced,Stranger,False,True,https://gothamist.com/news/queens-man-sentenced-to-41-years-to-life-in-2021-delivery-cyclist-killing
+g-2021-10,2021,Ahmed Badal,Black,Record,documented,Male,Lyft,"Minneapolis, MN",Unsolved,Unknown (unsolved),False,True,https://sahanjournal.com/news/minneapolis-somali-ride-share-driver-killed/
+g-2021-11,2021,Elijah Newman,Black,Photo,visual,Male,Lyft,"St. Louis, MO",Convicted/Sentenced,Passenger,False,True,https://www.firstalert4.com/2023/10/02/man-sentenced-25-years-prison-killing-lyft-driver-north-st-louis/?outputType=amp
+g-2021-12,2021,Robert Douglas Berry,White,Photo,visual,Male,Lyft,"Mesquite, TX",Unsolved,Unknown (unsolved),False,True,https://www.cbsnews.com/texas/news/mesquite-police-lyft-driver-target-deadly-shooting
+g-2021-13,2021,Mingzhi Zhu,Asian/Other,Original study,legacy_unrecorded,Male,Uber,"Los Angeles, CA",Closed (suspect deceased),Stranger,False,True,https://www.nbclosangeles.com/news/local/uber-driver-la-drive-by-shootings-mingzhi-zhu-south-pasadena-downtown-los-angeles-lapd/2583491/
+g-2021-14,2021,Kristopher Roukey,White,Photo,visual,Male,Lyft,"Akron, OH",Convicted/Sentenced,Passenger,False,True,https://fox8.com/news/akron-man-sentenced-to-prison-for-killing-lyft-driver/
+g-2021-15,2021,Joseph Schelstraete,White,Photo,visual,Male,Uber,"Cicero, IL",Charged,Passenger,False,True,https://abc7chicago.com/cicero-crime-police-rideshare-uber/10727119/
+g-2021-16,2021,Stacy Corley Jr.,Black,Photo,visual,Male,DoorDash,"Walnut Creek, CA",Convicted/Sentenced,Stranger,False,True,https://ground.news/article/martinez-man-agrees-to-31-year-prison-sentence-for-killing-doordash-driver-in-road-rage-shooting
+g-2021-17,2021,Ceyonne Riley,Black,Photo,visual,Female,Uber Eats,"New Orleans, LA",Unsolved,Unknown (unsolved),False,True,https://www.nola.com/news/crime_police/article_1b395018-df6c-11eb-8c7a-935bc193c2d3.html
+g-2021-18,2021,Raquel Spohn Wehber,Hispanic,Photo,visual,Female,Uber,"National City, CA",Charged,Passenger,False,True,https://www.nbcsandiego.com/news/local/uber-driver-stabbed-to-death-in-national-city-after-completing-ride-idd/2650310/
+g-2021-20,2021,Noel Njoku,Black,Original study,legacy_unrecorded,Male,DoorDash,"Mitchellville, MD",Charged,Stranger,False,True,https://www.nbcwashington.com/news/local/prince-georges-county/man-charged-robbery-killing-of-maryland-delivery-driver-noel-njoku-mitchelville/2851561/
+g-2021-21,2021,Isabella Lewis,White,Photo,visual,Female,Lyft,"Garland, TX",Closed (suspect deceased),Passenger,False,True,https://www.wfaa.com/article/news/crime/plano-police-department-shooting-sunday-aug-29/287-952454cd-65ec-4cbe-9b14-334143e42c72
+g-2021-22,2021,Kuldip Singh,Asian/Other,Photo,visual,Male,Uber,"New York, NY",Charged,Stranger,False,True,https://abc7ny.com/joselito-domena-arrest-uber-murder-driver-killed/11293928/
+g-2021-23,2021,Hamzah Faraj,Asian/Other,Photo,visual,Male,DoorDash,"Fort Worth, TX",Unsolved,Unknown (unsolved),False,True,https://www.fox4news.com/news/hamzah-faraj-murder-food-delivery-driver-fort-worth
+g-2021-24,2021,Glynon Nelson,Black,Photo,visual,Male,Lyft,"Gary, IN",Charged,Passenger,False,True,https://www.nwitimes.com/news/local/crime-courts/2-charged-with-murdering-crown-point-lyft-driver/article_9ad10488-c5c3-56c1-a023-d29462ef88a8.html
+g-2021-25,2021,Terrell Harris,Black,Photo,visual,Male,Lyft,"Philadelphia, PA",Unsolved,Unknown (unsolved),False,True,https://www.nbcphiladelphia.com/news/local/gunman-shoots-and-kills-lyft-driver-during-another-night-of-violence-in-philly/2969962/
+g-2021-26,2021,Salauddin Bablu,Asian/Other,Photo,visual,Male,Grubhub,"New York, NY",Convicted/Sentenced,Stranger,False,True,https://gothamist.com/news/arrest-made-fatal-stabbing-delivery-worker-robbed-e-bike
+g-2021-27,2021,Ahmad Fawad Yusufi,Asian/Other,Original study,legacy_unrecorded,Male,Uber,"San Francisco, CA",Convicted/Sentenced,Stranger,False,True,https://cbsnews.com/sanfrancisco/news/ahman-fawad-yusufi-killing-man-convicted-murder-afghan-refugee-uber-lyft-driver
+g-2022-1,2022,Christina Raymond,White,Photo,visual,Female,DoorDash,"Milpitas, CA",Charged,Ex-partner,False,True,https://www.ktvu.com/news/man-speaks-out-after-girlfriend-allegedly-killed-by-ex-in-milpitas
+g-2022-2,2022,Kristian Philpotts,Black,Photo,visual,Male,Lyft,"Urbana, IL",Convicted/Sentenced,Passenger,False,True,https://www.wcia.com/top-stories/teenager-sentenced-to-55-years-in-urbana-lyft-murder-case/
+g-2022-3,2022,Cheryl McCormack,White,Record,documented,Female,DoorDash,"Baltimore, MD",Charged,Stranger,False,True,https://www.cbsnews.com/baltimore/news/second-teen-charged-in-murder-of-baltimore-doordash-driver
+g-2022-4,2022,Brandon Cooper,Black,Photo,visual,Male,Lyft,"Dayton, OH",Convicted/Sentenced,Passenger,False,True,https://www.daytondailynews.com/local/teens-setenced-to-at-least-25-years-in-prison-in-deadly-shooting-of-lyft-driver-in-dayton/G7GVDYHZDNG3DPU5OORQ5WO42A/
+g-2022-5,2022,Justin Krumbah,White,Photo,visual,Male,Instacart,"Richland, WA",Closed (suspect deceased),Stranger,False,True,https://keprtv.com/news/local/richland-fred-meyer-killer-granted-conditional-release
+g-2022-6,2022,Christina Spicuzza,White,Record,documented,Female,Uber,"Monroeville, PA",Convicted/Sentenced,Passenger,False,True,https://www.cbsnews.com/pittsburgh/news/calvin-crew-sentenced-killing-uber-driver-christina-spicuzza
+g-2022-7,2022,Abdul Rauf Khan,Asian/Other,Photo,visual,Male,Lyft,"Temple Hills, MD",Charged,Passenger,False,True,https://wtop.com/prince-georges-county/2022/03/17-year-old-from-dc-charged-in-fatal-shooting-of-ride-share-driver-in-prince-georges-co/
+g-2022-8,2022,Manuel Francis-Hernandez,Black,Photo,visual,Male,Uber,"Long Beach, NY",Convicted/Sentenced,Not documented,False,True,https://www.nassauda.org/CivicAlerts.aspx?AID=1546
+g-2022-9,2022,Shaani Mohamed,Black,Photo,visual,Male,Uber,"Portland, OR",Charged,Not documented,False,True,https://www.koin.com/news/crime/fourth-arrest-made-in-connection-with-portland-uber-driver-murder-in-2022/
+g-2022-10,2022,Andrew Satavu,Asian/Other,Record,documented,Male,DoorDash,"Modesto, CA",Convicted/Sentenced,Stranger,False,True,https://www.abc10.com/article/news/local/modesto/man-convicted-second-degree-murder-modesto/103-091c2799-8bac-477e-a3e7-97da35ae15e4
+g-2022-11,2022,Paris-James Smith,Black,Photo,visual,Male,GoPuff,"DeKalb County, GA",Unsolved,Unknown (unsolved),False,True,https://www.fox5atlanta.com/news/mother-of-murdered-dekalb-county-delivery-driver-wants-answers
+g-2022-12,2022,Dushaundra Lee Ward,Black,Record,documented,Female,Lyft,"Memphis, TN",Unsolved,Unknown (unsolved),False,True,https://wreg.com/news/local/police-release-photos-after-lyft-driver-killed-in-ambush/
+g-2022-13,2022,Pamela Rae Martinez,Hispanic,Photo,visual,Female,Uber Eats,"Glendale, AZ",Charged,Stranger,False,True,https://www.fox10phoenix.com/news/man-accused-of-shooting-killing-glendale-food-delivery-driver
+g-2022-14,2022,Raymond Hill III,Black,Photo,visual,Male,DoorDash,"New Orleans, LA",Unsolved,Unknown (unsolved),False,True,https://www.fox8live.com/2022/06/30/24-year-old-national-guardsman-gunned-down-while-making-doordash-delivery-st-roch/
+g-2022-15,2022,Anthony Garland,White,Original study,legacy_unrecorded,Male,Lyft,"Indianapolis, IN",Convicted/Sentenced,Passenger,False,True,https://www.wthr.com/article/news/crime/indianapolis-man-sentenced-55-years-murdering-lyft-driver-murder-devin-powell-tony-garland-rideshare-killing-shooting-deadly/531-aa2bfdae-e944-425e-aa86-fa7245bf8515
+g-2022-16,2022,Da'Jour Russ,Black,Photo,visual,Male,DoorDash,"Detroit, MI",Unsolved,Unknown (unsolved),False,True,https://www.fox2detroit.com/news/year-after-doordash-driver-was-killed-on-1st-day-of-job-family-waits-for-justice
+g-2022-17,2022,Roberto Peigne,Black,Photo,visual,Male,DoorDash,"Port St. Lucie, FL",Unsolved,Unknown (unsolved),False,True,https://cbs12.com/news/local/two-killed-shooting-gabi-hanley-dr-roberto-peigne-protestors-want-arrests-in-two-murders-in-port-st-lucie-family-friends-frustrated-october-6-2023
+g-2022-18,2022,"Kon ""Patrick"" Woo Fung",Asian/Other,Photo,visual,Male,Rideshare/delivery (unspecified),"Oakland, CA",Charged,Stranger,False,True,https://www.cbsnews.com/sanfrancisco/news/patrick-fung-uber-driver-oakland-murder-little-saigon-suspects-arrested/
+g-2022-19,2022,Nesredin Esleiman,Asian/Other,Photo,visual,Male,Uber,"Temple Hills, MD",Charged,Stranger,False,True,https://patch.com/maryland/silverspring/arrest-made-fatal-shooting-silver-spring-rideshare-driver
+g-2022-20,2022,Crayton Saffolds,Black,Author call,author_judgment,,Uber,"Chicago, IL",Unsolved,Unknown (unsolved),False,True,https://www.powerswitchaction.org/resources/murdered-behind-the-wheel/
+g-2022-21,2022,Althia Smith Jenkins-Perry,White,Photo,visual,Female,Uber,"Bryan, TX",Convicted/Sentenced,Passenger,False,True,https://www.kbtx.com/2025/12/03/man-us-illegally-pleads-guilty-2022-shooting-death-rideshare-driver-bryan/
+g-2022-22,2022,Harriett Childers,Black,Photo,visual,Female,Uber,"East St. Louis, IL",Charged,Stranger,False,True,https://www.ksdk.com/article/news/local/15-year-old-charged-death-south-city-nurse/63-a8431e76-faf0-48a4-a0c6-81ec3ebe6010
+g-2022-23,2022,Mohamed Kediye,Black,Photo,visual,Male,Lyft,"Seattle, WA",Unsolved,Unknown (unsolved),False,True,https://komonews.com/news/local/seattle-rideshare-driver-homicide-murder-shot-killed-mohamed-kediye-amazon-spheres-shooting-crime-crisis-sept-11th-six-children-rally-downtown-organized-workers-labor-solidarity-lyft-uber-washington-somalia-king-county-lenora-7th-avenue-denny-triangle
+g-2022-24,2022,Dina May-Terrell,Black,Photo,visual,Female,Lyft,"Pontiac, MI",Convicted/Sentenced,Passenger,False,True,https://www.clickondetroit.com/news/local/2024/06/25/man-sentenced-in-murder-of-lyft-driver-who-was-shot-in-head-from-back-seat-in-oakland-county/
+g-2022-25,2022,Richard Skelskey,White,Photo,visual,Male,Lyft,"Memphis, TN",Convicted/Sentenced,Passenger,False,True,https://www.scdag.com/news-releases/defendant-sentenced-to-150-years-for-2022-double-homicide
+g-2022-26,2022,Corey Antwan Price,Black,Original study,legacy_unrecorded,Male,DoorDash,"Jackson, MS",Convicted/Sentenced,Stranger,False,True,https://www.wlbt.com/2026/05/05/man-gets-40-years-killing-food-delivery-driver-jackson/
+g-2022-27,2022,Caron Arterberry,Black,Record,documented,Male,Uber,"Chicago, IL",Unsolved,Unknown (unsolved),False,True,https://wgntv.com/news/we-want-justice-for-caron-candlelight-vigil-held-for-slain-uber-driver/
+g-2022-28,2022,Lauren Allen (Sawyer-Allen),Black,Photo,visual,Female,Lyft,"Lithonia, GA",Closed (suspect deceased),Ex-partner,False,True,https://www.ajc.com/news/crime/god-had-a-plan-lyft-driver-killed-in-dekalb-was-working-to-support-3-children/VPKC42QZQZDDXCMPBKNSPMOQYQ/
+g-2022-29,2022,James Barron,Black,Photo,visual,Male,DoorDash,"Jacksonville, FL",Unsolved,Unknown (unsolved),False,True,https://www.news4jax.com/news/local/2022/12/07/father-of-6-identified-as-victim-in-deadly-november-shooting/
+g-2022-30,2022,Yolanda Dillion,Black,Record,documented,Female,Uber,"Harvey, LA",Closed (suspect deceased),Passenger,False,True,https://www.wwltv.com/article/news/local/harvey-man-found-not-guilty-by-reason-of-insanity-in-2022-uber-driver-killing-new-orleans/289-ad9a3fbc-5b37-43bf-b00a-eec4d7257487
+g-2022-31,2022,Ainzargul Totakhil,Asian/Other,Photo,visual,Male,Uber,"Durham, NC",Unsolved,Unknown (unsolved),False,True,https://www.wral.com/story/one-year-later-police-say-case-of-murdered-afghan-refugee-has-gone-cold/21210112/
+g-2023-1,2023,Mahamadou Kabba,Black,Record,documented,Male,Uber,"Renton, WA",Charged,Stranger,False,True,https://www.king5.com/article/news/crime/renton-seatac-shootings-murder-charge-upgraded-plea/281-c8cec28c-4efd-4d41-a19a-ceecec0faaf9
+g-2023-2,2023,Christopher Beushausen,White,Photo,visual,Male,Uber,"Indianapolis, IN",Unsolved,Unknown (unsolved),False,True,https://www.wthr.com/article/news/crime/woman-seeks-answers-in-sons-indianapolis-murder-christopher-beushausen-impd/531-bd5aaf94-6b23-4e95-ba1a-7e2a78ede25c
+g-2023-3,2023,Stephen Lee Green,White,Original study,legacy_unrecorded,Male,Amazon Flex,"Temple Hills, MD",Unsolved,Unknown (unsolved),False,True,https://www.fox5dc.com/news/wife-of-amazon-delivery-driver-killed-in-temple-hills-speaks-out
+g-2023-4,2023,Gary Levin,White,Photo,visual,Male,Lyft,"Palm Beach Gardens, FL",Charged,Passenger,False,True,https://www.cbsnews.com/miami/news/matthew-flores-suspect-facing-capital-murder-charge-in-death-of-south-florida-lyft-driver-gary-levin
+g-2023-5,2023,Andrew Stiller,White,Photo,visual,Male,Uber,"New Orleans, LA",Convicted/Sentenced,Stranger,False,True,https://www.nola.com/news/man-convicted-in-i-10-shooting-that-killed-three-on-lundi-gras/article_e9b3b766-397b-4249-8063-2d1fc908c443.html
+g-2023-6,2023,Milton Pillacela Ayora,Hispanic,Record,documented,Male,Lyft,"Chicago, IL",Unsolved,Unknown (unsolved),False,True,https://chicago.suntimes.com/crime/2023/2/20/23608151/ride-share-driver-killed-milton-pillacella-ayora-near-west-side-shooting-lyft-uber
+g-2023-7,2023,Brice Djembissi,Black,Original study,legacy_unrecorded,Male,Uber,"Washington, DC",Charged,Stranger,False,True,https://www.justice.gov/usao-dc/pr/arrest-made-superseding-indictment-charging-five-individuals-three-different-murders-and
+g-2023-8,2023,Marvin Enrique Bardales Valle,Hispanic,Photo,visual,Male,Lyft,"New Orleans, LA",Convicted/Sentenced,Passenger,False,True,https://www.fox8live.com/2025/02/11/prosecutors-secure-convictions-two-high-profile-murder-cases-amid-super-bowl-week/
+g-2023-9,2023,Robert Diaz,Hispanic,Original study,legacy_unrecorded,Male,Uber,"San Antonio, TX",Convicted/Sentenced,Passenger,False,True,https://www.ksat.com/news/local/2026/03/20/man-convicted-in-connection-with-2023-murder-of-uber-driver-sentenced-to-life-in-prison/
+g-2023-11,2023,Aaron Orozco,Hispanic,Record,documented,Male,Uber,"Lynwood, CA",Charged,Passenger,False,True,https://www.cbsnews.com/losangeles/news/man-arrested-for-fatally-shooting-uber-driver-in-lynwood-another-suspect-still-at-large/
+g-2023-12,2023,Randall William Cooke,White,Photo,visual,Male,Uber Eats,"Holiday, FL",Charged,Customer (delivery),False,True,https://www.fox13news.com/news/uber-eats-murder-suspect-could-face-death-penalty-if-convicted
+g-2023-13,2023,Jaevierre Greer,Black,Photo,visual,Male,DoorDash,"Akron, OH",Convicted/Sentenced,Stranger,False,True,https://www.yahoo.com/news/akron-man-pleads-guilty-co-163959295.html
+g-2023-14,2023,Amaree'ya Henderson,Black,Photo,visual,Female,DoorDash,"Kansas City, KS",Police-Involved,Known dispute,True,False,https://www.kshb.com/news/local-news/no-charges-filed-against-kck-officer-who-shot-killed-amareeya-henderson
+g-2023-15,2023,Cameron Cole,White,Record,documented,Male,DoorDash,"Prince George County, VA",Unsolved,Unknown (unsolved),False,True,https://www.wric.com/news/local-news/his-son-was-found-dead-in-the-woods-now-he-wants-answers/
+g-2023-16,2023,Hector Torres,Hispanic,Original study,legacy_unrecorded,Male,Uber,"Houston, TX",Charged,Passenger,False,True,https://www.houstontx.gov/police/nr/2023/jul/nr070623-6.htm
+g-2023-17,2023,Michael Almonte,Hispanic,Record,documented,Male,Uber,"Philadelphia, PA",Unsolved,Unknown (unsolved),False,True,https://www.inquirer.com/news/michael-almonte-killed-north-philadelphia-broad-lehigh-20230621.html
+g-2023-18,2023,Daniel Piedra Garcia,Hispanic,Record,documented,Male,Uber,"El Paso, TX",Closed (suspect deceased),Passenger,False,True,https://cbs4local.com/newsletter-daily/el-paso-da-to-announce-update-in-uber-driver-murder-case
+g-2023-19,2023,Juan Miguel Chan,Hispanic,Photo,visual,Male,Uber,"Inglewood, CA",Unsolved,Unknown (unsolved),False,True,https://abc7.com/post/inglewood-rideshare-driver-killed-shooting-police-investigation/13434382/
+g-2023-21,2023,Kirk Nims,Black,Original study,legacy_unrecorded,Male,Uber,"Petersburg, VA",Charged,Not documented,False,True,https://www.wric.com/news/local-news/the-tri-cities/police-charge-19-year-old-with-murder-after-48-year-old-found-dead-in-vehicle-on-halifax-street/
+g-2023-22,2023,Amare Geda,Black,Photo,visual,Male,Uber,"Seattle, WA",Convicted/Sentenced,Stranger,False,True,https://www.kiro7.com/news/local/woman-sentenced-20-years-2023-killing-rideshare-driver-seattles-sodo-neighborhood/L2QQC4S5L5DERA4CGECPHETQQY/
+g-2023-23,2023,Goitom Hagos,Black,Photo,visual,Male,Uber,"Denver, CO",Charged,Stranger,False,True,https://denvergazette.com/news/denver-shooting-and-crash-monday/article_076fa634-56f9-11ee-ad62-77ab808aeb3b.html
+g-2023-24,2023,Myron Snyder,Black,Original study,legacy_unrecorded,Male,DoorDash,"Cedar Rapids, IA",Convicted/Sentenced,Known dispute,False,True,https://cbs2iowa.com/news/local/shooter-cameron-leonard-sentenced-to-life-for-first-degree-murder-family-remembers-21-year-old-myron-snyder-killed-while-delivering-doordash-outside-pointe-apartments-october-2023-shooting
+g-2023-25,2023,Bryant Scott Grund,White,Photo,visual,Male,Uber,"Jacksonville, FL",Convicted/Sentenced,Stranger,False,True,https://www.firstcoastnews.com/article/news/crime/3rd-arrest-made-in-jacksonville-gang-related-hit-scheme-killed-uber-driver-and-passenger/77-c06e5c8c-d1f2-4ee7-9752-1fa6993da58c
+g-2023-26,2023,Mohammed Al Hijoj,Asian/Other,Original study,legacy_unrecorded,Male,Uber,"Chicago, IL",Charged,Passenger,False,True,https://cwbchicago.com/2024/02/chicago-uber-driver-murder-charges-filed-zayin-kelly-mohammed-al-hijoj.html
+g-2023-27,2023,Quincy McMillon,Black,Photo,visual,Male,Lyft,"Phoenix, AZ",Unsolved,Unknown (unsolved),False,True,https://www.12news.com/article/news/crime/phoenix-lyft-driver-shot-and-killed-while-on-the-job/75-6ed9d1f0-90d7-4459-a23a-09aabf2f0610
+g-2023-28,2023,Adriana Arocha-Duque,Hispanic,Original study,legacy_unrecorded,Female,Lyft,"Chicago, IL",Charged,Stranger,False,True,https://cwbchicago.com/2025/10/fourth-man-charged-in-deadly-ambush-of-lyft-driver-adriana-arocha-duque.html
+g-2024-1,2024,Abdikadir Gedi Shariif,Black,Original study,legacy_unrecorded,Male,Uber,"Edmonds, WA",Convicted/Sentenced,Stranger,False,True,https://www.king5.com/article/news/crime/suspect-senctenced-shooting-death-edmonds-uber-driver/281-6af0804a-0931-45fe-b405-2b2a3138864c
+g-2024-2,2024,Sergey Kubay,White,Original study,legacy_unrecorded,Male,Amazon Flex,"Renton, WA",Unsolved,Unknown (unsolved),False,True,https://www.kiro7.com/news/local/were-looking-peace-king-county-man-asks-amazon-help-family-delivery-driver-killed/XJ2YAN27MFFVFLOJO3Q6WGE4KY/
+g-2024-3,2024,Rasheek Abdullah,,Undetermined (searched; no photo or record),none,Male,Uber Eats,"Washington, DC",Convicted/Sentenced,Stranger,False,True,https://www.justice.gov/usao-dc/pr/guilty-verdict-road-rage-killing-uber-driver-near-dupont-circle
+g-2024-4,2024,Joseph Anthony Soto Jr.,Hispanic,Photo,visual,Male,DoorDash,"Sacramento, CA",Convicted/Sentenced,Stranger,False,True,https://www.sacda.org/2026/07/defendant-sentenced-for-shooting-murder-in-wingstop-parking-lot/
+g-2024-5,2024,Lo-Letha Hall,Black,Photo,visual,Female,Uber,"South Charleston, OH",Convicted/Sentenced,Stranger,False,True,https://www.courttv.com/news/man-faces-sentencing-for-killing-uber-driver-sent-to-his-home-by-scammers/
+g-2024-6,2024,Mohammad Haddad-Farshi,Asian/Other,Photo,visual,Male,Lyft,"Dallas, TX",Charged,Passenger,False,True,https://www.fox4news.com/news/lyft-driver-killed-dallas-maurice-parker-mohammad-haddad-farshi
+g-2024-7,2024,Cequan James,Black,Photo,visual,Male,DoorDash,"DeKalb County, GA",Charged,Stranger,False,True,https://www.atlantanewsfirst.com/2024/05/16/2-arrested-dekalb-county-carjacking-that-left-doordash-driver-dead-police-say/
+g-2024-8,2024,Reginald Folks Jr.,Black,Original study,legacy_unrecorded,Male,Lyft,"Union City, GA",Convicted/Sentenced,Passenger,False,True,https://www.wsbtv.com/news/local/atlanta/im-truly-sorry-ex-atlanta-officer-who-killed-lyft-driver-asks-forgiveness/2LODDLNIVNFGLMB7L5IXMW7SKA/
+g-2024-9,2024,Shawali Sherali,Asian/Other,Original study,legacy_unrecorded,Male,Lyft,"Fort Worth, TX",Charged,Passenger,False,True,https://www.fox4news.com/news/fort-worth-lyft-driver-killed-shot
+g-2024-10,2024,Joshua Kelvin,White,Photo,visual,Male,Uber,"Portland, OR",Charged,Stranger,False,True,https://katu.com/news/local/teen-suspect-charged-with-murder-in-deadly-2024-shooting-of-uber-driver-in-se-portland-rideshare-juvenile-murder-homicide-guns-violence-police-investigation-local-community
+g-2024-11,2024,Alejandro Linares,Hispanic,Original study,legacy_unrecorded,Male,Uber Eats,"Opa-locka, FL",Charged,Stranger,False,True,https://www.local10.com/news/local/2024/06/18/police-make-arrest-in-killing-of-delivery-driver-in-opa-locka/
+g-2024-12,2024,Naveed Afzal,Asian/Other,Photo,visual,Male,Rideshare/delivery (unspecified),"Brooklyn, NY",Unsolved,Unknown (unsolved),False,True,https://patch.com/new-york/brooklyn/cab-driver-shot-face-brooklyn-dies-case-deemed-homicide
+g-2024-13,2024,Mursal Jama,Black,Original study,legacy_unrecorded,Male,Uber,"Omaha, NE",Convicted/Sentenced,Stranger,False,True,https://www.wowt.com/2026/03/16/final-suspect-death-omaha-uber-driver-sentenced-prison/
+g-2024-14,2024,"Robert ""Bobby"" Renteria",Hispanic,Photo,visual,Male,Uber,"San Antonio, TX",Unsolved,Unknown (unsolved),False,True,https://www.ksat.com/news/local/2024/08/28/ride-share-driver-shot-on-north-side-dies-in-hospital/
+g-2024-15,2024,Carlos Leiva,Hispanic,Photo,visual,Male,Lyft,"Charlotte, NC",Charged,Not documented,False,True,https://www.wsoctv.com/news/local/15-year-old-charged-2024-shooting-death-lyft-driver-cmpd-says/PZY4S4AGSRB5RKOBT4XUYPFAII/
+g-2024-16,2024,Michael Wilmot,White,Photo,visual,Male,Uber,"Las Vegas, NV",No Charges (Review),Stranger,False,True,https://www.reviewjournal.com/crime/shootings/cororner-ids-uber-driver-killed-in-shooting-in-front-of-strip-resort-3219698/
+g-2024-17,2024,Rafeeq Badee,Black,Photo,visual,Male,Lyft,"DeKalb County, GA",Charged,Stranger,False,True,https://www.ajc.com/news/crime/suspect-turns-himself-in-after-fatal-shooting-of-lyft-driver-in-dekalb/URBJFGAXBBBZVC3JQG7YS5GQIY/
+g-2024-18,2024,Samori Husamudeen,Black,Photo,visual,Male,DoorDash,"Fayetteville, NC",Charged,Stranger,False,True,https://www.cbs17.com/news/local-news/cumberland-county-news/woman-arrested-in-pa-in-connection-to-murder-of-doordash-driver-at-fayetteville-mcdonalds/
+g-2025-1,2025,"Oluwatosin ""Tosin"" Adetula",Black,Photo,visual,Male,Lyft,"Cottage City, MD",Charged,Passenger,False,True,https://www.fox5dc.com/news/man-accused-shooting-killing-rideshare-driver-new-years-eve-arrested
+g-2025-2,2025,Emmanuel Gbedee Sr.,Black,Original study,legacy_unrecorded,Male,Uber,"Benson (Johnston County), NC",Charged,Passenger,False,True,https://abc11.com/post/emmanuel-gbedee-2-people-custody-durham-father-found-dead-back-car-johnston-county/15802952/
+g-2025-3,2025,Samuel Webster,,Undetermined (searched; no photo or record),none,Male,Veyo (medical rideshare),"Phoenix, AZ",Charged,Passenger,False,True,https://www.azfamily.com/2025/01/23/phoenix-ride-share-rider-accused-running-over-killing-her-driver/
+g-2025-4,2025,"Samuel ""Sammy"" Jackson",Black,Photo,visual,Male,Uber,"Atlanta, GA",Charged,Passenger,False,True,https://www.11alive.com/article/news/local/missing-in-georgia/man-facing-murder-charge-uber-driver-former-college-basketball-coach-found-dead/85-21680d35-8e15-4665-8448-a910108484e9
+g-2025-5,2025,Jimmy Allen Ramey,White,Photo,visual,Male,DoorDash,"Anderson County, SC",Charged,Not documented,False,True,https://www.wspa.com/news/local-news/anderson-co-murder-suspect-arrested-deputies-say/
+g-2025-6,2025,Philip Kim,Asian/Other,Photo,visual,Male,Lyft,"Houston, TX",Charged,Passenger,False,True,https://lawandcrime.com/lawsuit/lyft-driver-dumped-on-the-side-of-the-road-after-being-lured-and-shot-by-rider-using-fake-id-ride-hailing-giant-knew-gig-workers-were-being-targeted-suit/
+g-2025-7,2025,Mamadou Diallo,Black,Photo,visual,Male,DoorDash,"Ferndale, MI",Convicted/Sentenced,Stranger,False,True,https://www.candgnews.com/articles/latest-news-news/killer-of-doordash-driver-in-ferndale-sentenced-to-decades-in-prison/
+g-2025-8,2025,Aaron Giles,Black,Original study,legacy_unrecorded,Male,GoPuff,"Tallahassee, FL",Charged,Stranger,False,True,https://www.legalnewsline.com/state-courts/estate-of-murdered-delivery-driver-sues-apartment-complex/article_b5d45186-7e80-496e-9182-bb6166f444b4.html
+g-2025-9,2025,Olatunji W. Bolaji,Black,Record,documented,Male,Uber,"Philadelphia, PA",Unsolved,Unknown (unsolved),False,True,https://6abc.com/post/police-searching-suspect-uber-driver-was-shot-killed-picking-passenger/19071159/
+g-2025-10,2025,Tahirou Diallo,Black,Photo,visual,Male,Uber,"North Richland Hills, TX",Charged,Passenger,False,True,https://www.wfaa.com/article/news/local/tarrant-county/rideshare-driver-shot-killed-by-highly-intoxicated-driver-north-richland-hills/287-6338159e-69cf-4d92-9f1d-0d5cbc433851
+g-2025-11,2025,William Robert McArthur,White,Photo,visual,Male,Lyft,"Panama City Beach, FL",Charged,Passenger,False,True,https://www.mypanhandle.com/news/local-news/bay-county/panama-city-beach/teen-confesses-to-fatal-shooting-of-lyft-driver-in-panama-city-beach/
+g-2025-12,2025,ZyDerec Massey,Black,Photo,visual,Male,DoorDash,"Rock Hill, SC",Charged,Stranger,False,True,https://www.postandcourier.com/york-county/news/rock-hill-murder-teenager-police-shot/article_8df598f3-093a-4a73-976f-161302faf386.html
+g-2025-15,2025,"Joseph ""Joey"" Andrus",Hispanic,Photo,visual,Male,Uber,"Albuquerque, NM",Charged,Passenger,False,True,https://www.kob.com/new-mexico/teen-accused-of-randomly-killing-uber-driver-appears-before-judge/
+g-2025-16,2025,"Quoc ""Jake"" Hieu Nguyen",Asian/Other,Photo,visual,Male,Uber,"Harris County, TX",Charged,Passenger,False,True,https://www.fox26houston.com/news/harris-county-rideshare-driver-shot-teens-arrested-lakewood-forest-drive-september-2025-updates
+g-2025-17,2025,John Lucas,White,Photo,visual,Male,Lyft,"Guadalupe, AZ",Charged,Passenger,False,True,https://www.azfamily.com/2025/09/25/court-docs-reveal-motive-behind-deadly-lyft-driver-shooting-guadalupe/
+g-2025-18,2025,"Miguel ""Nation"" Stemley",Black,Photo,visual,Male,Uber,"New Orleans, LA",Charged,Stranger,False,True,https://www.fox8live.com/2026/01/21/two-indicted-murder-new-orleans-rideshare-driver-miguel-stemley/
+g-2025-19,2025,LaWanna J. Lewis,White,Photo,visual,Female,Lyft,"Westlake, LA",Charged,Passenger,False,True,https://www.kplctv.com/2025/11/06/man-accused-killing-lyft-driver-stealing-her-car-extradited-calcasieu/
+g-2025-20,2025,Shabazz Mesiah Grant,Black,Photo,visual,Male,Lyft,"Charlotte, NC",Closed (suspect deceased),Stranger,False,True,https://www.wcnc.com/article/news/local/mecklenburg-county-da-cmpd-officers-shooting-deadly-crime-spree/275-33717657-c139-4a1a-9eee-e65b1e633cf9
+g-2025-21,2025,Jeremy Campbell,White,Photo,visual,Male,Uber,"El Paso County, CO",Charged,Passenger,False,True,https://gazette.com/2026/01/02/preliminary-hearing-for-uber-driver-homicide-suspect-reveals-new-details-spring-trial-set/
+g-2025-22,2025,Frederick Kiprono,Black,Photo,visual,Male,Uber,"Shreveport, LA",Charged,Stranger,False,True,https://www.ksla.com/2026/02/25/caddo-parish-grand-jury-indicts-3-teens-murder-uber-driver-his-passenger-clyde-fant-parkway/
+gn-2017-49,2017,Adekunte M. Adaranijo,Black,Photo,visual,Male,Lyft,"Maywood, IL",Charged,Not documented,False,True,https://gunmemorial.org/2017/04/26/adekunte-m-adaranijo | https://www.cbsnews.com/chicago/news/3-charged-with-fatal-shooting-of-lyft-driver/ | https://www.fox32chicago.com/news/3-charged-with-fatal-shooting-of-lyft-driver-in-maywood
+gn-2018-0,2018,Henry Miller,White,Photo,visual,Male,Uber,"Boston, MA",Unsolved,Known dispute,False,True,https://www.wcvb.com/article/boston-uber-driver-dies-from-injuries-months-after-violent-attack/23499844 | https://whdh.com/news/suspects-sought-after-75-year-old-uber-driver-viciously-beaten-in-dorchester/ | https://www.boston25news.com/news/-this-can-t-go-without-punishment-a-75-year-old-uber-driver-assaulted-carjacked/765780203/
+gn-2018-52,2018,Raymond Holloway-Creighton,Black,Photo,visual,Male,Grubhub,"Boston, MA",Convicted/Sentenced,Not documented,False,True,https://gunmemorial.org/2018/10/05/raymond-holloway-creighton | https://patch.com/massachusetts/boston/man-accused-killing-boston-grubhub-driver-pleads-guilty
+gp-2019-8,2019,Roger Williams,White,Photo,visual,Male,Lyft,"New Castle County, DE",Acquitted (unresolved),Unknown (unsolved),False,True,https://www.yahoo.com/news/jury-acquits-man-charged-killing-090112104.html | https://www.cbsnews.com/philadelphia/news/delaware-police-searching-for-michael-toombs-who-shot-killed-lyft-driver-roger-williams | https://crimesolverscentral.com/homicide/38467
+gn-2019-4,2019,Dwayne Roberts,Black,Record,documented,Male,Rideshare/delivery (unspecified),"Decatur, GA",Convicted/Sentenced,Not documented,False,True,https://lawandcrime.com/ezqyv | https://www.11alive.com/article/news/local/jealous-boyfriend-murders-ride-share-driver/85-8096d757-bb75-494a-8add-98d2af9fae14 | https://wptv.com/news/national/georgia-man-convicted-of-killing-ride-share-driver
+gn-2020-6,2020,Andrew D. Ameer,Asian/Other,Photo,visual,Male,Lyft,"St. Louis, MO",Charged,Passenger,False,True,https://gunmemorial.org/2020/09/28/andrew-ameer | https://www.youtube.com/watch?v=GOAxe5Oe5Fc | https://www.courtlistener.com/opinion/10630321/rochelle-ameer-v-lyft-inc-and-christopher-d-morgan-and-ajane-barnes/
+gn-2020-7,2020,Timothy Paul Allen,White,Photo,visual,Male,Amazon Flex,"Dallas, TX",Convicted/Sentenced,Stranger,False,True,https://dpdbeat.com/2021/01/18/homicide-at-2400-leath-street/ | https://www.nbcdfw.com/news/local/uber-eats-driver-murdered-second-delivery-driver-killed-in-north-texas-in-a-month/2535232/ | https://www.cbsnews.com/texas/news/teens-arrested-murder-delivery-driver-timothy-allen-dallas/
+gp-2023-26,2023,Tramon Thomas,Black,Photo,visual,Male,Uber Eats,"Chicago, IL",Unsolved,Unknown (unsolved),False,True,https://www.fox32chicago.com/news/family-distraught-after-son-delivering-for-uber-eats-was-murdered-in-chicago-he-was-a-great-hugger | https://www.fox32chicago.com/news/family-distraught-after-son-delivering-for-uber-eats-was-murdered-in-chicago-he-was-a-great-hugger
+gn-2023-9,2023,Julia Holland,White,Photo,visual,Female,Uber,"Canton, Haywood County, NC",Convicted/Sentenced,Passenger,False,True,https://wlos.com/news/local/gallery/noah-bolden-guilty-murder-uber-driver-haywood-county-north-carolina-canton-julia-holland-sentenced-life-prison-district-attorney-ashley-horsby-welch?photo=1 | https://www.themountaineer.com/news/gruesome-chains-of-events-revealed-in-canton-murder/article_7c440898-b20c-11ed-a454-ab247d3ba9a0.html | https://www.themountaineer.com/news/canton-killer-pleads-guilty-to-shorten-moms-jail-time-for-coverup/article_5ded75b8-f301-11ef-885c-bf692749326c.html
+gn-2023-10,2023,Mohamadou Thera (also spelled Mohamed Thera),Black,News report,documented,Male,Uber,"Plano, TX",Charged,Passenger,False,True,https://crimesolverscentral.com/homicide/61419 | https://www.wfaa.com/article/news/crime/rideshare-driver-sherman-killed-plano-shooting-arrest-made/287-9b33b93d-4d90-4cc6-a260-e9c08fa0446c | https://www.fox4news.com/news/plano-shooting-mohamadou-thera-jaheim-kemp
+gn-2023-11,2023,Shawn Joseph,Black,Photo,visual,Male,DoorDash,"Round Rock, TX; body found in rural Milam County, TX",Convicted/Sentenced,Not documented,False,True,https://fox7austin.com/news/round-rock-missing-cedar-park-man-shawn-joseph-royce-loggins | https://www.roundrocktexas.gov/news/31-year-old-sentenced-to-40-years-for-2023-murder-of-shawn-joseph/ | https://hoodline.com/2025/09/31-year-old-royce-loggins-sentenced-to-40-years-for-2023-murder-of-doordash-driver-in-round-rock/
+gn-2024-13,2024,Faneal Tesfit,Black,Photo,visual,Male,Uber,"Dallas, TX",Charged,Not documented,False,True,https://www.nbcdfw.com/news/local/police-find-man-shot-dead-after-responding-to-dallas-car-crash/3467330/ | https://www.fox4news.com/news/faneal-tesfit-south-dallas-shooting-teen-arrest | https://wfaa.com/article/news/local/dallas-texas-shooting-arrest-faneal-tesfit-murder/287-61c97bba-2d9f-410c-9e59-be895b8dcca1
+gn-2024-56,2024,Adesina David Aderinwoye,Black,Photo,visual,Male,GoPuff,"Indianapolis, IN",Unsolved,Not documented,False,True,https://fox59.com/news/indycrime/family-of-indy-delivery-driver-killed-on-the-job-seeks-help-solving-deadly-shooting/amp/ | https://fox59.com/news/indycrime/family-of-indy-delivery-driver-killed-on-the-job-seeks-help-solving-deadly-shooting/amp/ | https://wrtv.com/news/local-news/crime/family-searching-for-answers-after-delivery-driver-shot-and-killed-over-the-weekend
+gn-2024-57,2024,Steven Keliiaa,White,Photo,visual,Male,Uber Eats,"Albuquerque, NM",Convicted/Sentenced,Not documented,False,True,https://gunmemorial.org/2024/12/23/steven-keliiaa | https://www.abqjournal.com/news/man-sentenced-to-life-in-killing-of-uber-eats-driver/2997946 | https://www.kob.com/news/top-news/man-sentenced-for-killing-uber-eats-driver-in-albuquerque/
+gn-2025-16,2025,Altmann Mnyuku,Black,Photo,visual,Male,Uber,"Chicago, IL",Charged,Passenger,False,True,https://gunmemorial.org/2025/07/31/altmann-mnyuku | https://chicago.suntimes.com/crime/2025/08/08/16-year-old-boy-fatally-shot-uber-driver-with-ghost-gun-during-chatham-carjacking-prosecutors-say | https://www.taxi-library.org/sources.htm
+gr-2021-1,2021,Hurts Presendieu,,Undetermined (searched; no photo or record),none,Male,Lyft,"Indianapolis, IN",Convicted/Sentenced,Passenger,False,True,https://dailyjournal.net/2024/04/16/greenwood-man-to-serve-35-years-for-fatally-shooting-robbing-lyft-driver/
+gr-2021-2,2021,Robbie Smythe Jr.,Black,Photo,visual,Male,Lyft,"Cincinnati, OH",Charged,Passenger,False,True,https://local12.com/news/local/teen-to-be-tried-as-adult-in-ride-share-drivers-murder-cincinnati-ohio-west-mitchell-jaden-moermond-christopher-soloman-robbie-smythe-robbery-lyft-uber
+gr-2021-3,2021,Garcia Danielle Gaddis,Black,Photo,visual,Male,Uber,"Sandy Springs, GA",Convicted/Sentenced,Not documented,False,True,https://www.fox5atlanta.com/news/armed-and-dangerous-man-wanted-for-murder-of-sandy-springs-uber-driver
+gr-2022-1,2022,Ibrahim Alkhateeb,,Undetermined (searched; no photo or record),none,Male,Lyft,"Fort Worth, TX",Charged,Passenger,False,True,https://www.nbcdfw.com/news/local/man-who-was-shot-and-crashed-car-into-fort-worth-house-was-lyft-driver-police/3060341/
+gr-2023-1,2023,Nasrat Ahmad Yar,Asian/Other,Photo,visual,Male,Lyft,"Washington, DC",Charged,Passenger,False,True,https://www.washingtonpost.com/dc-md-va/2025/02/13/nasratullah-ahmad-yar-teen-sentenced/
+g-2018-3,2018,Michael Wallace,,,,,,,"POSSIBLE, not counted: no charge and no homicide ruling",,False,False,https://www.wdrb.com/news/uber-driver-dead-after-fight-with-customer-lmpd-says-no-charges-filed/article_cac30678-2c3b-576e-886a-322691ab5baa.html
+gn-2017-50,2017,Randolph Tolk,,,,,,,"POSSIBLE, not counted: charge dropped; DA said death was medical",,False,False,https://www.cbsnews.com/news/chef-cleared-in-cabbies-death-after-hockey-stick-fight-crash
+gn-2021-8,2021,Qiaoming Shao,,,,,,,"POSSIBLE, not counted: no app named",,False,False,
+gn-2024-14,2024,Brandon Dean,,,,,,,"POSSIBLE, not counted: no app named",,False,False,
+gn-2018-51,2018,Aaron Wiley,,,,,,,"POSSIBLE, not counted: no app named; unsolved",,False,False,
+gn-2016-1,2016,Delano Deonte Jackson,,,,,,,"POSSIBLE, not counted: UNVERIFIED app duty: drove for Uber, but no source says he was working when killed",,False,False,https://gunmemorial.org/2016/11/10/delano-deonte-jackson | https://www.taxi-library.org/sources.htm | https://www.washingtonpost.com/local/public-safety/five-people-shot-two-fatally-in-southeast-northeast-washington/2016/11/11/f659d0a8-a81e-11e6-ba59-a7d93165c6d4_story.html
+gn-2023-12,2023,Hamza Jamil Zaki Abo Halaoh,,,,,,,"POSSIBLE, not counted: no app named: employer described a company ""like Uber""",,False,False,https://www.fox5dc.com/news/family-says-husband-father-from-jordan-also-killed-in-deadly-double-homicide-in-southeast | https://www.washingtonpost.com/dc-md-va/2023/03/15/capitol-hill-shooting-victim-driver/ | https://mpdc.dc.gov/publication/homicide-victim-hamza-halaoh
+gn-2024-15,2024,"Christian ""Chris"" Estrada-Petersen",,,,,,,"POSSIBLE, not counted: family did not know if he was working for Uber when shot",,False,False,https://www.wsbtv.com/news/local/dekalb-county/uber-driver-shot-killed-dekalb-months-after-being-discharged-us-navy/YTEBROT46BE3VM6R766VGKUGT4/ | https://wsbradio.com/news/local/uber-driver-shot-killed-dekalb-months-after-being-discharged-us-navy/IHXIVTC6AVFDRFJ2PDDXWTTE6I
